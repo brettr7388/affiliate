@@ -1,0 +1,32 @@
+site:
+  domain: "endearing-druid-acf1d7.netlify.app"
+  brand: "Eco Pet Guide"
+  niche: "eco-friendly pet products"
+offers:
+  # Amazon offers are used as an initial monetisation source. Update the affiliate_id
+  # with your Amazon Associates tag once you have one.
+  - name: "AmazonEcoFriendlyDogToys"
+    base_url: "https://www.amazon.com/dp/B004A7X27M"
+    affiliate_param: "tag"
+    affiliate_id: "test0b252-20"
+    utm_source: "site"
+    utm_campaign: "launch"
+  - name: "AmazonBiodegradablePoopBags"
+    base_url: "https://www.amazon.com/dp/B004A7X27M"
+    affiliate_param: "tag"
+    affiliate_id: "test0b252-20"
+    utm_source: "site"
+    utm_campaign: "launch"
+content:
+  # Generate new content every three days. Categories help guide the AI in creating
+  # guides, in-depth reviews and product comparisons.
+  cadence_days: 3
+  categories: ["guides", "reviews", "comparisons"]
+ab_tests:
+  # Define A/B test slugs to experiment with page elements like headlines or CTA
+  - slug: "eco-friendly-dog-toys"
+    variants: ["A", "B"]
+email:
+  # MailerLite has a generous free tier; once you have a list set up, provide its ID here
+  provider: "MailerLite"
+  list_id: ""
