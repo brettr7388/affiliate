@@ -10,3 +10,4 @@ Markdown
 apscheduler
 requests
 PyYAML
+psycopg[binary]

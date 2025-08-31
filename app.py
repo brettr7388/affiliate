@@ -66,22 +66,20 @@ class Route(BaseModel):
 
 
 @app.post("/admin/route")
-def create_route(r: Route) -> dict[str, bool]:
-    """Create or update a short redirect route.
-
-    You can POST a JSON body like:
-    {"slug":"eco-toy","offer":"AmazonEcoFriendlyDogToys","variant":"A",
-     "dest_url":"https://example.com"}
-    to register a new redirect.
-    """
+def create_route(r: Route):
+    # Works on Postgres and modern SQLite
+    upsert = text("""
+        INSERT INTO routes(slug, offer, variant, dest_url)
+        VALUES (:s, :o, :v, :d)
+        ON CONFLICT (slug) DO UPDATE
+        SET offer   = EXCLUDED.offer,
+            variant = EXCLUDED.variant,
+            dest_url= EXCLUDED.dest_url
+    """)
     with engine.begin() as conn:
-        conn.execute(
-            text(
-                "REPLACE INTO routes(slug,offer,variant,dest_url) VALUES(:s,:o,:v,:d)"
-            ),
-            {"s": r.slug, "o": r.offer, "v": r.variant, "d": r.dest_url},
-        )
+        conn.execute(upsert, {"s": r.slug, "o": r.offer, "v": r.variant, "d": r.dest_url})
     return {"ok": True}
+
 
 
 @app.get("/r/{slug}")
