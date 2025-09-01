@@ -1,0 +1,210 @@
+#!/usr/bin/env python3
+"""
+Ollama integration for AI article generation
+"""
+
+import requests
+import json
+import re
+from typing import Dict, Any
+
+class OllamaArticleGenerator:
+    def __init__(self, base_url: str = "http://localhost:11434"):
+        self.base_url = base_url
+        self.model = "llama3.1:8b"
+    
+    def generate_article(self, 
+                        product_info: Dict[str, Any],
+                        article_type: str,
+                        tone: str,
+                        keywords: str,
+                        length: str,
+                        include_comparison: str,
+                        target_audience: str,
+                        seo_focus: str) -> str:
+        """
+        Generate an article using Ollama
+        """
+        
+        # Build the prompt based on parameters
+        prompt = self._build_prompt(
+            product_info, article_type, tone, keywords, length,
+            include_comparison, target_audience, seo_focus
+        )
+        
+        try:
+            # Call Ollama API
+            response = requests.post(
+                f"{self.base_url}/api/generate",
+                json={
+                    "model": self.model,
+                    "prompt": prompt,
+                    "stream": False,
+                    "options": {
+                        "temperature": 0.7,
+                        "top_p": 0.9,
+                        "max_tokens": self._get_max_tokens(length)
+                    }
+                },
+                timeout=120
+            )
+            
+            if response.status_code == 200:
+                result = response.json()
+                article_content = result.get('response', '')
+                
+                # Clean up the response
+                article_content = self._clean_response(article_content)
+                
+                # Add affiliate disclosure and CTA
+                article_content = self._add_affiliate_elements(article_content, product_info)
+                
+                return article_content
+            else:
+                raise Exception(f"Ollama API error: {response.status_code}")
+                
+        except requests.exceptions.ConnectionError:
+            raise Exception("Cannot connect to Ollama. Make sure Ollama is running with 'ollama serve'")
+        except Exception as e:
+            raise Exception(f"Error generating article: {str(e)}")
+    
+    def _build_prompt(self, 
+                      product_info: Dict[str, Any],
+                      article_type: str,
+                      tone: str,
+                      keywords: str,
+                      length: str,
+                      include_comparison: str,
+                      target_audience: str,
+                      seo_focus: str) -> str:
+        """
+        Build a comprehensive prompt for Ollama
+        """
+        
+        offer_name = product_info.get('offer', '')
+        dest_url = product_info.get('dest_url', '')
+        
+        # Determine word count based on length
+        word_counts = {
+            'short': '500-800',
+            'medium': '800-1200', 
+            'long': '1200-1500'
+        }
+        word_count = word_counts.get(length, '800-1200')
+        
+        prompt = f"""You are an expert content writer specializing in eco-friendly pet products and affiliate marketing. 
+
+Write a {article_type} article about {offer_name} with the following specifications:
+
+**Article Requirements:**
+- Type: {article_type}
+- Tone: {tone}
+- Length: {word_count} words
+- Target Audience: {target_audience}
+- SEO Focus: {seo_focus}
+- Keywords to include: {keywords}
+
+**Product Information:**
+- Product: {offer_name}
+- Affiliate URL: {dest_url}
+
+**Content Guidelines:**
+- Focus on eco-friendly and sustainable aspects
+- Include practical benefits for pet owners
+- Use natural, engaging language
+- Incorporate the specified keywords naturally
+- Make it informative and helpful
+- Include specific product features and benefits
+- Write in {tone} tone
+- Target {target_audience}
+
+**Structure:**
+- Compelling headline
+- Introduction that hooks the reader
+- Clear sections with subheadings
+- Product overview and features
+- Benefits and advantages
+- Practical usage tips
+- Conclusion with recommendation
+
+**Important:**
+- Write in Markdown format
+- Do NOT include affiliate links or CTAs (I'll add those separately)
+- Focus on providing genuine value to readers
+- Make it engaging and informative
+- Use the exact tone and style specified
+
+Generate the article now:"""
+
+        if include_comparison == "yes":
+            prompt += "\n\n**Include a product comparison section** that compares this product to alternatives in the market."
+        
+        return prompt
+    
+    def _get_max_tokens(self, length: str) -> int:
+        """Get appropriate max tokens based on article length"""
+        token_limits = {
+            'short': 1000,
+            'medium': 1500,
+            'long': 2000
+        }
+        return token_limits.get(length, 1500)
+    
+    def _clean_response(self, response: str) -> str:
+        """Clean up Ollama's response"""
+        # Remove any system messages or extra formatting
+        lines = response.split('\n')
+        cleaned_lines = []
+        
+        for line in lines:
+            # Skip lines that look like system messages
+            if line.strip().startswith('```') or line.strip().startswith('Assistant:'):
+                continue
+            if line.strip() == '' and not cleaned_lines:  # Skip leading empty lines
+                continue
+            cleaned_lines.append(line)
+        
+        # Join and clean up
+        cleaned = '\n'.join(cleaned_lines).strip()
+        
+        # Remove markdown code blocks if present
+        cleaned = re.sub(r'```markdown\s*', '', cleaned)
+        cleaned = re.sub(r'```\s*$', '', cleaned)
+        
+        return cleaned
+    
+    def _add_affiliate_elements(self, article_content: str, product_info: Dict[str, Any]) -> str:
+        """Add affiliate disclosure and call-to-action"""
+        
+        offer_name = product_info.get('offer', '')
+        slug = product_info.get('slug', '')
+        
+        # Add affiliate disclosure at the top
+        disclosure = f"> As an Amazon Associate I earn from qualifying purchases.\n\n"
+        
+        # Add CTA at the end
+        cta = f"""
+
+---
+
+**Try this:** [{offer_name}](http://127.0.0.1:8088/r/{slug}?utm_source=site&utm_medium=cta&utm_campaign=ai-generated)
+*We might earn a commission at no cost to you.*
+"""
+        
+        return disclosure + article_content + cta
+    
+    def test_connection(self) -> bool:
+        """Test if Ollama is running and accessible"""
+        try:
+            response = requests.get(f"{self.base_url}/api/tags", timeout=5)
+            return response.status_code == 200
+        except:
+            return False
+
+# Test function
+if __name__ == "__main__":
+    generator = OllamaArticleGenerator()
+    if generator.test_connection():
+        print("✅ Ollama connection successful!")
+    else:
+        print("❌ Cannot connect to Ollama. Make sure it's running with 'ollama serve'") 
