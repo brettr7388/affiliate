@@ -461,54 +461,138 @@
 
     <script>
     let exitIntentShown = false;
+    let pageLoadTime = Date.now();
+    
+    // Configuration for popup behavior
+    const POPUP_CONFIG = {
+        minTimeOnPage: 30000, // 30 seconds minimum before showing
+        showOncePerDay: true,  // Show once per day instead of once per session
+        exitIntentOnly: true   // Only show on exit intent, not time-based
+    };
     
     document.addEventListener('mouseleave', function(e) {
         if (e.clientY <= 0 && !exitIntentShown) {
-            showExitPopup();
+            const timeOnPage = Date.now() - pageLoadTime;
+            if (timeOnPage >= POPUP_CONFIG.minTimeOnPage) {
+                showExitPopup();
+            }
         }
     });
     
     function showExitPopup() {
-        if (localStorage.getItem('exit-popup-shown')) return;
-        
-        document.getElementById('exit-popup').classList.remove('hidden');
-        document.getElementById('exit-popup').classList.add('flex');
-        exitIntentShown = true;
-        
-        // Track popup shown
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'exit_intent_popup_shown');
+        // Check if popup should be shown
+        if (shouldShowPopup()) {
+            document.getElementById('exit-popup').classList.remove('hidden');
+            document.getElementById('exit-popup').classList.add('flex');
+            exitIntentShown = true;
+            
+            // Track popup shown
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'exit_intent_popup_shown');
+            }
         }
+    }
+    
+    function shouldShowPopup() {
+        if (POPUP_CONFIG.showOncePerDay) {
+            const lastShown = localStorage.getItem('exit-popup-last-shown');
+            const now = Date.now();
+            const oneDayMs = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+            
+            if (lastShown && (now - parseInt(lastShown)) < oneDayMs) {
+                return false; // Don't show if shown within last 24 hours
+            }
+        } else {
+            // Original behavior - once per session
+            if (localStorage.getItem('exit-popup-shown')) return false;
+        }
+        
+        return true;
     }
     
     function closeExitPopup() {
         document.getElementById('exit-popup').classList.add('hidden');
         document.getElementById('exit-popup').classList.remove('flex');
-        localStorage.setItem('exit-popup-shown', 'true');
+        
+        if (POPUP_CONFIG.showOncePerDay) {
+            localStorage.setItem('exit-popup-last-shown', Date.now().toString());
+        } else {
+            localStorage.setItem('exit-popup-shown', 'true');
+        }
     }
     
     // Handle form submission
-    document.getElementById('exit-popup-form').addEventListener('submit', function(e) {
+    document.getElementById('exit-popup-form').addEventListener('submit', async function(e) {
         e.preventDefault();
         const email = document.getElementById('exit-popup-email').value;
+        const button = this.querySelector('button[type="submit"]');
+        const originalText = button.textContent;
         
-        // Submit to your newsletter endpoint
-        fetch('/api/newsletter/subscribe', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({email, source: 'exit_intent'})
-        }).then(response => {
+        // Show loading state
+        button.textContent = 'Subscribing...';
+        button.disabled = true;
+        
+        try {
+            // Submit to your newsletter endpoint
+            const response = await fetch('/api/newsletter/subscribe', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({email})
+            });
+            
+            const data = await response.json();
+            
             if (response.ok) {
-                alert('Success! Check your email for the free guide.');
-                closeExitPopup();
+                // Success - show message and close popup
+                button.textContent = '✅ Success!';
+                button.style.backgroundColor = '#10b981';
+                setTimeout(() => {
+                    closeExitPopup();
+                }, 1000);
+                
+                // Track conversion
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'exit_intent_conversion', {email});
+                }
+            } else {
+                throw new Error(data.message || 'Subscription failed');
             }
-        });
-        
-        // Track conversion
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'exit_intent_conversion', {email});
+        } catch (error) {
+            console.error('Newsletter subscription error:', error);
+            button.textContent = '❌ Try Again';
+            button.style.backgroundColor = '#ef4444';
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.backgroundColor = '';
+                button.disabled = false;
+            }, 2000);
         }
     });
+    
+    // Development helper functions (remove in production)
+    window.testExitPopup = function() {
+        console.log('🧪 Testing exit popup...');
+        showExitPopup();
+    };
+    
+    window.resetExitPopup = function() {
+        localStorage.removeItem('exit-popup-shown');
+        localStorage.removeItem('exit-popup-last-shown');
+        exitIntentShown = false;
+        console.log('🔄 Exit popup reset - will show again on next trigger');
+    };
+    
+    window.checkPopupStatus = function() {
+        const lastShown = localStorage.getItem('exit-popup-last-shown');
+        const sessionShown = localStorage.getItem('exit-popup-shown');
+        const timeOnPage = (Date.now() - pageLoadTime) / 1000;
+        
+        console.log('📊 Popup Status:');
+        console.log(`  Time on page: ${timeOnPage.toFixed(1)}s`);
+        console.log(`  Last shown: ${lastShown ? new Date(parseInt(lastShown)).toLocaleString() : 'Never'}`);
+        console.log(`  Session shown: ${sessionShown || 'No'}`);
+        console.log(`  Would show now: ${shouldShowPopup()}`);
+    };
     </script>
     
 </body>
