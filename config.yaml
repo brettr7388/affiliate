@@ -166,6 +166,32 @@ content:
       rating: ⭐⭐⭐⭐
       route_slug: recycled-dog-bed
     title: 🛏️ Best Eco-Friendly Dog Beds
+  - category: dog-treats
+    description: Compare the best organic and natural dog treats
+    display_type: cards
+    products:
+    - badge: Most Natural
+      badge_color: eco-green
+      description: Organic banana & coconut, grain-free and healthy
+      name: WAG Expedition Organic Treats
+      price: $8-12
+      rating: ⭐⭐⭐⭐⭐
+      route_slug: spoil-your-furry-friend-sustainably-a-how-to-guide-to-wag-expedition-organic-banana-coconut-treats
+    - badge: Best Value
+      badge_color: gray
+      description: Natural ingredients, no artificial preservatives
+      name: Organic Training Treats
+      price: $6-10
+      rating: ⭐⭐⭐⭐
+      route_slug: spoil-your-furry-friend-sustainably-a-how-to-guide-to-wag-expedition-organic-banana-coconut-treats
+    - badge: Premium Choice
+      badge_color: gray
+      description: Single-ingredient, freeze-dried organic treats
+      name: Pure Organic Snacks
+      price: $10-15
+      rating: ⭐⭐⭐⭐⭐
+      route_slug: spoil-your-furry-friend-sustainably-a-how-to-guide-to-wag-expedition-organic-banana-coconut-treats
+    title: 🍌 Best Organic Dog Treats
 images:
   hero_images:
     aspect_ratio: '16:9'
@@ -196,6 +222,12 @@ offers:
   affiliate_param: tag
   base_url: https://www.amazon.com/dp/B00TQ47CPW
   name: AmazonEcoFriendlyDogBeds
+  utm_campaign: launch
+  utm_source: site
+- affiliate_id: YOUR-AMAZON-ASSOCIATES-TAG
+  affiliate_param: tag
+  base_url: https://www.amazon.com/dp/B093CLBJDW
+  name: AmazonOrganicDogTreats
   utm_campaign: launch
   utm_source: site
 seo:
