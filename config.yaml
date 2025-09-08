@@ -140,6 +140,32 @@ content:
       rating: "\u2B50\u2B50\u2B50"
       route_slug: biodegradable-poop-bags
     title: "\U0001F331 Best Biodegradable Poop Bags"
+  - category: dog-beds
+    description: Compare the best eco-friendly and orthopedic dog beds
+    display_type: cards
+    products:
+    - badge: Best Overall
+      badge_color: eco-green
+      description: 4" solid orthopedic memory foam with waterproof liner
+      name: PetFusion Ultimate Dog Bed
+      price: $89-149
+      rating: ⭐⭐⭐⭐⭐
+      route_slug: recycled-dog-bed
+    - badge: Most Sustainable
+      badge_color: eco-green
+      description: Made from recycled materials, CertiPUR-US certified
+      name: Eco-Friendly Memory Foam Bed
+      price: $65-95
+      rating: ⭐⭐⭐⭐
+      route_slug: recycled-dog-bed
+    - badge: Best Value
+      badge_color: gray
+      description: Orthopedic support with removable washable cover
+      name: Sustainable Pet Bed
+      price: $45-75
+      rating: ⭐⭐⭐⭐
+      route_slug: recycled-dog-bed
+    title: 🛏️ Best Eco-Friendly Dog Beds
 images:
   hero_images:
     aspect_ratio: '16:9'
@@ -164,6 +190,12 @@ offers:
   affiliate_param: tag
   base_url: https://www.amazon.com/dp/B07MYPFMZP
   name: AmazonBiodegradablePoopBags
+  utm_campaign: launch
+  utm_source: site
+- affiliate_id: YOUR-AMAZON-ASSOCIATES-TAG
+  affiliate_param: tag
+  base_url: https://www.amazon.com/dp/B00TQ47CPW
+  name: AmazonEcoFriendlyDogBeds
   utm_campaign: launch
   utm_source: site
 seo:

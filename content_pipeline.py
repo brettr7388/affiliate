@@ -102,6 +102,9 @@ HTML_TEMPLATE = Template("""<!doctype html>
         {% elif 'dog toy' in title.lower() or 'toy' in title.lower() %}
           {% set inline_cta = '<strong><a href="' + offer_url + '" style="color: #28a745; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #28a745;">🐕 these eco-friendly dog toys</a></strong>' %}
           {% set inline_cta_2 = '<strong><a href="' + offer_url + '" style="color: #ff6b35; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #fff3e0, #ffe0b2); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #ff6b35;">🎾 shop the best eco dog toys now</a></strong>' %}
+        {% elif 'dog bed' in title.lower() or 'bed' in title.lower() or 'sleep' in title.lower() %}
+          {% set inline_cta = '<strong><a href="' + offer_url + '" style="color: #28a745; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #28a745;">🛏️ this premium orthopedic dog bed</a></strong>' %}
+          {% set inline_cta_2 = '<strong><a href="' + offer_url + '" style="color: #ff6b35; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #fff3e0, #ffe0b2); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #ff6b35;">🏆 get the ultimate comfort bed here</a></strong>' %}
         {% elif 'west paw' in title.lower() or 'kong' in title.lower() %}
           {% set inline_cta = '<strong><a href="' + offer_url + '" style="color: #28a745; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #28a745;">🏆 the winning eco toy</a></strong>' %}
           {% set inline_cta_2 = '<strong><a href="' + offer_url + '" style="color: #ff6b35; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #fff3e0, #ffe0b2); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #ff6b35;">🥇 get the champion toy here</a></strong>' %}
@@ -253,8 +256,35 @@ def generate_post(
     """
     cfg = yaml.safe_load(open(config_path, "r", encoding="utf-8"))
 
-    # Pick the first offer for the CTA
-    offer = cfg["offers"][0]
+    # Smart offer selection based on article title
+    def select_best_offer(title, offers):
+        """Select the most appropriate offer based on article title"""
+        title_lower = title.lower()
+        
+        # Priority matching for specific products
+        if any(keyword in title_lower for keyword in ['bed', 'sleep', 'comfort', 'orthopedic']):
+            # Look for dog bed offer
+            for offer in offers:
+                if 'bed' in offer.get('name', '').lower() or 'B00TQ47CPW' in offer.get('base_url', ''):
+                    return offer
+        
+        elif any(keyword in title_lower for keyword in ['poop bag', 'biodegradable', 'waste']):
+            # Look for poop bags offer
+            for offer in offers:
+                if 'poop' in offer.get('name', '').lower() or 'bag' in offer.get('name', '').lower():
+                    return offer
+        
+        elif any(keyword in title_lower for keyword in ['toy', 'play', 'kong', 'west paw']):
+            # Look for dog toys offer
+            for offer in offers:
+                if 'toy' in offer.get('name', '').lower() or 'B004A7X27M' in offer.get('base_url', ''):
+                    return offer
+        
+        # Default to first offer if no specific match
+        return offers[0]
+    
+    # Select the best offer for this article
+    offer = select_best_offer(title, cfg["offers"])
     url = build_affiliate_url(
         offer["base_url"],
         offer["affiliate_param"],
@@ -307,6 +337,12 @@ def generate_post(
                 'cta_title': 'THE WINNING DOG TOY',
                 'description': 'Get the eco-friendly toy that beats the competition!',
                 'button_text': 'BUY THE BEST TOY NOW'
+            }
+        elif 'bed' in title_lower or 'sleep' in title_lower or 'comfort' in title_lower:
+            return {
+                'cta_title': 'THE ULTIMATE DOG BED',
+                'description': 'Premium orthopedic memory foam for maximum comfort!',
+                'button_text': 'BUY THE BEST BED NOW'
             }
         elif 'starter kit' in title_lower or 'essentials' in title_lower:
             return {
