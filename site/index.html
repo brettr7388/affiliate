@@ -281,6 +281,83 @@
             </div>
         </section>
 
+        
+    <!-- Product Comparison Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Product Comparisons</h2>
+            
+            <!-- Eco Dog Toys Comparison -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6">🎾 Top 5 Eco-Friendly Dog Toys</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse border border-gray-300">
+                        <thead>
+                            <tr class="bg-eco-green-100">
+                                <th class="border border-gray-300 px-4 py-2 text-left">Product</th>
+                                <th class="border border-gray-300 px-4 py-2 text-center">Material</th>
+                                <th class="border border-gray-300 px-4 py-2 text-center">Durability</th>
+                                <th class="border border-gray-300 px-4 py-2 text-center">Price</th>
+                                <th class="border border-gray-300 px-4 py-2 text-center">Rating</th>
+                                <th class="border border-gray-300 px-4 py-2 text-center">Buy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-gray-300 px-4 py-2 font-semibold">West Paw Toppl</td>
+                                <td class="border border-gray-300 px-4 py-2 text-center">Zogoflex (Recyclable)</td>
+                                <td class="border border-gray-300 px-4 py-2 text-center">⭐⭐⭐⭐⭐</td>
+                                <td class="border border-gray-300 px-4 py-2 text-center">$12-18</td>
+                                <td class="border border-gray-300 px-4 py-2 text-center">4.8/5</td>
+                                <td class="border border-gray-300 px-4 py-2 text-center">
+                                    <a href="/r/eco-dog-toys-2025" class="bg-eco-green-600 text-white px-3 py-1 rounded text-sm">Buy Now</a>
+                                </td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="border border-gray-300 px-4 py-2 font-semibold">Kong Classic</td>
+                                <td class="border border-gray-300 px-4 py-2 text-center">Natural Rubber</td>
+                                <td class="border border-gray-300 px-4 py-2 text-center">⭐⭐⭐⭐</td>
+                                <td class="border border-gray-300 px-4 py-2 text-center">$8-15</td>
+                                <td class="border border-gray-300 px-4 py-2 text-center">4.6/5</td>
+                                <td class="border border-gray-300 px-4 py-2 text-center">
+                                    <a href="/r/eco-dog-toys-2025" class="bg-eco-green-600 text-white px-3 py-1 rounded text-sm">Buy Now</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Poop Bags Comparison -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6">🌱 Best Biodegradable Poop Bags</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="border border-gray-200 rounded-lg p-6 text-center">
+                        <h4 class="font-semibold text-lg mb-2">Earth Rated</h4>
+                        <div class="text-2xl mb-2">⭐⭐⭐⭐⭐</div>
+                        <p class="text-sm text-gray-600 mb-4">ASTM D6400 certified, lavender scented</p>
+                        <div class="text-lg font-bold mb-4">$0.03/bag</div>
+                        <a href="/r/biodegradable-poop-bags" class="bg-eco-green-600 text-white px-4 py-2 rounded inline-block">Best Choice</a>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-6 text-center">
+                        <h4 class="font-semibold text-lg mb-2">Planet Poop</h4>
+                        <div class="text-2xl mb-2">⭐⭐⭐⭐</div>
+                        <p class="text-sm text-gray-600 mb-4">Home compostable, unscented</p>
+                        <div class="text-lg font-bold mb-4">$0.04/bag</div>
+                        <a href="/r/biodegradable-poop-bags" class="bg-gray-600 text-white px-4 py-2 rounded inline-block">Buy Now</a>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-6 text-center">
+                        <h4 class="font-semibold text-lg mb-2">BioBag</h4>
+                        <div class="text-2xl mb-2">⭐⭐⭐</div>
+                        <p class="text-sm text-gray-600 mb-4">Compostable, basic quality</p>
+                        <div class="text-lg font-bold mb-4">$0.02/bag</div>
+                        <a href="/r/biodegradable-poop-bags" class="bg-gray-600 text-white px-4 py-2 rounded inline-block">Budget Pick</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
         <!-- Newsletter Section -->
         <section id="newsletter" class="py-16 bg-eco-green-50">
             <div class="container mx-auto px-4 text-center">
@@ -354,5 +431,85 @@
         // Set current year
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
-  </body>
+  
+    <!-- Exit Intent Popup -->
+    <div id="exit-popup" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
+        <div class="bg-white rounded-2xl p-8 max-w-md mx-4 relative">
+            <button onclick="closeExitPopup()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            
+            <div class="text-center">
+                <div class="text-4xl mb-4">🐕</div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Wait! Don't Miss Out!</h3>
+                <p class="text-gray-600 mb-6">Get our FREE "Eco Pet Parent Starter Guide" with the top 10 sustainable products every dog parent needs.</p>
+                
+                <form id="exit-popup-form" class="space-y-4">
+                    <input type="email" id="exit-popup-email" placeholder="Enter your email address" 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-eco-green-500" required>
+                    <button type="submit" class="w-full bg-eco-green-600 hover:bg-eco-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+                        Get My FREE Guide 🎁
+                    </button>
+                </form>
+                
+                <p class="text-xs text-gray-500 mt-4">Join 1,000+ eco-conscious pet parents. No spam, unsubscribe anytime.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    let exitIntentShown = false;
+    
+    document.addEventListener('mouseleave', function(e) {
+        if (e.clientY <= 0 && !exitIntentShown) {
+            showExitPopup();
+        }
+    });
+    
+    function showExitPopup() {
+        if (localStorage.getItem('exit-popup-shown')) return;
+        
+        document.getElementById('exit-popup').classList.remove('hidden');
+        document.getElementById('exit-popup').classList.add('flex');
+        exitIntentShown = true;
+        
+        // Track popup shown
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'exit_intent_popup_shown');
+        }
+    }
+    
+    function closeExitPopup() {
+        document.getElementById('exit-popup').classList.add('hidden');
+        document.getElementById('exit-popup').classList.remove('flex');
+        localStorage.setItem('exit-popup-shown', 'true');
+    }
+    
+    // Handle form submission
+    document.getElementById('exit-popup-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('exit-popup-email').value;
+        
+        // Submit to your newsletter endpoint
+        fetch('/api/newsletter/subscribe', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({email, source: 'exit_intent'})
+        }).then(response => {
+            if (response.ok) {
+                alert('Success! Check your email for the free guide.');
+                closeExitPopup();
+            }
+        });
+        
+        // Track conversion
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'exit_intent_conversion', {email});
+        }
+    });
+    </script>
+    
+</body>
 </html>

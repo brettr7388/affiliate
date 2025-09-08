@@ -1,0 +1,19 @@
+additional_programs:
+  barkbox:
+    commission: $15-25 per signup
+    cookie_duration: 30 days
+    name: BarkBox Affiliate
+    notes: Recurring subscription revenue
+    signup_url: https://www.barkbox.com/affiliates
+  chewy:
+    commission: 5-8%
+    cookie_duration: 30 days
+    name: Chewy.com
+    notes: Great for all pet products, higher commissions than Amazon
+    signup_url: https://www.chewy.com/app/content/affiliate
+  petco:
+    commission: 3-8%
+    cookie_duration: 7 days
+    name: Petco Affiliate
+    notes: Premium eco products, good for high-ticket items
+    signup_url: https://www.petco.com/shop/en/petcostore/affiliate-program
