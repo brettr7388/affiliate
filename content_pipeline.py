@@ -96,12 +96,12 @@ HTML_TEMPLATE = Template("""<!doctype html>
         {% set enhanced_content = content %}
         
         {# Create inline CTA text based on product type #}
-        {% if 'poop bag' in title.lower() or 'biodegradable' in title.lower() %}
+        {% if 'poop bag' in title.lower() or 'biodegradable' in title.lower() or 'poop' in title.lower() or 'compostable' in title.lower() %}
           {% set inline_cta = '<strong><a href="' + offer_url + '" style="color: #28a745; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #28a745;">🌱 these eco-friendly poop bags</a></strong>' %}
           {% set inline_cta_2 = '<strong><a href="' + offer_url + '" style="color: #ff6b35; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #fff3e0, #ffe0b2); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #ff6b35;">🛒 grab the top-rated biodegradable bags here</a></strong>' %}
-        {% elif 'dog toy' in title.lower() or 'toy' in title.lower() %}
-          {% set inline_cta = '<strong><a href="' + offer_url + '" style="color: #28a745; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #28a745;">🐕 these eco-friendly dog toys</a></strong>' %}
-          {% set inline_cta_2 = '<strong><a href="' + offer_url + '" style="color: #ff6b35; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #fff3e0, #ffe0b2); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #ff6b35;">🎾 shop the best eco dog toys now</a></strong>' %}
+        {% elif 'dog toy' in title.lower() or 'toy' in title.lower() or 'bowl' in title.lower() or 'leash' in title.lower() or 'treat' in title.lower() or 'kit' in title.lower() or 'essential' in title.lower() %}
+          {% set inline_cta = '<strong><a href="' + offer_url + '" style="color: #28a745; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #28a745;">🐕 these eco-friendly dog products</a></strong>' %}
+          {% set inline_cta_2 = '<strong><a href="' + offer_url + '" style="color: #ff6b35; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #fff3e0, #ffe0b2); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #ff6b35;">🛒 shop eco dog products now</a></strong>' %}
         {% elif 'dog bed' in title.lower() or 'bed' in title.lower() or 'sleep' in title.lower() %}
           {% set inline_cta = '<strong><a href="' + offer_url + '" style="color: #28a745; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #28a745;">🛏️ this premium orthopedic dog bed</a></strong>' %}
           {% set inline_cta_2 = '<strong><a href="' + offer_url + '" style="color: #ff6b35; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #fff3e0, #ffe0b2); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #ff6b35;">🏆 get the ultimate comfort bed here</a></strong>' %}
@@ -268,14 +268,14 @@ def generate_post(
                 if 'bed' in offer.get('name', '').lower() or 'B00TQ47CPW' in offer.get('base_url', ''):
                     return offer
         
-        elif any(keyword in title_lower for keyword in ['poop bag', 'biodegradable', 'waste']):
+        elif any(keyword in title_lower for keyword in ['poop bag', 'biodegradable', 'waste', 'poop', 'compostable']):
             # Look for poop bags offer
             for offer in offers:
                 if 'poop' in offer.get('name', '').lower() or 'bag' in offer.get('name', '').lower():
                     return offer
         
-        elif any(keyword in title_lower for keyword in ['toy', 'play', 'kong', 'west paw']):
-            # Look for dog toys offer
+        elif any(keyword in title_lower for keyword in ['toy', 'play', 'kong', 'west paw', 'bowl', 'leash', 'treat', 'kit', 'essential']):
+            # Look for dog toys offer (default for accessories)
             for offer in offers:
                 if 'toy' in offer.get('name', '').lower() or 'B004A7X27M' in offer.get('base_url', ''):
                     return offer
@@ -320,17 +320,17 @@ def generate_post(
     def get_product_cta_info(article_title):
         title_lower = article_title.lower()
         
-        if 'poop bag' in title_lower or 'biodegradable' in title_lower:
+        if any(keyword in title_lower for keyword in ['poop bag', 'biodegradable', 'poop', 'compostable', 'waste']):
             return {
                 'cta_title': 'THE BEST ECO POOP BAGS',
                 'description': 'Top-rated biodegradable bags that actually work!',
                 'button_text': 'BUY ECO POOP BAGS NOW'
             }
-        elif 'dog toy' in title_lower or 'toy' in title_lower:
+        elif any(keyword in title_lower for keyword in ['dog toy', 'toy', 'bowl', 'leash', 'treat', 'kit', 'essential']):
             return {
-                'cta_title': 'THESE ECO DOG TOYS',
-                'description': 'Safe, durable & planet-friendly toys your dog will love!',
-                'button_text': 'SHOP ECO DOG TOYS NOW'
+                'cta_title': 'THESE ECO DOG PRODUCTS',
+                'description': 'Safe, durable & planet-friendly products your dog will love!',
+                'button_text': 'SHOP ECO DOG PRODUCTS NOW'
             }
         elif 'west paw' in title_lower or 'kong' in title_lower:
             return {

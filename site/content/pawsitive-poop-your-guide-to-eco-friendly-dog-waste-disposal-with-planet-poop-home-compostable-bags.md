@@ -1,8 +1,6 @@
-#  Pawsitive Poop: Your Guide to Eco-Friendly Dog Waste Disposal with PLANET POOP Home Compostable Bags
+# Pawsitive Poop: Your Guide to Eco-Friendly Dog Waste Disposal with PLANET POOP Home Compostable Bags
 
 > As an Amazon Associate I earn from qualifying purchases.
-
-#  Pawsitive Poop: Your Guide to Eco-Friendly Dog Waste Disposal with PLANET POOP Home Compostable Bags
 
 Congratulations on welcoming a furry friend into your life!  The joy of a new pet is undeniable, but let's be honest, there's a less glamorous side:  dog poop.  Dealing with it responsibly and sustainably is crucial, and that's where PLANET POOP Home Compostable Dog Poop Bags come in.  This guide will walk you through everything you need to know about these amazing bags and how they'll make your eco-conscious pet parenting journey a breeze.
 
@@ -59,5 +57,5 @@ Choosing PLANET POOP Home Compostable Dog Poop Bags is a simple yet powerful way
 
 ---
 
-**Try this:** [AmazonEcoFriendlyDogToys](https://amazon.com/dp/B07MYPFMZP?tag=test0b252-20)
+**Try this:** [AmazonBiodegradablePoopBags](https://www.amazon.com/dp/B07MYPFMZP?tag=YOUR-AMAZON-ASSOCIATES-TAG&utm_source=site&utm_campaign=content)
 *We might earn a commission at no cost to you.*

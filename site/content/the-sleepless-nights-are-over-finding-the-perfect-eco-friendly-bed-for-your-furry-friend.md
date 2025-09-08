@@ -1,8 +1,6 @@
-#  The Sleepless Nights Are Over: Finding the Perfect Eco-Friendly Bed for Your Furry Friend
+# The Sleepless Nights Are Over: Finding the Perfect Eco-Friendly Bed for Your Furry Friend
 
 > As an Amazon Associate I earn from qualifying purchases.
-
-#  The Sleepless Nights Are Over: Finding the Perfect Eco-Friendly Bed for Your Furry Friend
 
 Bringing a new pet home is an explosion of joy, a whirlwind of puppy breath and playful nips, a symphony of happy barks and contented purrs.  But amidst the adorable chaos, a surprising challenge often emerges:  finding the *perfect* sleeping spot for your furry companion.  Suddenly, you're navigating a minefield of pet beds, each promising comfort but often falling short.  The cheap ones unravel, the expensive ones are riddled with questionable materials, and the whole process feels overwhelming.
 
@@ -50,5 +48,5 @@ Choosing the right pet bed is a crucial decision for any first-time pet owner.  
 
 ---
 
-**Try this:** [AmazonEcoFriendlyDogToys](https://www.amazon.com/dp/B004A7X27M?tag=YOUR-AMAZON-ASSOCIATES-TAG&utm_source=site&utm_campaign=content)
+**Try this:** [AmazonEcoFriendlyDogBeds](https://www.amazon.com/dp/B00TQ47CPW?tag=YOUR-AMAZON-ASSOCIATES-TAG&utm_source=site&utm_campaign=content)
 *We might earn a commission at no cost to you.*
