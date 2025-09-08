@@ -625,11 +625,28 @@ def get_product_comparisons():
         
         for comparison in config_comparisons:
             # Check if we have routes for this category
-            category_routes = [slug for slug in routes.keys() if any(
-                keyword in slug for keyword in [comparison['category'], comparison['category'].replace('-', '')]
-            )]
+            category = comparison['category']
+            category_keywords = [
+                category,
+                category.replace('-', ''),
+                category.replace('-', ' '),
+                *category.split('-')  # Split on dashes to get individual words
+            ]
             
-            if category_routes or comparison.get('always_show', False):
+            category_routes = []
+            for slug in routes.keys():
+                if any(keyword in slug for keyword in category_keywords):
+                    category_routes.append(slug)
+            
+            # Also check if any product has a specific route_slug that exists
+            product_routes = []
+            for product in comparison.get('products', []):
+                route_slug = product.get('route_slug')
+                if route_slug and route_slug in routes:
+                    product_routes.append(route_slug)
+            
+            # Show comparison if we have category routes, product routes, or always_show is set
+            if category_routes or product_routes or comparison.get('always_show', False):
                 # Process products and add dynamic links
                 processed_products = []
                 for product in comparison.get('products', []):
@@ -639,8 +656,11 @@ def get_product_comparisons():
                     route_slug = product.get('route_slug')
                     if route_slug and route_slug in routes:
                         processed_product['link'] = f"/r/{route_slug}"
+                    elif product_routes:
+                        # Use first product route
+                        processed_product['link'] = f"/r/{product_routes[0]}"
                     elif category_routes:
-                        # Use first matching route
+                        # Use first matching category route
                         processed_product['link'] = f"/r/{category_routes[0]}"
                     else:
                         # Fallback link

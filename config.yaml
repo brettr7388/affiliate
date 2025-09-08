@@ -1,206 +1,187 @@
-site:
-  domain: "endearing-druid-acf1d7.netlify.app"
-  brand: "Eco Pet Guide"
-  niche: "eco-friendly pet products"
-offers:
-  # Amazon offers are used as an initial monetisation source. Update the affiliate_id
-  # with your Amazon Associates tag once you have one.
-  - name: "AmazonEcoFriendlyDogToys"
-    base_url: "https://www.amazon.com/dp/B004A7X27M"
-    affiliate_param: "tag"
-    affiliate_id: "YOUR-AMAZON-ASSOCIATES-TAG"
-    utm_source: "site"
-    utm_campaign: "launch"
-  - name: "AmazonBiodegradablePoopBags"
-    base_url: "https://www.amazon.com/dp/B07MYPFMZP"
-    affiliate_param: "tag"
-    affiliate_id: "YOUR-AMAZON-ASSOCIATES-TAG"
-    utm_source: "site"
-    utm_campaign: "launch"
-content:
-  # Generate new content every three days. Categories help guide the AI in creating
-  # guides, in-depth reviews and product comparisons.
-  cadence_days: 3
-  
-  # Expanded categories for more diverse content generation
-  categories: 
-    - "guides"
-    - "reviews" 
-    - "comparisons"
-    - "how-to"
-    - "listicles"
-    - "seasonal"
-    - "news"
-    - "tips"
-    - "buyer-guides"
-    - "problem-solving"
-    - "lifestyle"
-    - "health"
-  
-  # Product categories for focused content
-  product_categories:
-    - "dog-toys"
-    - "poop-bags"
-    - "leashes-collars"
-    - "dog-bowls"
-    - "dog-beds"
-    - "dog-treats"
-    - "grooming"
-    - "training-tools"
-    - "travel-gear"
-    - "safety-gear"
-    - "outdoor-gear"
-    - "senior-dog-products"
-    - "puppy-essentials"
-    - "cat-products"
-    - "small-pet-supplies"
-
-  # Product Comparisons Configuration
-  # These will be dynamically rendered on the homepage
-  product_comparisons:
-    - category: "dog-toys"
-      title: "🎾 Top 5 Eco-Friendly Dog Toys"
-      description: "Compare the best sustainable and eco-friendly dog toys"
-      display_type: "table"
-      products:
-        - name: "West Paw Toppl"
-          material: "Zogoflex (Recyclable)"
-          durability: "⭐⭐⭐⭐⭐"
-          price: "$12-18"
-          rating: "4.8/5"
-          route_slug: "eco-dog-toys-2025"
-          badge: "Best Overall"
-        - name: "Kong Classic"
-          material: "Natural Rubber"
-          durability: "⭐⭐⭐⭐"
-          price: "$8-15"
-          rating: "4.6/5"
-          route_slug: "eco-dog-toys-2025"
-          badge: "Most Popular"
-        - name: "Benebone Wishbone"
-          material: "Nylon (Recyclable)"
-          durability: "⭐⭐⭐⭐"
-          price: "$10-16"
-          rating: "4.4/5"
-          route_slug: "eco-dog-toys-2025"
-          badge: "Best for Chewers"
-          
-    - category: "poop-bags"
-      title: "🌱 Best Biodegradable Poop Bags"
-      description: "Compare eco-friendly waste bags for your dog"
-      display_type: "cards"
-      products:
-        - name: "Earth Rated"
-          rating: "⭐⭐⭐⭐⭐"
-          description: "ASTM D6400 certified, lavender scented"
-          price: "$0.03/bag"
-          route_slug: "biodegradable-poop-bags"
-          badge: "Best Choice"
-          badge_color: "eco-green"
-        - name: "Planet Poop"
-          rating: "⭐⭐⭐⭐"
-          description: "Home compostable, unscented"
-          price: "$0.04/bag"
-          route_slug: "biodegradable-poop-bags"
-          badge: "Most Eco"
-          badge_color: "gray"
-        - name: "BioBag"
-          rating: "⭐⭐⭐"
-          description: "Compostable, basic quality"
-          price: "$0.02/bag"
-          route_slug: "biodegradable-poop-bags"
-          badge: "Budget Pick"
-          badge_color: "gray"
-
-  # Article formats and structures  
-  article_types:
-    - name: "Product Review"
-      description: "In-depth review of a specific product"
-      target_length: "800-1200"
-      includes_comparison: true
-    - name: "Comparison Guide"
-      description: "Compare 2-5 similar products"
-      target_length: "1000-1500"
-      includes_comparison: true
-    - name: "Buyer's Guide"
-      description: "Complete guide to buying a category of products"
-      target_length: "1200-1800"
-      includes_comparison: true
-    - name: "How-to Guide"
-      description: "Step-by-step instructions for pet care"
-      target_length: "600-1000"
-      includes_comparison: false
-    - name: "Listicle"
-      description: "Top X products or tips in list format"
-      target_length: "800-1200"
-      includes_comparison: true
-    - name: "Problem-Solution"
-      description: "Address common pet problems with product solutions"
-      target_length: "700-1000"
-      includes_comparison: false
-    - name: "Seasonal Guide"
-      description: "Seasonal pet care and product recommendations"
-      target_length: "800-1200"
-      includes_comparison: true
-    - name: "News & Trends"
-      description: "Latest eco-friendly pet product trends"
-      target_length: "600-900"
-      includes_comparison: false
-  
-  # Content themes and angles
-  content_angles:
-    - "sustainability-focused"
-    - "budget-friendly"
-    - "premium-quality"
-    - "beginner-friendly"
-    - "expert-level"
-    - "problem-solving"
-    - "seasonal-relevant"
-    - "trend-aware"
-    - "health-conscious"
-    - "convenience-focused"
-  
-  # Content structure preferences
-  content_structure:
-    include_intro: true
-    include_comparison_table: true
-    include_pros_cons: true
-    include_buying_guide: true
-    include_faq: true
-    include_conclusion: true
-    min_sections: 4
-    max_sections: 8
-
-# Image generation settings
-images:
-  # Hero images for articles
-  hero_images:
-    enabled: true
-    style: "photorealistic"
-    aspect_ratio: "16:9"
-    
-  # Product images for comparisons  
-  product_images:
-    enabled: true
-    style: "clean_product_shot"
-    background: "white"
-    
-  # Slideshow images for engagement
-  slideshow_images:
-    enabled: true
-    count: 5
-    style: "lifestyle"
-
-# SEO and content optimization
-seo:
-  focus_keywords: ["eco-friendly", "sustainable", "biodegradable", "natural", "organic", "environmentally friendly"]
-  target_locations: ["US", "Canada", "UK", "Australia"]
-  content_freshness_days: 30
-  internal_linking: true
-  
-# Analytics and tracking
 analytics:
+  generate_reports: true
+  report_frequency: weekly
   track_clicks: true
   track_conversions: true
-  generate_reports: true
-  report_frequency: "weekly"
+content:
+  article_types:
+  - description: In-depth review of a specific product
+    includes_comparison: true
+    name: Product Review
+    target_length: 800-1200
+  - description: Compare 2-5 similar products
+    includes_comparison: true
+    name: Comparison Guide
+    target_length: 1000-1500
+  - description: Complete guide to buying a category of products
+    includes_comparison: true
+    name: Buyer's Guide
+    target_length: 1200-1800
+  - description: Step-by-step instructions for pet care
+    includes_comparison: false
+    name: How-to Guide
+    target_length: 600-1000
+  - description: Top X products or tips in list format
+    includes_comparison: true
+    name: Listicle
+    target_length: 800-1200
+  - description: Address common pet problems with product solutions
+    includes_comparison: false
+    name: Problem-Solution
+    target_length: 700-1000
+  - description: Seasonal pet care and product recommendations
+    includes_comparison: true
+    name: Seasonal Guide
+    target_length: 800-1200
+  - description: Latest eco-friendly pet product trends
+    includes_comparison: false
+    name: News & Trends
+    target_length: 600-900
+  cadence_days: 3
+  categories:
+  - guides
+  - reviews
+  - comparisons
+  - how-to
+  - listicles
+  - seasonal
+  - news
+  - tips
+  - buyer-guides
+  - problem-solving
+  - lifestyle
+  - health
+  content_angles:
+  - sustainability-focused
+  - budget-friendly
+  - premium-quality
+  - beginner-friendly
+  - expert-level
+  - problem-solving
+  - seasonal-relevant
+  - trend-aware
+  - health-conscious
+  - convenience-focused
+  content_structure:
+    include_buying_guide: true
+    include_comparison_table: true
+    include_conclusion: true
+    include_faq: true
+    include_intro: true
+    include_pros_cons: true
+    max_sections: 8
+    min_sections: 4
+  product_categories:
+  - dog-toys
+  - poop-bags
+  - leashes-collars
+  - dog-bowls
+  - dog-beds
+  - dog-treats
+  - grooming
+  - training-tools
+  - travel-gear
+  - safety-gear
+  - outdoor-gear
+  - senior-dog-products
+  - puppy-essentials
+  - cat-products
+  - small-pet-supplies
+  product_comparisons:
+  - category: dog-toys
+    description: Compare the best sustainable and eco-friendly dog toys
+    display_type: table
+    products:
+    - badge: Best Overall
+      durability: "\u2B50\u2B50\u2B50\u2B50\u2B50"
+      material: Zogoflex (Recyclable)
+      name: West Paw Toppl
+      price: $12-18
+      rating: 4.8/5
+      route_slug: eco-dog-toys-2025
+    - badge: Most Popular
+      durability: "\u2B50\u2B50\u2B50\u2B50"
+      material: Natural Rubber
+      name: Kong Classic
+      price: $8-15
+      rating: 4.6/5
+      route_slug: eco-dog-toys-2025
+    - badge: Best for Chewers
+      durability: "\u2B50\u2B50\u2B50\u2B50"
+      material: Nylon (Recyclable)
+      name: Benebone Wishbone
+      price: $10-16
+      rating: 4.4/5
+      route_slug: eco-dog-toys-2025
+    title: "\U0001F3BE Top 5 Eco-Friendly Dog Toys"
+  - category: poop-bags
+    description: Compare eco-friendly waste bags for your dog
+    display_type: cards
+    products:
+    - badge: Best Choice
+      badge_color: eco-green
+      description: ASTM D6400 certified, lavender scented
+      name: Earth Rated
+      price: $0.03/bag
+      rating: "\u2B50\u2B50\u2B50\u2B50\u2B50"
+      route_slug: biodegradable-poop-bags
+    - badge: Most Eco
+      badge_color: gray
+      description: Home compostable, unscented
+      name: Planet Poop
+      price: $0.04/bag
+      rating: "\u2B50\u2B50\u2B50\u2B50"
+      route_slug: biodegradable-poop-bags
+    - badge: Budget Pick
+      badge_color: gray
+      description: Compostable, basic quality
+      name: BioBag
+      price: $0.02/bag
+      rating: "\u2B50\u2B50\u2B50"
+      route_slug: biodegradable-poop-bags
+    title: "\U0001F331 Best Biodegradable Poop Bags"
+images:
+  hero_images:
+    aspect_ratio: '16:9'
+    enabled: true
+    style: photorealistic
+  product_images:
+    background: white
+    enabled: true
+    style: clean_product_shot
+  slideshow_images:
+    count: 5
+    enabled: true
+    style: lifestyle
+offers:
+- affiliate_id: YOUR-AMAZON-ASSOCIATES-TAG
+  affiliate_param: tag
+  base_url: https://www.amazon.com/dp/B004A7X27M
+  name: AmazonEcoFriendlyDogToys
+  utm_campaign: launch
+  utm_source: site
+- affiliate_id: YOUR-AMAZON-ASSOCIATES-TAG
+  affiliate_param: tag
+  base_url: https://www.amazon.com/dp/B07MYPFMZP
+  name: AmazonBiodegradablePoopBags
+  utm_campaign: launch
+  utm_source: site
+seo:
+  content_freshness_days: 30
+  focus_keywords:
+  - eco-friendly
+  - sustainable
+  - biodegradable
+  - natural
+  - organic
+  - environmentally friendly
+  internal_linking: true
+  target_locations:
+  - US
+  - Canada
+  - UK
+  - Australia
+site:
+  brand: Eco Pet Guide
+  domain: endearing-druid-acf1d7.netlify.app
+  niche: eco-friendly pet products
