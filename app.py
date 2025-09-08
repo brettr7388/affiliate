@@ -154,6 +154,13 @@ class ABTestData(BaseModel):
 class NewsletterSubscription(BaseModel):
     email: str
 
+class ProductComparison(BaseModel):
+    category: str
+    title: str
+    description: str
+    products: List[dict]
+    display_type: str = "table"  # "table" or "cards"
+
 def parse_markdown_file(filepath: str) -> Optional[Article]:
     """Parse a markdown file and extract article metadata"""
     try:
@@ -595,6 +602,65 @@ def get_newsletter_subscribers(request: Request):
         ]
         
     return {"subscribers": subscribers, "total": len(subscribers)}
+
+@app.get("/api/product-comparisons")
+def get_product_comparisons():
+    """Get dynamic product comparisons from config.yaml"""
+    try:
+        import yaml
+        
+        # Load config.yaml
+        with open('config.yaml', 'r') as f:
+            config = yaml.safe_load(f)
+        
+        # Get routes from database for dynamic links
+        with engine.begin() as conn:
+            routes_result = conn.execute(text("SELECT slug, offer, dest_url FROM routes"))
+            routes = {row.slug: {"offer": row.offer, "dest_url": row.dest_url} for row in routes_result}
+        
+        # Get product comparisons from config (nested under content)
+        content_config = config.get('content', {})
+        config_comparisons = content_config.get('product_comparisons', [])
+        comparisons = []
+        
+        for comparison in config_comparisons:
+            # Check if we have routes for this category
+            category_routes = [slug for slug in routes.keys() if any(
+                keyword in slug for keyword in [comparison['category'], comparison['category'].replace('-', '')]
+            )]
+            
+            if category_routes or comparison.get('always_show', False):
+                # Process products and add dynamic links
+                processed_products = []
+                for product in comparison.get('products', []):
+                    processed_product = product.copy()
+                    
+                    # Use route_slug from config, or find matching route
+                    route_slug = product.get('route_slug')
+                    if route_slug and route_slug in routes:
+                        processed_product['link'] = f"/r/{route_slug}"
+                    elif category_routes:
+                        # Use first matching route
+                        processed_product['link'] = f"/r/{category_routes[0]}"
+                    else:
+                        # Fallback link
+                        processed_product['link'] = f"/r/{comparison['category']}"
+                    
+                    processed_products.append(processed_product)
+                
+                # Add processed comparison
+                processed_comparison = comparison.copy()
+                processed_comparison['products'] = processed_products
+                comparisons.append(processed_comparison)
+        
+        return {"comparisons": comparisons}
+        
+    except FileNotFoundError:
+        print("Config.yaml not found, using fallback comparisons")
+        return {"comparisons": []}
+    except Exception as e:
+        print(f"Error fetching product comparisons: {e}")
+        return {"comparisons": []}
 
 @app.get("/api/stats/summary")
 def get_stats_summary():

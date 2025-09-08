@@ -54,8 +54,65 @@ content:
     - "puppy-essentials"
     - "cat-products"
     - "small-pet-supplies"
-  
-  # Article formats and structures
+
+  # Product Comparisons Configuration
+  # These will be dynamically rendered on the homepage
+  product_comparisons:
+    - category: "dog-toys"
+      title: "🎾 Top 5 Eco-Friendly Dog Toys"
+      description: "Compare the best sustainable and eco-friendly dog toys"
+      display_type: "table"
+      products:
+        - name: "West Paw Toppl"
+          material: "Zogoflex (Recyclable)"
+          durability: "⭐⭐⭐⭐⭐"
+          price: "$12-18"
+          rating: "4.8/5"
+          route_slug: "eco-dog-toys-2025"
+          badge: "Best Overall"
+        - name: "Kong Classic"
+          material: "Natural Rubber"
+          durability: "⭐⭐⭐⭐"
+          price: "$8-15"
+          rating: "4.6/5"
+          route_slug: "eco-dog-toys-2025"
+          badge: "Most Popular"
+        - name: "Benebone Wishbone"
+          material: "Nylon (Recyclable)"
+          durability: "⭐⭐⭐⭐"
+          price: "$10-16"
+          rating: "4.4/5"
+          route_slug: "eco-dog-toys-2025"
+          badge: "Best for Chewers"
+          
+    - category: "poop-bags"
+      title: "🌱 Best Biodegradable Poop Bags"
+      description: "Compare eco-friendly waste bags for your dog"
+      display_type: "cards"
+      products:
+        - name: "Earth Rated"
+          rating: "⭐⭐⭐⭐⭐"
+          description: "ASTM D6400 certified, lavender scented"
+          price: "$0.03/bag"
+          route_slug: "biodegradable-poop-bags"
+          badge: "Best Choice"
+          badge_color: "eco-green"
+        - name: "Planet Poop"
+          rating: "⭐⭐⭐⭐"
+          description: "Home compostable, unscented"
+          price: "$0.04/bag"
+          route_slug: "biodegradable-poop-bags"
+          badge: "Most Eco"
+          badge_color: "gray"
+        - name: "BioBag"
+          rating: "⭐⭐⭐"
+          description: "Compostable, basic quality"
+          price: "$0.02/bag"
+          route_slug: "biodegradable-poop-bags"
+          badge: "Budget Pick"
+          badge_color: "gray"
+
+  # Article formats and structures  
   article_types:
     - name: "Product Review"
       description: "In-depth review of a specific product"
@@ -66,23 +123,23 @@ content:
       target_length: "1000-1500"
       includes_comparison: true
     - name: "Buyer's Guide"
-      description: "Complete guide to buying in a category"
+      description: "Complete guide to buying a category of products"
       target_length: "1200-1800"
       includes_comparison: true
-    - name: "How-To Guide"
-      description: "Step-by-step instructional content"
-      target_length: "800-1200"
-      includes_comparison: false
-    - name: "Top 10 List"
-      description: "Ranked list of products or tips"
-      target_length: "1000-1400"
-      includes_comparison: true
-    - name: "Problem Solver"
-      description: "Address specific pet owner problems"
+    - name: "How-to Guide"
+      description: "Step-by-step instructions for pet care"
       target_length: "600-1000"
       includes_comparison: false
+    - name: "Listicle"
+      description: "Top X products or tips in list format"
+      target_length: "800-1200"
+      includes_comparison: true
+    - name: "Problem-Solution"
+      description: "Address common pet problems with product solutions"
+      target_length: "700-1000"
+      includes_comparison: false
     - name: "Seasonal Guide"
-      description: "Season-specific product recommendations"
+      description: "Seasonal pet care and product recommendations"
       target_length: "800-1200"
       includes_comparison: true
     - name: "News & Trends"
@@ -98,44 +155,52 @@ content:
     - "beginner-friendly"
     - "expert-level"
     - "problem-solving"
-    - "health-focused"
+    - "seasonal-relevant"
+    - "trend-aware"
+    - "health-conscious"
     - "convenience-focused"
-    - "safety-first"
-    - "trend-following"
-    - "scientific-backed"
-    - "user-experience"
   
-  # SEO and content optimization
-  seo_strategies:
-    - "long-tail-keywords"
-    - "local-seo"
-    - "seasonal-seo"
-    - "competitor-analysis"
-    - "featured-snippets"
-    - "question-based"
-    - "comparison-focused"
-    - "review-focused"
-  
-  # Target audiences for content personalization
-  target_audiences:
-    - "first-time-pet-owners"
-    - "experienced-pet-owners"
-    - "eco-conscious-consumers"
-    - "budget-conscious-shoppers"
-    - "premium-buyers"
-    - "senior-pet-owners"
-    - "puppy-parents"
-    - "apartment-dwellers"
-    - "outdoor-enthusiasts"
-    - "health-conscious-owners"
-    - "busy-professionals"
-    - "large-family-households"
+  # Content structure preferences
+  content_structure:
+    include_intro: true
+    include_comparison_table: true
+    include_pros_cons: true
+    include_buying_guide: true
+    include_faq: true
+    include_conclusion: true
+    min_sections: 4
+    max_sections: 8
 
-ab_tests:
-  # Define A/B test slugs to experiment with page elements like headlines or CTA
-  - slug: "eco-friendly-dog-toys"
-    variants: ["A", "B"]
-email:
-  # MailerLite has a generous free tier; once you have a list set up, provide its ID here
-  provider: "MailerLite"
-  list_id: ""
+# Image generation settings
+images:
+  # Hero images for articles
+  hero_images:
+    enabled: true
+    style: "photorealistic"
+    aspect_ratio: "16:9"
+    
+  # Product images for comparisons  
+  product_images:
+    enabled: true
+    style: "clean_product_shot"
+    background: "white"
+    
+  # Slideshow images for engagement
+  slideshow_images:
+    enabled: true
+    count: 5
+    style: "lifestyle"
+
+# SEO and content optimization
+seo:
+  focus_keywords: ["eco-friendly", "sustainable", "biodegradable", "natural", "organic", "environmentally friendly"]
+  target_locations: ["US", "Canada", "UK", "Australia"]
+  content_freshness_days: 30
+  internal_linking: true
+  
+# Analytics and tracking
+analytics:
+  track_clicks: true
+  track_conversions: true
+  generate_reports: true
+  report_frequency: "weekly"

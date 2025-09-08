@@ -17,6 +17,7 @@ let scrollObserver = null;
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', function() {
     init();
+    loadProductComparisons();
 });
 
 /**
@@ -885,4 +886,176 @@ function observeCards(container) {
     cards.forEach(card => {
         scrollObserver.observe(card);
     });
+}
+
+/**
+ * Load and render product comparisons dynamically
+ */
+async function loadProductComparisons() {
+    const loadingElement = document.getElementById('comparisons-loading');
+    const contentElement = document.getElementById('comparisons-content');
+    const noComparisonsElement = document.getElementById('no-comparisons');
+    
+    try {
+        const response = await fetch('/api/product-comparisons');
+        const data = await response.json();
+        
+        // Hide loading
+        if (loadingElement) loadingElement.style.display = 'none';
+        
+        if (data.comparisons && data.comparisons.length > 0) {
+            // Render comparisons
+            contentElement.innerHTML = data.comparisons.map(comparison => 
+                renderComparison(comparison)
+            ).join('');
+            
+            // Apply scroll animations to new content
+            observeCards(contentElement);
+        } else {
+            // Show no comparisons message
+            if (noComparisonsElement) noComparisonsElement.classList.remove('hidden');
+        }
+    } catch (error) {
+        console.error('Error loading product comparisons:', error);
+        
+        // Hide loading and show error message
+        if (loadingElement) loadingElement.style.display = 'none';
+        if (contentElement) {
+            contentElement.innerHTML = `
+                <div class="text-center py-8 text-red-500">
+                    <div class="text-4xl mb-4">⚠️</div>
+                    <p class="text-lg">Failed to load product comparisons</p>
+                    <p class="text-sm">Please try refreshing the page</p>
+                </div>
+            `;
+        }
+    }
+}
+
+/**
+ * Render a single product comparison
+ */
+function renderComparison(comparison) {
+    if (comparison.display_type === 'table') {
+        return renderTableComparison(comparison);
+    } else if (comparison.display_type === 'cards') {
+        return renderCardsComparison(comparison);
+    }
+    return '';
+}
+
+/**
+ * Render table-style comparison
+ */
+function renderTableComparison(comparison) {
+    const tableHeaders = getTableHeaders(comparison.products[0]);
+    const tableRows = comparison.products.map((product, index) => 
+        renderTableRow(product, index % 2 === 1)
+    ).join('');
+    
+    return `
+        <div class="mb-12 card-animate">
+            <h3 class="text-2xl font-semibold mb-6">${comparison.title}</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-eco-green-100">
+                            ${tableHeaders}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${tableRows}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * Generate table headers based on product properties
+ */
+function getTableHeaders(sampleProduct) {
+    const headers = ['Product'];
+    
+    if (sampleProduct.material) headers.push('Material');
+    if (sampleProduct.durability) headers.push('Durability');
+    if (sampleProduct.price) headers.push('Price');
+    if (sampleProduct.rating) headers.push('Rating');
+    
+    headers.push('Buy');
+    
+    return headers.map(header => 
+        `<th class="border border-gray-300 px-4 py-2 text-center">${header}</th>`
+    ).join('');
+}
+
+/**
+ * Render a table row for a product
+ */
+function renderTableRow(product, isEven) {
+    const rowClass = isEven ? 'bg-gray-50' : '';
+    let cells = `<td class="border border-gray-300 px-4 py-2 font-semibold">${product.name}</td>`;
+    
+    if (product.material) {
+        cells += `<td class="border border-gray-300 px-4 py-2 text-center">${product.material}</td>`;
+    }
+    if (product.durability) {
+        cells += `<td class="border border-gray-300 px-4 py-2 text-center">${product.durability}</td>`;
+    }
+    if (product.price) {
+        cells += `<td class="border border-gray-300 px-4 py-2 text-center">${product.price}</td>`;
+    }
+    if (product.rating) {
+        cells += `<td class="border border-gray-300 px-4 py-2 text-center">${product.rating}</td>`;
+    }
+    
+    const badgeText = product.badge || 'Buy Now';
+    cells += `
+        <td class="border border-gray-300 px-4 py-2 text-center">
+            <a href="${product.link}" class="bg-eco-green-600 text-white px-3 py-1 rounded text-sm hover:bg-eco-green-700 transition-colors">
+                ${badgeText}
+            </a>
+        </td>
+    `;
+    
+    return `<tr class="${rowClass}">${cells}</tr>`;
+}
+
+/**
+ * Render cards-style comparison
+ */
+function renderCardsComparison(comparison) {
+    const cards = comparison.products.map(product => 
+        renderProductCard(product)
+    ).join('');
+    
+    return `
+        <div class="mb-12 card-animate">
+            <h3 class="text-2xl font-semibold mb-6">${comparison.title}</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                ${cards}
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * Render a single product card
+ */
+function renderProductCard(product) {
+    const badgeColor = product.badge_color === 'eco-green' ? 'bg-eco-green-600' : 'bg-gray-600';
+    const badgeText = product.badge || 'Buy Now';
+    
+    return `
+        <div class="border border-gray-200 rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+            <h4 class="font-semibold text-lg mb-2">${product.name}</h4>
+            <div class="text-2xl mb-2">${product.rating || '⭐⭐⭐⭐'}</div>
+            <p class="text-sm text-gray-600 mb-4">${product.description || ''}</p>
+            <div class="text-lg font-bold mb-4">${product.price || ''}</div>
+            <a href="${product.link}" class="${badgeColor} text-white px-4 py-2 rounded inline-block hover:opacity-90 transition-opacity">
+                ${badgeText}
+            </a>
+        </div>
+    `;
 }
