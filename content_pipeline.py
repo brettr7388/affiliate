@@ -329,9 +329,14 @@ def generate_post(
     (out_dir / f"{slug}.md").write_text(md, encoding="utf-8")
     
     # Generate HTML content from markdown with table support
-    # Include the title as an H1 in the content
-    full_content_md = f"# {title}\n\n{body_md}"
-    content_html = markdown.markdown(full_content_md, extensions=['tables'])
+    # Check if the body already starts with the title to avoid duplication
+    if body_md.strip().startswith(f"# {title}"):
+        # Title already exists in content
+        content_html = markdown.markdown(body_md, extensions=['tables'])
+    else:
+        # Include the title as an H1 in the content
+        full_content_md = f"# {title}\n\n{body_md}"
+        content_html = markdown.markdown(full_content_md, extensions=['tables'])
     
     # Create description from first 150 chars of content
     description = body_md[:150].replace('\n', ' ') + "..." if len(body_md) > 150 else body_md
