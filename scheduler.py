@@ -17,7 +17,6 @@ import glob
 
 sched = BlockingScheduler()
 
-
 @sched.scheduled_job("interval", days=3)
 def content_job() -> None:
     """Generate a new piece of content every `cadence_days` as defined in config.
@@ -27,7 +26,6 @@ def content_job() -> None:
     task instead of invoking a subprocess directly.
     """
     subprocess.run(["python", "content_pipeline.py"], check=True)
-
 
 @sched.scheduled_job("cron", day_of_week="sun", hour=8)
 def weekly_report() -> None:
@@ -48,7 +46,6 @@ def weekly_report() -> None:
     with open(f"reports/weekly_{dt.date.today().isoformat()}.md", "w") as f:
         f.write("\n".join(report))
 
-
 @sched.scheduled_job("interval", hours=12)
 def ping_sitemaps() -> None:
     """Placeholder for notifying search engines of new or updated pages."""
@@ -58,7 +55,6 @@ def ping_sitemaps() -> None:
         # scheduling requirement without violating platform policies.
         pass
     print("Sitemap ping tick")
-
 
 if __name__ == "__main__":
     sched.start()

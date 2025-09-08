@@ -1,6 +1,6 @@
 # Best Biodegradable Dog Poop Bags 2025: Earth-Rated vs Competitors
 
-> As an Amazon Associate I earn from qualifying purchases.
+> 
 
 # Best Biodegradable Dog Poop Bags 2025: Earth-Rated vs Competitors
 
@@ -53,5 +53,5 @@ Switching to biodegradable poop bags is one of the easiest ways to reduce your p
 
 ---
 
-**Try this:** [AmazonEcoFriendlyDogToys](https://www.amazon.com/dp/B004A7X27M?tag=test0b252-20&utm_source=site&utm_campaign=content)
+**Try this:** [AmazonEcoFriendlyDogToys](https://amazon.com/dp/B07MYPFMZP?tag=test0b252-20)
 *We might earn a commission at no cost to you.*

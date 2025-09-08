@@ -13,14 +13,27 @@ def extract_title_from_html(html_file):
     try:
         with open(html_file, 'r', encoding='utf-8') as f:
             content = f.read()
-            # Look for h1 tag (first one)
-            h1_matches = re.findall(r'<h1[^>]*>(.*?)</h1>', content, re.IGNORECASE | re.DOTALL)
-            if h1_matches:
-                return h1_matches[0].strip()
-            # Look for title tag
+            
+            # Look for title tag and extract just the article title (before " - Eco Pet Guide")
             title_match = re.search(r'<title[^>]*>(.*?)</title>', content, re.IGNORECASE | re.DOTALL)
             if title_match:
-                return title_match.group(1).strip()
+                full_title = title_match.group(1).strip()
+                # Remove " - Eco Pet Guide" suffix
+                if " - Eco Pet Guide" in full_title:
+                    return full_title.replace(" - Eco Pet Guide", "").strip()
+                return full_title
+                
+            # Fallback: Look for h1 tag in article content (skip the header h1)
+            h1_matches = re.findall(r'<h1[^>]*>(.*?)</h1>', content, re.IGNORECASE | re.DOTALL)
+            if h1_matches and len(h1_matches) > 1:
+                # Skip the first h1 (site header) and use the second one (article title)
+                return h1_matches[1].strip()
+            elif h1_matches:
+                # If only one h1, check if it's not the site header
+                h1_text = h1_matches[0].strip()
+                if "Eco Pet Guide" not in h1_text:
+                    return h1_text
+                    
     except Exception as e:
         print(f"Error reading {html_file}: {e}")
     
@@ -72,4 +85,4 @@ def update_index():
         print("❌ Could not find article list markers in index.html")
 
 if __name__ == "__main__":
-    update_index() 
+    update_index()

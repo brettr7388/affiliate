@@ -109,4 +109,4 @@ def main():
         print("\n❌ Model test failed. Check Ollama logs for errors.")
 
 if __name__ == "__main__":
-    main() 
+    main()

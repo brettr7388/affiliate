@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Eco Pet Guide Admin</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 16px;
+            line-height: 1.6;
+            background: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        input, button, select, textarea {
+            padding: 0.6rem;
+            margin: 0.2rem 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        input, select, textarea {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        button.secondary {
+            background: #6c757d;
+        }
+        button.secondary:hover {
+            background: #545b62;
+        }
+        .section {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+        }
+        .section h2 {
+            margin-top: 0;
+            color: #495057;
+        }
+        pre {
+            background: #f6f6f6;
+            padding: 12px;
+            border-radius: 4px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .status {
+            padding: 0.5rem;
+            border-radius: 4px;
+            margin: 0.5rem 0;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+            color: #495057;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .stat-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .stat-label {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🐕 Eco Pet Guide · Admin Console</h1>
+            <p>Manage your affiliate links, track clicks, and generate content from one place.</p>
+        </div>
+
+        <!-- Admin Token Setup -->
+        <div class="section">
+            <h2>🔐 Admin Authentication</h2>
+            <p>Enter your admin token once; it's stored in this browser only.</p>
+            <div class="form-group">
+                <input id="token" placeholder="ADMIN_TOKEN" style="width: 360px; display: inline-block;">
+                <button onclick="saveToken()">Save Token</button>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="section">
+            <h2>📊 Quick Stats</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalClicks">-</div>
+                    <div class="stat-label">Total Clicks</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="todayClicks">-</div>
+                    <div class="stat-label">Today's Clicks</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalRoutes">-</div>
+                    <div class="stat-label">Active Routes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="weeklyClicks">-</div>
+                    <div class="stat-label">This Week</div>
+                </div>
+            </div>
+            <button onclick="loadStats()">Refresh Stats</button>
+        </div>
+
+        <div class="grid">
+            <!-- Create Route -->
+            <div class="section">
+                <h2>🔗 Create / Update Route</h2>
+                <div class="form-group">
+                    <label for="slug">Slug (URL path)</label>
+                    <input id="slug" placeholder="e.g. hurley-a, eco-toys-2025">
+                </div>
+                <div class="form-group">
+                    <label for="offer">Offer Name</label>
+                    <input id="offer" placeholder="e.g. AmazonEcoFriendlyDogToys">
+                </div>
+                <div class="form-group">
+                    <label for="variant">Variant (A/B Testing)</label>
+                    <select id="variant">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dest">Destination URL (Full Amazon URL with tag)</label>
+                    <input id="dest" placeholder="https://www.amazon.com/dp/B004A7X27M?tag=YOUR-ASSOCIATES-TAG">
+                </div>
+                <button onclick="saveRoute()">Save Route</button>
+                <button onclick="clearRouteForm()" class="secondary" style="margin-left: 10px;">Clear Form</button>
+                <div id="routeStatus"></div>
+            </div>
+
+            <!-- Recent Clicks -->
+            <div class="section">
+                <h2>📈 Recent Clicks (Last 7 Days)</h2>
+                <button onclick="loadClicks()">Refresh</button>
+                <pre id="clicks">Click "Refresh" to load click data...</pre>
+            </div>
+            <div class="section">
+                <h2>📧 Newsletter Subscribers</h2>
+                <button onclick="loadSubscribers()">Refresh</button>
+                <div id="subscribers-stats" style="margin: 10px 0; font-weight: bold;"></div>
+                <div id="subscribers" style="max-height: 300px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; background: #f8f9fa;">
+                    Click "Refresh" to load subscriber data...
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Article Generator -->
+        <div class="section full-width">
+            <h2>🤖 AI Article Generator</h2>
+            <div class="grid">
+                <div>
+                    <div class="form-group">
+                        <label for="articleProduct">Select Product (Optional)</label>
+                        <select id="articleProduct">
+                            <option value="">Choose a product to write about...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="articleTopic">Custom Article Topic</label>
+                        <input id="articleTopic" placeholder="e.g. Best eco-friendly dog toys for puppies">
+                    </div>
+                    <div class="form-group">
+                        <label for="articleType">Article Type</label>
+                        <select id="articleType">
+                            <option value="Product Review">Product Review (800-1200 words)</option>
+                            <option value="Comparison Guide">Comparison Guide (1000-1500 words)</option>
+                            <option value="Buyer's Guide">Buyer's Guide (1200-1800 words)</option>
+                            <option value="How-To Guide">How-To Guide (800-1200 words)</option>
+                            <option value="Top 10 List">Top 10 List (1000-1400 words)</option>
+                            <option value="Problem Solver">Problem Solver (600-1000 words)</option>
+                            <option value="Seasonal Guide">Seasonal Guide (800-1200 words)</option>
+                            <option value="News & Trends">News & Trends (600-900 words)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="productCategory">Product Category</label>
+                        <select id="productCategory">
+                            <option value="dog-toys">Dog Toys</option>
+                            <option value="poop-bags">Poop Bags</option>
+                            <option value="leashes-collars">Leashes & Collars</option>
+                            <option value="dog-bowls">Dog Bowls</option>
+                            <option value="dog-beds">Dog Beds</option>
+                            <option value="dog-treats">Dog Treats</option>
+                            <option value="grooming">Grooming Products</option>
+                            <option value="training-tools">Training Tools</option>
+                            <option value="travel-gear">Travel Gear</option>
+                            <option value="safety-gear">Safety Gear</option>
+                            <option value="outdoor-gear">Outdoor Gear</option>
+                            <option value="senior-dog-products">Senior Dog Products</option>
+                            <option value="puppy-essentials">Puppy Essentials</option>
+                            <option value="cat-products">Cat Products</option>
+                            <option value="small-pet-supplies">Small Pet Supplies</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contentAngle">Content Angle</label>
+                        <select id="contentAngle">
+                            <option value="sustainability-focused">Sustainability Focused</option>
+                            <option value="budget-friendly">Budget Friendly</option>
+                            <option value="premium-quality">Premium Quality</option>
+                            <option value="beginner-friendly">Beginner Friendly</option>
+                            <option value="expert-level">Expert Level</option>
+                            <option value="problem-solving">Problem Solving</option>
+                            <option value="health-focused">Health Focused</option>
+                            <option value="convenience-focused">Convenience Focused</option>
+                            <option value="safety-first">Safety First</option>
+                            <option value="trend-following">Trend Following</option>
+                            <option value="scientific-backed">Scientific Backed</option>
+                            <option value="user-experience">User Experience</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="articleTone">Writing Tone</label>
+                        <select id="articleTone">
+                            <option value="professional">Professional</option>
+                            <option value="casual">Casual & Friendly</option>
+                            <option value="enthusiastic">Enthusiastic</option>
+                            <option value="educational">Educational</option>
+                            <option value="conversational">Conversational</option>
+                            <option value="expert">Expert Authority</option>
+                            <option value="storytelling">Storytelling</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="articleKeywords">Keywords (comma separated)</label>
+                        <input id="articleKeywords" placeholder="e.g. eco-friendly, sustainable, biodegradable, pet products">
+                    </div>
+                    <button onclick="generateAIArticle()" style="background: #28a745;">🤖 Generate AI Article</button>
+                    <button onclick="generateContentIdea()" class="secondary" style="margin-left: 10px;">💡 Get Content Ideas</button>
+                    <button onclick="testGeminiConnection()" class="secondary" style="margin-left: 10px;">🔗 Test Gemini</button>
+                    <div id="contentIdeas" style="margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 8px; display: none;">
+                        <h4>💡 Content Ideas:</h4>
+                        <div id="contentIdeasList"></div>
+                    </div>
+                    <div id="aiArticleStatus"></div>
+                </div>
+                <div>
+                    <h3>Advanced AI Settings</h3>
+                    <div class="form-group">
+                        <label for="targetAudience">Target Audience</label>
+                        <select id="targetAudience">
+                            <option value="first-time-pet-owners">First-Time Pet Owners</option>
+                            <option value="experienced-pet-owners">Experienced Pet Owners</option>
+                            <option value="eco-conscious-consumers">Eco-Conscious Consumers</option>
+                            <option value="budget-conscious-shoppers">Budget-Conscious Shoppers</option>
+                            <option value="premium-buyers">Premium Buyers</option>
+                            <option value="senior-pet-owners">Senior Pet Owners</option>
+                            <option value="puppy-parents">Puppy Parents</option>
+                            <option value="apartment-dwellers">Apartment Dwellers</option>
+                            <option value="outdoor-enthusiasts">Outdoor Enthusiasts</option>
+                            <option value="health-conscious-owners">Health-Conscious Owners</option>
+                            <option value="busy-professionals">Busy Professionals</option>
+                            <option value="large-family-households">Large Family Households</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="seoStrategy">SEO Strategy</label>
+                        <select id="seoStrategy">
+                            <option value="long-tail-keywords">Long-tail Keywords</option>
+                            <option value="local-seo">Local SEO</option>
+                            <option value="seasonal-seo">Seasonal SEO</option>
+                            <option value="competitor-analysis">Competitor Analysis</option>
+                            <option value="featured-snippets">Featured Snippets</option>
+                            <option value="question-based">Question-Based</option>
+                            <option value="comparison-focused">Comparison Focused</option>
+                            <option value="review-focused">Review Focused</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="seasonalTiming">Seasonal Timing</label>
+                        <select id="seasonalTiming">
+                            <option value="general">General (Year-round)</option>
+                            <option value="spring">Spring Focus</option>
+                            <option value="summer">Summer Focus</option>
+                            <option value="fall">Fall Focus</option>
+                            <option value="winter">Winter Focus</option>
+                            <option value="holiday">Holiday Season</option>
+                            <option value="back-to-school">Back to School</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="includeProductSpecs">Include Technical Specs?</label>
+                        <select id="includeProductSpecs">
+                            <option value="no">No</option>
+                            <option value="basic">Basic Specs</option>
+                            <option value="detailed">Detailed Specs</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="includeProsCons">Include Pros/Cons?</label>
+                        <select id="includeProsCons">
+                            <option value="yes" selected>Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="includeComparison">Include Product Comparison?</label>
+                        <select id="includeComparison">
+                            <option value="auto">Auto (based on article type)</option>
+                            <option value="yes">Yes, force comparison</option>
+                            <option value="no">No comparison</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="articleLength">Article Length Override</label>
+                        <select id="articleLength">
+                            <option value="auto">Auto (based on article type)</option>
+                            <option value="short">Short (500-800 words)</option>
+                            <option value="medium">Medium (800-1200 words)</option>
+                            <option value="long">Long (1200-1500 words)</option>
+                            <option value="extra-long">Extra Long (1500+ words)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manual Content Generation -->
+        <div class="section full-width">
+            <h2>📝 Manual Content Generation</h2>
+            <div class="grid">
+                <div>
+                    <div class="form-group">
+                        <label for="contentTitle">Article Title</label>
+                        <input id="contentTitle" placeholder="e.g. Best Eco-Friendly Dog Toys 2025">
+                    </div>
+                    <div class="form-group">
+                        <label for="contentBody">Article Content (Markdown)</label>
+                        <textarea id="contentBody" rows="6" placeholder="Write your article content here in Markdown format..."></textarea>
+                    </div>
+                    <button onclick="generateContent()">Generate Article</button>
+                    <div id="contentStatus"></div>
+                </div>
+                <div>
+                    <h3>Quick Actions</h3>
+                    <button onclick="generateWeeklyReport()" class="secondary">📊 Generate Weekly Report</button><br>
+                    <button onclick="runScheduler()" class="secondary">⏰ Run Scheduler</button><br>
+                    <button onclick="pingSitemaps()" class="secondary">🔍 Ping Search Engines</button><br>
+                    <button onclick="updateIndex()" class="secondary">📝 Update Website Index</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Generator -->
+        <div class="section full-width">
+            <h2>🎨 Slideshow Image Generator</h2>
+            <div class="grid">
+                <div>
+                    <div class="form-group">
+                        <label for="imageProduct">Select Product for Images</label>
+                        <select id="imageProduct">
+                            <option value="">Choose a product...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="imageStyle">Image Style</label>
+                        <select id="imageStyle">
+                            <option value="simple">Simple & Clean</option>
+                            <option value="minimal">Ultra Minimal</option>
+                            <option value="vibrant">Bright & Vibrant</option>
+                            <option value="professional">Professional Photography</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="imageCount">Number of Images</label>
+                        <select id="imageCount">
+                            <option value="1">1 Image</option>
+                            <option value="3" selected>3 Images (Slideshow)</option>
+                            <option value="5">5 Images (Full Set)</option>
+                        </select>
+                    </div>
+                    <button onclick="generateImages()" style="background: #dc3545;">🎨 Generate Images</button>
+                    <button onclick="testImageGenerator()" class="secondary" style="margin-left: 10px;">🔗 Test Image Model</button>
+                    
+                    <!-- Loading Bar -->
+                    <div id="imageLoadingContainer" style="display: none; margin-top: 1rem;">
+                        <div style="background: #e9ecef; border-radius: 10px; overflow: hidden;">
+                            <div id="imageLoadingBar" style="background: #28a745; height: 20px; width: 0%; transition: width 0.3s; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: bold;"></div>
+                        </div>
+                        <div id="imageLoadingText" style="text-align: center; margin-top: 0.5rem; font-size: 14px; color: #6c757d;"></div>
+                    </div>
+                    
+                    <div id="imageStatus"></div>
+                </div>
+                <div>
+                    <h3>Generated Images</h3>
+                    <div id="imageGallery" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <div style="text-align: center; color: #6c757d; grid-column: 1/-1;">
+                            Generate images to see them here
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Routes List -->
+        <div class="section full-width">
+            <h2>🔗 All Routes</h2>
+            <button onclick="loadRoutes()">Refresh Routes</button>
+            <pre id="routes">Click "Refresh Routes" to load...</pre>
+        </div>
+
+        <!-- Image Library -->
+        <div class="section full-width">
+            <h2>📚 Image Library</h2>
+            <div class="grid">
+                <div>
+                    <h3>Library Search</h3>
+                    <div class="form-group">
+                        <label for="librarySearch">Search Images</label>
+                        <input id="librarySearch" placeholder="Search by product, style, or tags...">
+                    </div>
+                    <div class="form-group">
+                        <label for="libraryProduct">Filter by Product</label>
+                        <select id="libraryProduct">
+                            <option value="">All Products</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="libraryStyle">Filter by Style</label>
+                        <select id="libraryStyle">
+                            <option value="">All Styles</option>
+                            <option value="simple">Simple & Clean</option>
+                            <option value="minimal">Ultra Minimal</option>
+                            <option value="vibrant">Bright & Vibrant</option>
+                            <option value="professional">Professional Photography</option>
+                        </select>
+                    </div>
+                    <button onclick="searchLibrary()">🔍 Search Library</button>
+                    <button onclick="organizeExistingImages()" class="secondary" style="margin-left: 10px;">📁 Organize Existing</button>
+                    <div id="libraryStatus"></div>
+                </div>
+                <div>
+                    <h3>Library Stats</h3>
+                    <div id="libraryStats" style="background: #f6f6f6; padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
+                        <div>📊 <strong>Total Images:</strong> <span id="statTotalImages">-</span></div>
+                        <div>🎨 <strong>Generations:</strong> <span id="statGenerations">-</span></div>
+                        <div>💾 <strong>Library Size:</strong> <span id="statLibrarySize">-</span> MB</div>
+                        <div>🏷️ <strong>Products:</strong> <span id="statProducts">-</span></div>
+                    </div>
+                    <button onclick="loadLibraryStats()">📈 Refresh Stats</button>
+                </div>
+            </div>
+            
+            <!-- Library Results -->
+            <div id="libraryResults" style="margin-top: 2rem;">
+                <h3>Your Image Library</h3>
+                <div id="libraryGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem;">
+                    <div style="text-align: center; color: #6c757d; grid-column: 1/-1; padding: 2rem;">
+                        Click "Search Library" to browse your images
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Health -->
+        <div class="section full-width">
+            <h2>🏥 System Health</h2>
+            <button onclick="checkHealth()">Check Health</button>
+            <pre id="health">Click "Check Health" to load system status...</pre>
+        </div>
+    </div>
+
+    <script src="/admin.js"></script>
+</body>
+</html> 

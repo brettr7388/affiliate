@@ -1,8 +1,8 @@
 # Eco-Friendly Dog Toys That Are Good for Your Pet and the Planet
 
-> As an Amazon Associate I earn from qualifying purchases.
+> 
 
-> As an Amazon Associate I earn from qualifying purchases.
+> 
 
 # Eco-Friendly Dog Toys That Are Good for Your Pet and the Planet
 
@@ -53,8 +53,7 @@ If you're looking for a guilt-free way to keep your furry friend entertained, lo
 **Try this:** [AmazonEcoFriendlyDogToys](http://127.0.0.1:8088/r/toppl-a?utm_source=site&utm_medium=cta&utm_campaign=ai-generated)
 *We might earn a commission at no cost to you.*
 
-
 ---
 
-**Try this:** [AmazonEcoFriendlyDogToys](https://www.amazon.com/dp/B004A7X27M?tag=test0b252-20&utm_source=site&utm_campaign=content)
+**Try this:** [AmazonEcoFriendlyDogToys](https://amazon.com/dp/B004A7X27M?tag=test0b252-20)
 *We might earn a commission at no cost to you.*

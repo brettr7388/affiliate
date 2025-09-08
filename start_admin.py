@@ -34,7 +34,7 @@ ADMIN_TOKEN={admin_token}
 
 BASE_DOMAIN=https://sustainablepets.netlify.app
 # Disclosure shown on pages with affiliate links
-AFFILIATE_DISCLOSURE="As an Amazon Associate I earn from qualifying purchases."
+AFFILIATE_DISCLOSURE=""
 REPORT_EMAIL_TO=
 MAILERLITE_API_KEY=
 """
@@ -104,4 +104,4 @@ def main():
         print("\n👋 Server stopped")
 
 if __name__ == "__main__":
-    main() 
+    main()

@@ -87,4 +87,4 @@ def generate_weekly_report():
 
 if __name__ == "__main__":
     filename = generate_weekly_report()
-    print(f"✅ Weekly report generated: {filename}") 
+    print(f"✅ Weekly report generated: {filename}")

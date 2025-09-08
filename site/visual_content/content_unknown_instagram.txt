@@ -1,0 +1,30 @@
+SLIDESHOW CONTENT EXPORT
+=======================
+
+Product: 
+Platform: 
+Generated: Unknown
+
+SLIDES:
+
+Slide 1 (TITLE):
+Introduction**
+
+
+Slide 2 (BENEFIT):
+What Are Biodegradable Poop Bags?**
+
+
+Slide 3 (CTA):
+Key Features & Benefits**
+
+
+AFFILIATE LINK:
+No link available
+
+EXPORT NOTES:
+- Use  dimensions for each slide
+- Include your branding/logo
+- Add visual elements that match the content
+- Ensure text is readable on mobile devices
+- Test how it looks in  preview

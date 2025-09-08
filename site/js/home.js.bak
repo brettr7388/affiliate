@@ -1,0 +1,668 @@
+/**
+ * Eco Pet Guide Homepage JavaScript
+ * Handles data fetching, A/B testing, tracking, and interactions
+ */
+
+// Global state
+let currentOffset = 0;
+let currentLimit = 24;
+let currentTab = 'trending';
+let currentCategory = null;
+let isLoading = false;
+let abVariant = 'A';
+
+// Initialize on DOM load
+document.addEventListener('DOMContentLoaded', function() {
+    init();
+});
+
+/**
+ * Initialize the homepage
+ */
+function init() {
+    // Set up A/B testing
+    initABTesting();
+    
+    // Load initial data
+    loadFeaturedRoutes();
+    loadArticles('trending');
+    loadFooterStats();
+    
+    // Set up event listeners
+    setupEventListeners();
+    
+    // Update structured data with actual articles
+    updateStructuredData();
+}
+
+/**
+ * A/B Testing Setup
+ */
+function initABTesting() {
+    // Get or set A/B variant (persistent for session)
+    const storedVariant = localStorage.getItem('ab_hero_variant');
+    if (storedVariant) {
+        abVariant = storedVariant;
+    } else {
+        abVariant = Math.random() < 0.5 ? 'A' : 'B';
+        localStorage.setItem('ab_hero_variant', abVariant);
+    }
+    
+    // Update hero content based on variant
+    const heroHeadline = document.getElementById('hero-headline');
+    const heroCTA = document.getElementById('hero-primary-cta');
+    
+    if (abVariant === 'B') {
+        heroHeadline.textContent = 'Greener Dog Essentials: Trusted Picks That Actually Last';
+        heroCTA.textContent = 'See Editor\'s Picks';
+    }
+    
+    // Track impression
+    trackABTest('hero', abVariant, 'impression');
+}
+
+/**
+ * Event Listeners Setup
+ */
+function setupEventListeners() {
+    // Tab navigation
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', handleTabClick);
+    });
+    
+    // Category dropdown
+    const categoryButton = document.querySelector('[data-tab="categories"]');
+    const categoryDropdown = document.getElementById('category-dropdown');
+    
+    categoryButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        categoryDropdown.classList.toggle('hidden');
+    });
+    
+    // Category selection
+    document.querySelectorAll('[data-category]').forEach(button => {
+        button.addEventListener('click', handleCategoryClick);
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', () => {
+        categoryDropdown.classList.add('hidden');
+    });
+    
+    // Load more button
+    document.getElementById('load-more').addEventListener('click', loadMoreArticles);
+    
+    // Hero CTA
+    document.getElementById('hero-primary-cta').addEventListener('click', handleHeroCTA);
+    
+    // Newsletter form
+    document.getElementById('newsletter-form').addEventListener('submit', handleNewsletterSubmit);
+}
+
+/**
+ * Handle tab clicks
+ */
+function handleTabClick(e) {
+    const tab = e.target.dataset.tab;
+    if (tab === 'categories') return; // Handled separately
+    
+    // Update active state
+    document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    e.target.classList.add('active');
+    
+    // Reset pagination
+    currentOffset = 0;
+    currentTab = tab;
+    currentCategory = null;
+    
+    // Load articles
+    loadArticles(tab);
+    
+    // Track tab change
+    trackEvent('tab_change', { tab });
+}
+
+/**
+ * Handle category clicks
+ */
+function handleCategoryClick(e) {
+    const category = e.target.dataset.category;
+    
+    // Update active state
+    document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.querySelector('[data-tab="categories"]').classList.add('active');
+    
+    // Hide dropdown
+    document.getElementById('category-dropdown').classList.add('hidden');
+    
+    // Reset pagination
+    currentOffset = 0;
+    currentTab = 'categories';
+    currentCategory = category;
+    
+    // Load articles
+    loadArticles('categories', category);
+    
+    // Track category change
+    trackEvent('tab_change', { tab: 'categories', category });
+}
+
+/**
+ * Load featured routes
+ */
+async function loadFeaturedRoutes() {
+    try {
+        const response = await fetch('/api/routes/featured?limit=6');
+        const routes = await response.json();
+        
+        renderFeaturedRoutes(routes);
+    } catch (error) {
+        console.error('Failed to load featured routes:', error);
+        // Show fallback content
+        renderFeaturedRoutesFallback();
+    }
+}
+
+/**
+ * Render featured routes
+ */
+function renderFeaturedRoutes(routes) {
+    const container = document.getElementById('top-picks-grid');
+    
+    if (routes.length === 0) {
+        container.innerHTML = '<div class="col-span-full text-center py-12 text-gray-500">No featured products available yet.</div>';
+        return;
+    }
+    
+    container.innerHTML = routes.map(route => `
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
+            <div class="relative">
+                <img src="${route.image}" alt="${route.label}" class="w-full h-48 object-cover" loading="lazy" decoding="async" onerror="this.src='/images/library/placeholder-product.jpg'">
+                <div class="absolute top-4 left-4 bg-eco-green-600 text-white px-2 py-1 rounded-full text-xs font-medium">
+                    Featured
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="font-semibold text-lg mb-2 text-gray-900">${route.label}</h3>
+                <a href="${route.dest_url}" 
+                   class="inline-block w-full bg-eco-green-600 hover:bg-eco-green-700 text-white font-semibold py-3 px-6 rounded-lg text-center transition-colors duration-200"
+                   data-track="affiliate"
+                   data-slug="${route.slug}"
+                   onclick="handleAffiliateClick(event, '${route.slug}', '${route.dest_url}')">
+                    View Deal
+                </a>
+            </div>
+        </div>
+    `).join('');
+}
+
+/**
+ * Fallback for featured routes
+ */
+function renderFeaturedRoutesFallback() {
+    const container = document.getElementById('top-picks-grid');
+    container.innerHTML = `
+        <div class="col-span-full text-center py-12">
+            <div class="text-gray-500 mb-4">
+                <span class="text-4xl">🐕</span>
+            </div>
+            <p class="text-gray-600">Featured products will appear here once routes are configured.</p>
+        </div>
+    `;
+}
+
+/**
+ * Load articles
+ */
+async function loadArticles(tab, category = null) {
+    if (isLoading) return;
+    isLoading = true;
+    
+    try {
+        let url = `/api/articles?limit=${currentLimit}&offset=${currentOffset}`;
+        
+        if (tab === 'trending') {
+            // For trending, we'll get top articles and then fetch their details
+            const topResponse = await fetch('/api/stats/top?window=7d&limit=24');
+            const topArticles = await topResponse.json();
+            
+            if (topArticles.length > 0) {
+                // If we have trending data, use it
+                const slugs = topArticles.map(a => a.slug).join(',');
+                url += `&sort=popular`;
+            } else {
+                // Fallback to latest
+                url += `&sort=new`;
+            }
+        } else if (tab === 'categories' && category) {
+            url += `&tag=${encodeURIComponent(category)}`;
+        } else {
+            url += `&sort=new`;
+        }
+        
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        if (currentOffset === 0) {
+            // First load - replace content
+            renderArticles(data.items, true);
+        } else {
+            // Load more - append content
+            renderArticles(data.items, false);
+        }
+        
+        // Update load more button
+        const loadMoreBtn = document.getElementById('load-more');
+        if (data.items.length < currentLimit || currentOffset + data.items.length >= data.total) {
+            loadMoreBtn.style.display = 'none';
+        } else {
+            loadMoreBtn.style.display = 'block';
+        }
+        
+        // Update structured data
+        if (currentOffset === 0) {
+            updateStructuredData(data.items.slice(0, 10));
+        }
+        
+    } catch (error) {
+        console.error('Failed to load articles:', error);
+        if (currentOffset === 0) {
+            renderArticlesFallback();
+        }
+    } finally {
+        isLoading = false;
+    }
+}
+
+/**
+ * Render articles
+ */
+function renderArticles(articles, replace = true) {
+    const container = document.getElementById('article-grid');
+    
+    if (articles.length === 0) {
+        if (replace) {
+            container.innerHTML = '<div class="col-span-full text-center py-12 text-gray-500">No articles found.</div>';
+        }
+        return;
+    }
+    
+    const articlesHTML = articles.map(article => `
+        <article class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden cursor-pointer"
+                 data-track="article"
+                 data-slug="${article.slug}"
+                 onclick="handleArticleClick(event, '${article.slug}')">
+            <div class="relative">
+                <img src="${article.heroImage}" alt="${article.title}" class="w-full h-48 object-cover" loading="lazy" decoding="async" onerror="this.src='/images/library/placeholder-article.jpg'">
+                ${article.tags.length > 0 ? `
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-eco-green-600 text-white px-2 py-1 rounded-full text-xs font-medium">
+                            ${article.tags[0]}
+                        </span>
+                    </div>
+                ` : ''}
+            </div>
+            <div class="p-6">
+                <h3 class="font-semibold text-lg mb-2 text-gray-900 line-clamp-2">${article.title}</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-3">${article.excerpt}</p>
+                <div class="flex items-center justify-between text-xs text-gray-500">
+                    <span>${article.estimatedReadMin} min read</span>
+                    <span>${formatDate(article.publishedAt)}</span>
+                </div>
+            </div>
+        </article>
+    `).join('');
+    
+    if (replace) {
+        container.innerHTML = articlesHTML;
+    } else {
+        container.insertAdjacentHTML('beforeend', articlesHTML);
+        
+        // Announce to screen readers
+        const announcement = document.getElementById('announcements');
+        announcement.textContent = `Loaded ${articles.length} more articles`;
+    }
+}
+
+/**
+ * Fallback for articles
+ */
+function renderArticlesFallback() {
+    const container = document.getElementById('article-grid');
+    container.innerHTML = `
+        <div class="col-span-full text-center py-12">
+            <div class="text-gray-500 mb-4">
+                <span class="text-4xl">📚</span>
+            </div>
+            <p class="text-gray-600">Articles will appear here once content is generated.</p>
+        </div>
+    `;
+}
+
+/**
+ * Load more articles
+ */
+function loadMoreArticles() {
+    currentOffset += currentLimit;
+    loadArticles(currentTab, currentCategory);
+    
+    trackEvent('load_more', { offset: currentOffset, tab: currentTab, category: currentCategory });
+}
+
+/**
+ * Load footer stats
+ */
+async function loadFooterStats() {
+    try {
+        const response = await fetch('/api/stats/summary');
+        const stats = await response.json();
+        
+        const container = document.getElementById('footer-stats');
+        container.innerHTML = `
+            <div>This week: <span class="text-eco-green-400 font-semibold">${stats.today_clicks || 0}</span></div>
+            <div>Total clicks: <span class="text-eco-green-400 font-semibold">${stats.total_clicks || 0}</span></div>
+            <div>Active reviews: <span class="text-eco-green-400 font-semibold">${stats.active_routes || 0}</span></div>
+        `;
+    } catch (error) {
+        console.error('Failed to load footer stats:', error);
+    }
+}
+
+/**
+ * Handle hero CTA click
+ */
+async function handleHeroCTA(e) {
+    e.preventDefault();
+    
+    // Track conversion
+    trackABTest('hero', abVariant, 'convert');
+    trackEvent('hero_cta', { variant: abVariant });
+    
+    // Get first featured route
+    try {
+        const response = await fetch('/api/routes/featured?limit=1');
+        const routes = await response.json();
+        
+        if (routes.length > 0) {
+            const route = routes[0];
+            handleAffiliateClick(e, route.slug, route.dest_url);
+        } else {
+            // Fallback to articles section
+            document.getElementById('article-tabs').scrollIntoView({ behavior: 'smooth' });
+        }
+    } catch (error) {
+        console.error('Failed to get featured route:', error);
+        document.getElementById('article-tabs').scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+/**
+ * Handle affiliate link clicks
+ */
+function handleAffiliateClick(e, slug, href) {
+    e.preventDefault();
+    
+    // Get UTM parameters
+    const utm = getStoredUTM();
+    
+    // Add UTM to href if present
+    let finalHref = href;
+    if (utm && Object.keys(utm).length > 0) {
+        const url = new URL(href, window.location.origin);
+        Object.entries(utm).forEach(([key, value]) => {
+            url.searchParams.set(key, value);
+        });
+        finalHref = url.toString();
+    }
+    
+    // Track the click
+    trackEvent('affiliate_click', { slug, href: finalHref, utm });
+    
+    // Navigate
+    window.open(finalHref, '_blank');
+}
+
+/**
+ * Handle article clicks
+ */
+function handleArticleClick(e, slug) {
+    e.preventDefault();
+    
+    // Track the click
+    trackEvent('article_open', { slug });
+    
+    // Navigate to article
+    window.location.href = `/content/${slug}.html`;
+}
+
+/**
+ * Handle newsletter submission
+ */
+async function handleNewsletterSubmit(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('newsletter-email').value;
+    const button = e.target.querySelector('button[type="submit"]');
+    const originalText = button.textContent;
+    
+    button.textContent = 'Subscribing...';
+    button.disabled = true;
+    
+    try {
+        // Try to submit to API if endpoint exists
+        const response = await fetch('/api/newsletter/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+        });
+        
+        if (response.ok) {
+            button.textContent = 'Subscribed!';
+            button.classList.add('bg-green-600');
+            document.getElementById('newsletter-email').value = '';
+        } else {
+            throw new Error('Subscription failed');
+        }
+    } catch (error) {
+        // Fallback - just show success (since endpoint might not exist)
+        console.log('Newsletter subscription (fallback):', email);
+        button.textContent = 'Subscribed!';
+        button.classList.add('bg-green-600');
+        document.getElementById('newsletter-email').value = '';
+    }
+    
+    setTimeout(() => {
+        button.textContent = originalText;
+        button.disabled = false;
+        button.classList.remove('bg-green-600');
+    }, 3000);
+}
+
+/**
+ * Tracking Functions
+ */
+
+/**
+ * Track general events
+ */
+function trackEvent(type, payload = {}) {
+    // Respect Do Not Track
+    if (navigator.doNotTrack === "1") return;
+    
+    const data = {
+        slug: payload.slug || 'homepage',
+        href: payload.href || window.location.href,
+        utm: payload.utm || getStoredUTM(),
+        event_type: type,
+        ...payload
+    };
+    
+    // Debounced tracking
+    debounce(() => {
+        if (navigator.sendBeacon) {
+            navigator.sendBeacon('/api/clicks', JSON.stringify(data));
+        } else {
+            fetch('/api/clicks', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).catch(console.error);
+        }
+    }, 100)();
+}
+
+/**
+ * Track A/B tests
+ */
+function trackABTest(area, variant, action) {
+    if (navigator.doNotTrack === "1") return;
+    
+    const data = { area, variant, action };
+    
+    const endpoint = action === 'convert' ? '/api/ab/convert' : '/api/ab/impression';
+    
+    if (navigator.sendBeacon) {
+        navigator.sendBeacon(endpoint, JSON.stringify(data));
+    } else {
+        fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        }).catch(console.error);
+    }
+}
+
+/**
+ * Utility Functions
+ */
+
+/**
+ * Get stored UTM parameters
+ */
+function getStoredUTM() {
+    try {
+        const stored = sessionStorage.getItem('utm');
+        return stored ? JSON.parse(stored) : {};
+    } catch {
+        return {};
+    }
+}
+
+/**
+ * Format date for display
+ */
+function formatDate(dateString) {
+    try {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', { 
+            month: 'short', 
+            day: 'numeric',
+            year: 'numeric'
+        });
+    } catch {
+        return 'Recent';
+    }
+}
+
+/**
+ * Debounce function
+ */
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+/**
+ * Update structured data with articles
+ */
+function updateStructuredData(articles = []) {
+    if (articles.length === 0) return;
+    
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Eco Pet Guide",
+        "description": "Sustainable dog products and eco-friendly pet care guides",
+        "url": window.location.origin,
+        "publisher": {
+            "@type": "Organization",
+            "name": "Eco Pet Guide"
+        },
+        "blogPost": articles.map(article => ({
+            "@type": "BlogPosting",
+            "headline": article.title,
+            "description": article.excerpt,
+            "url": `${window.location.origin}/content/${article.slug}.html`,
+            "datePublished": article.publishedAt,
+            "author": {
+                "@type": "Organization",
+                "name": "Eco Pet Guide"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Eco Pet Guide"
+            }
+        }))
+    };
+    
+    const scriptTag = document.getElementById('structured-data');
+    if (scriptTag) {
+        scriptTag.textContent = JSON.stringify(structuredData);
+    }
+}
+
+/**
+ * CSS classes for tab styling
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    const style = document.createElement('style');
+    style.textContent = `
+        .tab-button {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+        .tab-button:hover {
+            background: #e5e7eb;
+            color: #374151;
+        }
+        .tab-button.active {
+            background: #16a34a;
+            color: white;
+        }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    `;
+    document.head.appendChild(style);
+}); 

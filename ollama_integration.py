@@ -180,7 +180,7 @@ Generate the article now:"""
         slug = product_info.get('slug', '')
         
         # Add affiliate disclosure at the top
-        disclosure = f"> As an Amazon Associate I earn from qualifying purchases.\n\n"
+        disclosure = f"> \n\n"
         
         # Add CTA at the end
         cta = f"""
@@ -207,4 +207,4 @@ if __name__ == "__main__":
     if generator.test_connection():
         print("✅ Ollama connection successful!")
     else:
-        print("❌ Cannot connect to Ollama. Make sure it's running with 'ollama serve'") 
+        print("❌ Cannot connect to Ollama. Make sure it's running with 'ollama serve'")

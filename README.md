@@ -14,6 +14,8 @@ This will:
 - Install dependencies if needed
 - Start the server at `http://127.0.0.1:8088`
 
+**⚠️ Important**: Before deploying, update `config.yaml` and replace `YOUR-AMAZON-ASSOCIATES-TAG` with your actual Amazon Associates tag.
+
 ### 2. Access the Admin Console
 Open your browser and go to: `http://127.0.0.1:8088/admin`
 

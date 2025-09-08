@@ -11,3 +11,4 @@ apscheduler
 requests
 PyYAML
 psycopg[binary]
+google-generativeai

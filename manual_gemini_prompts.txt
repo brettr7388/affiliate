@@ -1,0 +1,53 @@
+GEMINI IMAGE PROMPTS FOR ECO PET GUIDE
+==================================================
+
+Copy and paste these prompts into Gemini's image generator
+Save images as specified filenames in site/images/library/
+
+ARTICLE HERO IMAGES
+--------------------
+
+1. Pawsitive Choices: Eco-Friendly Fun for Your Furry Friend
+   Filename: hero-pawsitive-choices-eco-friendly-fun-for-your-furry-friend.jpg
+   Prompt: A professional, high-quality image representing Pawsitive Choices: Eco-Friendly Fun for Your Furry Friend in an eco-friendly context. Include dogs, natural materials, and sustainable products. Clean, modern aesthetic with soft natural lighting. Professional lifestyle photography style. High resolution, professional quality, optimized for web display.
+
+2. Spoil Your Pup & Save the Planet: The Joy of Eco-Friendly Dog Toys
+   Filename: hero-spoil-your-pup-save-the-planet-the-joy-of-eco-friendly-dog-toys.jpg
+   Prompt: A professional, high-quality image representing Spoil Your Pup & Save the Planet: The Joy of Eco-Friendly Dog Toys in an eco-friendly context. Include dogs, natural materials, and sustainable products. Clean, modern aesthetic with soft natural lighting. Professional lifestyle photography style. High resolution, professional quality, optimized for web display.
+
+3. Eco-Friendly Dog Toys That Are Good for Your Pet and the Planet
+   Filename: hero-eco-friendly-dog-toys-that-are-good-for-your-pet-and-the-planet.jpg
+   Prompt: Professional product photography of Eco-Friendly Dog Toys on a clean white background with natural lighting. Include the actual product prominently displayed with eco-friendly elements like green leaves or natural materials around it. Made from sustainable hemp rope and organic cotton. Professional commercial photography style, eco-friendly aesthetic. High resolution, professional quality, optimized for web display.
+
+4. AmazonEcoFriendlyDogToys - Comparison
+   Filename: hero-ai-generated-amazonecofriendlydogtoys-comparison.jpg
+   Prompt: A clean comparison layout showing Product A vs Product B side by side on a neutral background. Both products should be clearly visible and well-lit. Include subtle eco-friendly elements and maintain professional product photography standards. Modern, clean aesthetic. High resolution, professional quality, optimized for web display.
+
+5. Best Biodegradable Dog Poop Bags 2025: Earth-Rated vs Competitors
+   Filename: hero-best-biodegradable-dog-poop-bags-2025-earth-rated-vs-competitors.jpg
+   Prompt: A clean comparison layout showing Best Biodegradable Dog Poop Bags 2025: Earth-Rated vs Competitors side by side on a neutral background. Both products should be clearly visible and well-lit. Include subtle eco-friendly elements and maintain professional product photography standards. Modern, clean aesthetic. High resolution, professional quality, optimized for web display.
+
+6. Best Eco-Friendly Dog Toys (2025)
+   Filename: hero-best-eco-friendly-dog-toys-2025.jpg
+   Prompt: A beautiful flat lay or arranged display of 2025 eco-friendly dog toys items, all eco-friendly and sustainable. Clean white background, professional photography, each item clearly visible and well-lit. Eco-friendly aesthetic with natural elements. High resolution, professional quality, optimized for web display.
+
+7. West Paw Toppl vs Kong: Which Eco-Friendly Dog Toy is Better in 2025?
+   Filename: hero-west-paw-toppl-vs-kong-which-eco-friendly-dog-toy-is-better-in-2025.jpg
+   Prompt: A clean comparison layout showing West Paw Toppl vs Kong side by side on a neutral background. Both products should be clearly visible and well-lit. Include subtle eco-friendly elements and maintain professional product photography standards. Modern, clean aesthetic. High resolution, professional quality, optimized for web display.
+
+8. How to Choose Non-Toxic Dog Toys (Guide)
+   Filename: hero-how-to-choose-non-toxic-dog-toys-guide.jpg
+   Prompt: An educational, infographic-style image showing Choose Non-Toxic Dog Toys () with clear visual elements and a dog owner demonstrating the concept. Include relevant props and maintain a clean, modern, instructional design aesthetic. Professional lifestyle photography. High resolution, professional quality, optimized for web display.
+
+9. Low-Waste Dog Starter Kit: 9 Sustainable Essentials
+   Filename: hero-low-waste-dog-starter-kit-9-sustainable-essentials.jpg
+   Prompt: A beautiful flat lay or arranged display of 9 sustainable dog essentials items, all eco-friendly and sustainable. Clean white background, professional photography, each item clearly visible and well-lit. Eco-friendly aesthetic with natural elements. High resolution, professional quality, optimized for web display.
+
+10. West Paw Toppl vs Kong: Which Is Greener in 2025?
+   Filename: hero-west-paw-toppl-vs-kong-which-is-greener-in-2025.jpg
+   Prompt: A clean comparison layout showing West Paw Toppl vs Kong side by side on a neutral background. Both products should be clearly visible and well-lit. Include subtle eco-friendly elements and maintain professional product photography standards. Modern, clean aesthetic. High resolution, professional quality, optimized for web display.
+
+11. Best Biodegradable Dog Poop Bags (2025)
+   Filename: hero-best-biodegradable-dog-poop-bags-2025.jpg
+   Prompt: Professional product photography of Biodegradable Poop Bags on a clean white background with natural lighting. Include the actual product prominently displayed with eco-friendly elements like green leaves or natural materials around it. Biodegradable materials that break down naturally. Professional commercial photography style, eco-friendly aesthetic. High resolution, professional quality, optimized for web display.
+

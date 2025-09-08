@@ -20,7 +20,6 @@ import markdown
 from dotenv import load_dotenv
 from jinja2 import Template
 
-
 load_dotenv()
 
 # Use an environment variable for the FTC disclosure; fall back to a sensible default
@@ -45,13 +44,182 @@ TEMPLATE = Template(
 """
 )
 
+# HTML page template
+HTML_TEMPLATE = Template("""<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }} - Eco Pet Guide</title>
+    <meta name="description" content="{{ description }}">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      body { font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 0 20px; }
+      .header { background: linear-gradient(135deg, #2d5a27, #4a7c59); color: white; padding: 2rem 0; margin: -20px -20px 2rem -20px; }
+      .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+      .tagline { margin: 0.5rem 0; opacity: 0.9; }
+      .disclosure { margin: 0.5rem 0; font-size: 0.9rem; opacity: 0.8; }
+      .article-content { margin: 2rem 0; }
+      .cta-section { background: linear-gradient(135deg, #ff6b35, #f7931e); padding: 2rem; border-radius: 12px; margin: 2rem 0; text-align: center; box-shadow: 0 8px 25px rgba(255,107,53,0.3); border: 3px solid #ff6b35; }
+      .cta-button { background: linear-gradient(135deg, #28a745, #20c997); color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 50px; display: inline-block; margin-top: 1rem; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(40,167,69,0.4); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; }
+      .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(40,167,69,0.6); background: linear-gradient(135deg, #218838, #1ea080); }
+      .cta-text { color: white; font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem; }
+      .cta-subtext { color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-top: 0.5rem; }
+      .footer { background: #f8f9fa; padding: 2rem 0; margin: 2rem -20px 0 -20px; text-align: center; font-size: 0.9rem; }
+      table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+      th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #ddd; }
+      th { background: #4a7c59; color: white; font-weight: 600; }
+      tr:nth-child(even) { background: #f8f9fa; }
+      tr:hover { background: #e8f4f8; }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1><a href="../" style="color: white; text-decoration: none;">🌱 Eco Pet Guide</a></h1>
+        <p class="tagline">Sustainable Products for Conscious Pet Parents</p>
+        <p class="disclosure">{{ disclosure }}</p>
+      </div>
+    </header>
+
+    <main>
+      <nav style="background: white; padding: 1rem 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <div class="container">
+          <a href="../" style="color: var(--secondary-color); text-decoration: none; font-weight: 500;">← Back to Home</a>
+        </div>
+      </nav>
+
+      <article class="article-content">
+        {% set enhanced_content = content %}
+        
+        {# Create inline CTA text based on product type #}
+        {% if 'poop bag' in title.lower() or 'biodegradable' in title.lower() %}
+          {% set inline_cta = '<strong><a href="' + offer_url + '" style="color: #28a745; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #28a745;">🌱 these eco-friendly poop bags</a></strong>' %}
+          {% set inline_cta_2 = '<strong><a href="' + offer_url + '" style="color: #ff6b35; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #fff3e0, #ffe0b2); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #ff6b35;">🛒 grab the top-rated biodegradable bags here</a></strong>' %}
+        {% elif 'dog toy' in title.lower() or 'toy' in title.lower() %}
+          {% set inline_cta = '<strong><a href="' + offer_url + '" style="color: #28a745; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #28a745;">🐕 these eco-friendly dog toys</a></strong>' %}
+          {% set inline_cta_2 = '<strong><a href="' + offer_url + '" style="color: #ff6b35; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #fff3e0, #ffe0b2); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #ff6b35;">🎾 shop the best eco dog toys now</a></strong>' %}
+        {% elif 'west paw' in title.lower() or 'kong' in title.lower() %}
+          {% set inline_cta = '<strong><a href="' + offer_url + '" style="color: #28a745; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #28a745;">🏆 the winning eco toy</a></strong>' %}
+          {% set inline_cta_2 = '<strong><a href="' + offer_url + '" style="color: #ff6b35; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #fff3e0, #ffe0b2); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #ff6b35;">🥇 get the champion toy here</a></strong>' %}
+        {% else %}
+          {% set inline_cta = '<strong><a href="' + offer_url + '" style="color: #28a745; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #28a745;">🌱 these eco-friendly products</a></strong>' %}
+          {% set inline_cta_2 = '<strong><a href="' + offer_url + '" style="color: #ff6b35; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #fff3e0, #ffe0b2); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #ff6b35;">🛒 shop eco pet products here</a></strong>' %}
+        {% endif %}
+        
+        {# Split content into paragraphs and strategically insert inline CTAs #}
+        {% set content_parts = enhanced_content.split('</p>') %}
+        {% if content_parts|length > 3 %}
+          {# First paragraph - hook them #}
+          {{ content_parts[0] }}</p>
+          
+          {# Second paragraph with first inline CTA #}
+          {% set second_para = content_parts[1] %}
+          {% if second_para and second_para|length > 100 %}
+            {% set words = second_para.split(' ') %}
+            {% if words|length > 15 %}
+              {% set mid_point = (words|length * 0.7)|int %}
+              {% set first_half = words[:mid_point]|join(' ') %}
+              {% set second_half = words[mid_point:]|join(' ') %}
+              {{ first_half }} {{ inline_cta }} {{ second_half }}</p>
+            {% else %}
+              {{ second_para }} Want to try {{ inline_cta }}?</p>
+            {% endif %}
+          {% else %}
+            {{ second_para }}</p>
+          {% endif %}
+          
+          {# Third paragraph - continue content #}
+          {{ content_parts[2] }}</p>
+          
+          {# Fourth paragraph with second inline CTA #}
+          {% if content_parts|length > 4 %}
+            {% set fourth_para = content_parts[3] %}
+            {% if fourth_para and fourth_para|length > 100 %}
+              {% set words = fourth_para.split(' ') %}
+              {% if words|length > 15 %}
+                {% set mid_point = (words|length * 0.6)|int %}
+                {% set first_half = words[:mid_point]|join(' ') %}
+                {% set second_half = words[mid_point:]|join(' ') %}
+                {{ first_half }} You can {{ inline_cta_2 }} {{ second_half }}</p>
+              {% else %}
+                {{ fourth_para }} Ready to {{ inline_cta_2 }}?</p>
+              {% endif %}
+            {% else %}
+              {{ fourth_para }}</p>
+            {% endif %}
+          {% endif %}
+          
+          {# Rest of content #}
+          {% for part in content_parts[4:] %}
+            {{ part }}{% if not loop.last %}</p>{% endif %}
+          {% endfor %}
+        {% else %}
+          {# Shorter content - just add one inline CTA #}
+          {% set first_para = content_parts[0] if content_parts|length > 0 else '' %}
+          {% if first_para and first_para|length > 50 %}
+            {% set words = first_para.split(' ') %}
+            {% if words|length > 10 %}
+              {% set mid_point = (words|length * 0.7)|int %}
+              {% set first_half = words[:mid_point]|join(' ') %}
+              {% set second_half = words[mid_point:]|join(' ') %}
+              {{ first_half }} {{ inline_cta }} {{ second_half }}</p>
+            {% else %}
+              {{ enhanced_content }}
+            {% endif %}
+          {% else %}
+            {{ enhanced_content }}
+          {% endif %}
+          
+          {# Add remaining parts #}
+          {% for part in content_parts[1:] %}
+            {{ part }}{% if not loop.last %}</p>{% endif %}
+          {% endfor %}
+        {% endif %}
+        
+        <div class="cta-section">
+          <div class="cta-text">🎯 GET {{ product_cta_title }}!</div>
+          <div style="color: white; font-size: 1rem; margin: 0.5rem 0;">{{ product_description }}</div>
+          <a href="{{ offer_url }}" class="cta-button">🛒 {{ button_text }} →</a>
+          <div class="cta-subtext">⚡ Prime shipping • ⭐ 4.5+ stars • 💚 Planet-friendly</div>
+        </div>
+      </article>
+
+      <section class="cta-section" style="max-width: 800px; margin: 2rem auto;">
+        <div class="container">
+          <div class="cta-text">🌟 WANT MORE ECO PET PRODUCTS?</div>
+          <div style="color: white; font-size: 1rem; margin: 0.5rem 0;">Discover the best sustainable pet gear & save money!</div>
+          <a href="../" class="cta-button">🏠 SHOP MORE ECO PRODUCTS →</a>
+          <div class="cta-subtext">📱 TikTok approved • 💰 Best prices • 🌱 Planet-friendly</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>
+          © <span id="y"></span> Eco Pet Guide ·
+          <a href="../disclosure.html">Disclosure</a> ·
+          <a href="../privacy.html">Privacy</a>
+        </p>
+        <p style="margin-top: 1rem; opacity: 0.8;">
+          🌱 Making pet parenthood more sustainable, one review at a time
+        </p>
+      </div>
+    </footer>
+
+    <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  </body>
+</html>""")
 
 def slugify(title: str) -> str:
     """Make safe, dash-only, ASCII slugs (no punctuation/special hyphens)."""
     s = title.lower()
     s = re.sub(r"[^a-z0-9]+", "-", s)      # keep letters/digits; replace others with -
     return re.sub(r"-+", "-", s).strip("-") # collapse repeats; trim ends
-
 
 def build_affiliate_url(
     base_url: str,
@@ -69,7 +237,6 @@ def build_affiliate_url(
     # Merge in UTM params (utm_source, utm_campaign, etc.)
     q |= utm
     return urlunparse((u.scheme, u.netloc, u.path, u.params, urlencode(q), u.fragment))
-
 
 def generate_post(
     config_path: str = "config.yaml",
@@ -110,13 +277,68 @@ def generate_post(
     # Create a safe slug
     slug = slugify(title)
 
-    # Write Markdown and HTML
+    # Write Markdown
     (out_dir / f"{slug}.md").write_text(md, encoding="utf-8")
-    html = markdown.markdown(md)
-    (out_dir / f"{slug}.html").write_text(html, encoding="utf-8")
+    
+    # Generate HTML content from markdown with table support
+    content_html = markdown.markdown(body_md, extensions=['tables'])
+    
+    # Create description from first 150 chars of content
+    description = body_md[:150].replace('\n', ' ') + "..." if len(body_md) > 150 else body_md
+    
+    # Create smart product-specific CTA text based on article title
+    def get_product_cta_info(article_title):
+        title_lower = article_title.lower()
+        
+        if 'poop bag' in title_lower or 'biodegradable' in title_lower:
+            return {
+                'cta_title': 'THE BEST ECO POOP BAGS',
+                'description': 'Top-rated biodegradable bags that actually work!',
+                'button_text': 'BUY ECO POOP BAGS NOW'
+            }
+        elif 'dog toy' in title_lower or 'toy' in title_lower:
+            return {
+                'cta_title': 'THESE ECO DOG TOYS',
+                'description': 'Safe, durable & planet-friendly toys your dog will love!',
+                'button_text': 'SHOP ECO DOG TOYS NOW'
+            }
+        elif 'west paw' in title_lower or 'kong' in title_lower:
+            return {
+                'cta_title': 'THE WINNING DOG TOY',
+                'description': 'Get the eco-friendly toy that beats the competition!',
+                'button_text': 'BUY THE BEST TOY NOW'
+            }
+        elif 'starter kit' in title_lower or 'essentials' in title_lower:
+            return {
+                'cta_title': 'THE COMPLETE ECO KIT',
+                'description': 'Everything you need for sustainable pet parenting!',
+                'button_text': 'GET THE STARTER KIT'
+            }
+        else:
+            return {
+                'cta_title': 'THESE ECO PET PRODUCTS',
+                'description': 'Top-rated sustainable products for conscious pet parents!',
+                'button_text': 'SHOP ECO PRODUCTS NOW'
+            }
+    
+    cta_info = get_product_cta_info(title)
+    
+    # Generate complete HTML page
+    full_html = HTML_TEMPLATE.render(
+        title=title,
+        description=description,
+        disclosure=DISCLOSURE,
+        content=content_html,
+        offer_name=offer["name"],
+        offer_url=url,
+        product_cta_title=cta_info['cta_title'],
+        product_description=cta_info['description'],
+        button_text=cta_info['button_text']
+    )
+    
+    (out_dir / f"{slug}.html").write_text(full_html, encoding="utf-8")
 
     return slug
-
 
 if __name__ == "__main__":
     # Example usage for quick debugging. Replace body_md with actual content.

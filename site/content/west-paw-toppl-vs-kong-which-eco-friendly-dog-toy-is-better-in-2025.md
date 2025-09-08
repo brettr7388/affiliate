@@ -1,6 +1,6 @@
 # West Paw Toppl vs Kong: Which Eco-Friendly Dog Toy is Better in 2025?
 
-> As an Amazon Associate I earn from qualifying purchases.
+> 
 
 # West Paw Toppl vs Kong: Which Eco-Friendly Dog Toy is Better in 2025?
 
@@ -25,5 +25,5 @@ For eco-conscious pet parents, we recommend the **West Paw Toppl** for its super
 
 ---
 
-**Try this:** [AmazonEcoFriendlyDogToys](https://www.amazon.com/dp/B004A7X27M?tag=test0b252-20&utm_source=site&utm_campaign=content)
+**Try this:** [WestPawTopplToy](https://amazon.com/dp/B0DWBQXQ46?tag=test0b252-20)
 *We might earn a commission at no cost to you.*
