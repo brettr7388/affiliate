@@ -192,6 +192,32 @@ content:
       rating: ⭐⭐⭐⭐⭐
       route_slug: spoil-your-furry-friend-sustainably-a-how-to-guide-to-wag-expedition-organic-banana-coconut-treats
     title: 🍌 Best Organic Dog Treats
+  - category: dog-leashes
+    description: Compare the best eco-friendly and durable dog leashes
+    display_type: cards
+    products:
+    - badge: Most Sustainable
+      badge_color: eco-green
+      description: 55% hemp, 45% organic cotton, handcrafted in USA
+      name: Good Dog Company Hemp Canvas Leash
+      price: $27.99
+      rating: ⭐⭐⭐⭐⭐
+      route_slug: ditch-the-plastic-why-the-good-dog-company-hemp-canvas-leash-is-your-new-best-friend-and-your-dog-s
+    - badge: Best Durability
+      badge_color: gray
+      description: Reinforced stitching, nickel-plated swivel snap
+      name: Premium Hemp Leash
+      price: $24-32
+      rating: ⭐⭐⭐⭐
+      route_slug: hemp-dog-leash
+    - badge: Best Value
+      badge_color: gray
+      description: Eco-friendly materials, machine washable
+      name: Sustainable Dog Leash
+      price: $18-25
+      rating: ⭐⭐⭐⭐
+      route_slug: hemp-dog-leash
+    title: 🦮 Best Eco-Friendly Dog Leashes
 images:
   hero_images:
     aspect_ratio: '16:9'
@@ -206,28 +232,34 @@ images:
     enabled: true
     style: lifestyle
 offers:
-- affiliate_id: YOUR-AMAZON-ASSOCIATES-TAG
+- affiliate_id: test0b252-20
   affiliate_param: tag
   base_url: https://www.amazon.com/dp/B004A7X27M
   name: AmazonEcoFriendlyDogToys
   utm_campaign: launch
   utm_source: site
-- affiliate_id: YOUR-AMAZON-ASSOCIATES-TAG
+- affiliate_id: test0b252-20
   affiliate_param: tag
   base_url: https://www.amazon.com/dp/B07MYPFMZP
   name: AmazonBiodegradablePoopBags
   utm_campaign: launch
   utm_source: site
-- affiliate_id: YOUR-AMAZON-ASSOCIATES-TAG
+- affiliate_id: test0b252-20
   affiliate_param: tag
   base_url: https://www.amazon.com/dp/B00TQ47CPW
   name: AmazonEcoFriendlyDogBeds
   utm_campaign: launch
   utm_source: site
-- affiliate_id: YOUR-AMAZON-ASSOCIATES-TAG
+- affiliate_id: test0b252-20
   affiliate_param: tag
   base_url: https://www.amazon.com/dp/B093CLBJDW
   name: AmazonOrganicDogTreats
+  utm_campaign: launch
+  utm_source: site
+- affiliate_id: test0b252-20
+  affiliate_param: tag
+  base_url: https://www.amazon.com/dp/B00C9L67XW
+  name: AmazonHempDogLeash
   utm_campaign: launch
   utm_source: site
 seo:

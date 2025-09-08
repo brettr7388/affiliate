@@ -102,7 +102,10 @@ HTML_TEMPLATE = Template("""<!doctype html>
         {% elif 'treat' in title.lower() or 'organic' in title.lower() or 'banana' in title.lower() or 'coconut' in title.lower() or 'snack' in title.lower() %}
           {% set inline_cta = '<strong><a href="' + offer_url + '" style="color: #28a745; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #28a745;">🍌 these organic dog treats</a></strong>' %}
           {% set inline_cta_2 = '<strong><a href="' + offer_url + '" style="color: #ff6b35; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #fff3e0, #ffe0b2); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #ff6b35;">🥥 grab these healthy treats now</a></strong>' %}
-        {% elif 'dog toy' in title.lower() or 'toy' in title.lower() or 'bowl' in title.lower() or 'leash' in title.lower() or 'kit' in title.lower() or 'essential' in title.lower() %}
+        {% elif 'leash' in title.lower() or 'hemp' in title.lower() or 'canvas' in title.lower() or 'collar' in title.lower() or 'harness' in title.lower() %}
+          {% set inline_cta = '<strong><a href="' + offer_url + '" style="color: #28a745; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #28a745;">🦮 this premium hemp dog leash</a></strong>' %}
+          {% set inline_cta_2 = '<strong><a href="' + offer_url + '" style="color: #ff6b35; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #fff3e0, #ffe0b2); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #ff6b35;">🌿 get this eco-friendly leash now</a></strong>' %}
+        {% elif 'dog toy' in title.lower() or 'toy' in title.lower() or 'bowl' in title.lower() or 'kit' in title.lower() or 'essential' in title.lower() %}
           {% set inline_cta = '<strong><a href="' + offer_url + '" style="color: #28a745; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #28a745;">🐕 these eco-friendly dog products</a></strong>' %}
           {% set inline_cta_2 = '<strong><a href="' + offer_url + '" style="color: #ff6b35; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #fff3e0, #ffe0b2); padding: 3px 8px; border-radius: 4px; border-bottom: 2px solid #ff6b35;">🛒 shop eco dog products now</a></strong>' %}
         {% elif 'dog bed' in title.lower() or 'bed' in title.lower() or 'sleep' in title.lower() %}
@@ -283,7 +286,13 @@ def generate_post(
                 if 'treat' in offer.get('name', '').lower() or 'B093CLBJDW' in offer.get('base_url', ''):
                     return offer
         
-        elif any(keyword in title_lower for keyword in ['toy', 'play', 'kong', 'west paw', 'bowl', 'leash', 'kit', 'essential']):
+        elif any(keyword in title_lower for keyword in ['leash', 'hemp', 'canvas', 'collar', 'harness']):
+            # Look for dog leash offer
+            for offer in offers:
+                if 'leash' in offer.get('name', '').lower() or 'B00C9L67XW' in offer.get('base_url', ''):
+                    return offer
+        
+        elif any(keyword in title_lower for keyword in ['toy', 'play', 'kong', 'west paw', 'bowl', 'kit', 'essential']):
             # Look for dog toys offer (default for accessories)
             for offer in offers:
                 if 'toy' in offer.get('name', '').lower() or 'B004A7X27M' in offer.get('base_url', ''):
@@ -343,7 +352,13 @@ def generate_post(
                 'description': 'Healthy, natural treats your dog will absolutely love!',
                 'button_text': 'BUY ORGANIC TREATS NOW'
             }
-        elif any(keyword in title_lower for keyword in ['dog toy', 'toy', 'bowl', 'leash', 'kit', 'essential']):
+        elif any(keyword in title_lower for keyword in ['leash', 'hemp', 'canvas', 'collar', 'harness']):
+            return {
+                'cta_title': 'THIS PREMIUM HEMP DOG LEASH',
+                'description': 'Durable, eco-friendly leash made from sustainable hemp!',
+                'button_text': 'GET THE HEMP LEASH NOW'
+            }
+        elif any(keyword in title_lower for keyword in ['dog toy', 'toy', 'bowl', 'kit', 'essential']):
             return {
                 'cta_title': 'THESE ECO DOG PRODUCTS',
                 'description': 'Safe, durable & planet-friendly products your dog will love!',

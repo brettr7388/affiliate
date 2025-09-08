@@ -231,5 +231,29 @@
       "minimal"
     ],
     "total_images": 5
+  },
+  "20250908_124029": {
+    "id": "20250908_124029",
+    "product": "WAG Expedition Organic Banana & Coconut Treats",
+    "style": "vibrant",
+    "created_at": "2025-09-08T12:40:30.062204",
+    "images": [
+      {
+        "filename": "20250908_124029_1_product_hero_shot.png",
+        "title": "Product Hero Shot",
+        "prompt": "premium eco-friendly pet product, clean white background, professional studio lighting, high-end commercial photography, bright colors, vibrant, eye-catching",
+        "url": "/images/library/20250908_124029_1_product_hero_shot.png",
+        "size": 393024,
+        "index": 1
+      }
+    ],
+    "tags": [
+      "colorful",
+      "wag expedition organic banana & coconut treats",
+      "vibrant",
+      "eye-catching",
+      "bright"
+    ],
+    "total_images": 1
   }
 }
