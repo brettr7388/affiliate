@@ -149,23 +149,23 @@ content:
       description: 4" solid orthopedic memory foam with waterproof liner
       name: PetFusion Ultimate Dog Bed
       price: $89-149
-      rating: "\u2B50\u2B50\u2B50\u2B50\u2B50"
+      rating: ⭐⭐⭐⭐⭐
       route_slug: recycled-dog-bed
     - badge: Most Sustainable
       badge_color: eco-green
       description: Made from recycled materials, CertiPUR-US certified
       name: Eco-Friendly Memory Foam Bed
       price: $65-95
-      rating: "\u2B50\u2B50\u2B50\u2B50"
+      rating: ⭐⭐⭐⭐
       route_slug: recycled-dog-bed
     - badge: Best Value
       badge_color: gray
       description: Orthopedic support with removable washable cover
       name: Sustainable Pet Bed
       price: $45-75
-      rating: "\u2B50\u2B50\u2B50\u2B50"
+      rating: ⭐⭐⭐⭐
       route_slug: recycled-dog-bed
-    title: "\U0001F6CF\uFE0F Best Eco-Friendly Dog Beds"
+    title: 🛏️ Best Eco-Friendly Dog Beds
   - category: dog-treats
     description: Compare the best organic and natural dog treats
     display_type: cards
@@ -175,23 +175,23 @@ content:
       description: Organic banana & coconut, grain-free and healthy
       name: WAG Expedition Organic Treats
       price: $8-12
-      rating: "\u2B50\u2B50\u2B50\u2B50\u2B50"
+      rating: ⭐⭐⭐⭐⭐
       route_slug: spoil-your-furry-friend-sustainably-a-how-to-guide-to-wag-expedition-organic-banana-coconut-treats
     - badge: Best Value
       badge_color: gray
       description: Natural ingredients, no artificial preservatives
       name: Organic Training Treats
       price: $6-10
-      rating: "\u2B50\u2B50\u2B50\u2B50"
+      rating: ⭐⭐⭐⭐
       route_slug: spoil-your-furry-friend-sustainably-a-how-to-guide-to-wag-expedition-organic-banana-coconut-treats
     - badge: Premium Choice
       badge_color: gray
       description: Single-ingredient, freeze-dried organic treats
       name: Pure Organic Snacks
       price: $10-15
-      rating: "\u2B50\u2B50\u2B50\u2B50\u2B50"
+      rating: ⭐⭐⭐⭐⭐
       route_slug: spoil-your-furry-friend-sustainably-a-how-to-guide-to-wag-expedition-organic-banana-coconut-treats
-    title: "\U0001F34C Best Organic Dog Treats"
+    title: 🍌 Best Organic Dog Treats
   - category: dog-leashes
     description: Compare the best eco-friendly and durable dog leashes
     display_type: cards
@@ -201,23 +201,23 @@ content:
       description: 55% hemp, 45% organic cotton, handcrafted in USA
       name: Good Dog Company Hemp Canvas Leash
       price: $27.99
-      rating: "\u2B50\u2B50\u2B50\u2B50\u2B50"
+      rating: ⭐⭐⭐⭐⭐
       route_slug: ditch-the-plastic-why-the-good-dog-company-hemp-canvas-leash-is-your-new-best-friend-and-your-dog-s
     - badge: Best Durability
       badge_color: gray
       description: Reinforced stitching, nickel-plated swivel snap
       name: Premium Hemp Leash
       price: $24-32
-      rating: "\u2B50\u2B50\u2B50\u2B50"
+      rating: ⭐⭐⭐⭐
       route_slug: hemp-dog-leash
     - badge: Best Value
       badge_color: gray
       description: Eco-friendly materials, machine washable
       name: Sustainable Dog Leash
       price: $18-25
-      rating: "\u2B50\u2B50\u2B50\u2B50"
+      rating: ⭐⭐⭐⭐
       route_slug: hemp-dog-leash
-    title: "\U0001F9AE Best Eco-Friendly Dog Leashes"
+    title: 🦮 Best Eco-Friendly Dog Leashes
 images:
   hero_images:
     aspect_ratio: '16:9'
@@ -260,12 +260,6 @@ offers:
   affiliate_param: tag
   base_url: https://www.amazon.com/dp/B00C9L67XW
   name: AmazonHempDogLeash
-  utm_campaign: launch
-  utm_source: site
-- affiliate_id: test0b252-20
-  affiliate_param: tag
-  base_url: https://www.amazon.com/dp/B08C342VQ6
-  name: AmazonBambooEcoDogBowl
   utm_campaign: launch
   utm_source: site
 seo:

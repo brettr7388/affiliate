@@ -48,5 +48,5 @@ Choosing the right pet bed is a crucial decision for any first-time pet owner.  
 
 ---
 
-**Try this:** [AmazonEcoFriendlyDogBeds](https://www.amazon.com/dp/B00TQ47CPW?tag=YOUR-AMAZON-ASSOCIATES-TAG&utm_source=site&utm_campaign=content)
+**Try this:** [AmazonEcoFriendlyDogBeds](https://www.amazon.com/dp/B00TQ47CPW?tag=YOUR-AMAZON-ASSOCIATES-TAG&utm_source=site&utm_campaign=content
 *We might earn a commission at no cost to you.*

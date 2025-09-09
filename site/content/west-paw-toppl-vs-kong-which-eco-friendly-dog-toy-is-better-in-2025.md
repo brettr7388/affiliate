@@ -21,9 +21,9 @@ The West Paw Toppl is made from Zogoflex, a recyclable, non-toxic material that'
 
 For eco-conscious pet parents, we recommend the **West Paw Toppl** for its superior environmental credentials and innovative design.
 
-[Try the West Paw Toppl today!](http://127.0.0.1:8088/r/toppl-a?utm_source=site&utm_medium=cta&utm_campaign=content)
+[Try the West Paw Toppl today!](http://127.0.0.1:8088/r/toppl-a?utm_source=site&utm_medium=cta&utm_campaign=content
 
 ---
 
-**Try this:** [WestPawTopplToy](https://amazon.com/dp/B0DWBQXQ46?tag=test0b252-20)
+**Try this:** [WestPawTopplToy](https://amazon.com/dp/B0DWBQXQ46?tag=test0b252-20
 *We might earn a commission at no cost to you.*

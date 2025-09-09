@@ -53,5 +53,5 @@ Choosing a pet bed isn't just about comfort; it's about making a conscious decis
 
 ---
 
-**Try this:** [AmazonEcoFriendlyDogBeds](https://www.amazon.com/dp/B00TQ47CPW?tag=YOUR-AMAZON-ASSOCIATES-TAG&utm_source=site&utm_campaign=content)
+**Try this:** [AmazonEcoFriendlyDogBeds](https://www.amazon.com/dp/B00TQ47CPW?tag=YOUR-AMAZON-ASSOCIATES-TAG&utm_source=site&utm_campaign=content
 *We might earn a commission at no cost to you.*

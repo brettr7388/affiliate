@@ -771,3 +771,155 @@ window.onload = function() {
     loadLibraryStats();
     searchLibrary(); // Load recent images
 }; 
+// Article Management Functions
+let currentArticleSlug = null;
+
+
+async function loadAllArticles() {
+    const sort = document.getElementById('articleSort').value;
+    const limit = document.getElementById('articleLimit').value;
+    const container = document.getElementById('allArticles');
+    
+    try {
+        container.innerHTML = '<div class="status info">Loading all articles...</div>';
+        
+        const response = await fetch(`${base}/admin/articles?sort=${sort}&limit=${limit}`, {
+            headers: getHeaders()
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        const articles = data.articles || [];
+        const total = data.total || 0;
+        
+        if (articles.length === 0) {
+            container.innerHTML = `<div class="status info">No articles found</div>`;
+            return;
+        }
+        
+        let html = `<h4>📚 All Articles (${total} total, showing ${articles.length})</h4>`;
+        articles.forEach(article => {
+            const publishedDate = new Date(article.publishedAt).toLocaleDateString();
+            const fileSize = (article.file_size / 1024).toFixed(1);
+            const htmlStatus = article.has_html ? '✅' : '❌';
+            
+            html += `
+                <div style="border: 1px solid #ddd; padding: 10px; margin: 5px 0; background: white; border-radius: 4px;">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div style="flex: 1;">
+                            <strong>${article.title}</strong><br>
+                            <small style="color: #666;">
+                                �� Published: ${publishedDate} | 
+                                📁 Size: ${fileSize} KB | 
+                                ⏱️ ${article.estimatedReadMin} min read |
+                                🌐 HTML: ${htmlStatus} |
+                                🏷️ Tags: ${article.tags.join(', ')}
+                            </small><br>
+                            <small style="color: #888;">${article.excerpt}</small>
+                        </div>
+                        <div>
+                            <button onclick="viewArticle('${article.slug}')" style="background: #007bff; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; margin-right: 5px;">👁️ View</button>
+                            <button onclick="deleteArticle('${article.slug}', '${article.title}')" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">🗑️ Delete</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        
+        container.innerHTML = html;
+        
+    } catch (error) {
+        container.innerHTML = `<div class="status error">Error loading articles: ${error.message}</div>`;
+    }
+}
+
+async function viewArticle(slug) {
+    try {
+        const response = await fetch(`${base}/admin/articles/${slug}`, {
+            headers: getHeaders()
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        currentArticleSlug = slug;
+        
+        // Show modal
+        document.getElementById('modalTitle').textContent = `Article: ${slug}`;
+        
+        let content = `<h4>📝 Markdown Content</h4>`;
+        if (data.markdown_content) {
+            content += `<pre style="background: #f8f9fa; padding: 15px; border-radius: 4px; overflow-x: auto; max-height: 300px; white-space: pre-wrap;">${escapeHtml(data.markdown_content)}</pre>`;
+        } else {
+            content += `<div class="status info">No markdown content found</div>`;
+        }
+        
+        content += `<h4>🌐 HTML Content</h4>`;
+        if (data.html_content) {
+            content += `<div style="background: #f8f9fa; padding: 15px; border-radius: 4px; max-height: 300px; overflow-y: auto; border: 1px solid #ddd;">${data.html_content}</div>`;
+        } else {
+            content += `<div class="status info">No HTML content found</div>`;
+        }
+        
+        document.getElementById('modalContent').innerHTML = content;
+        document.getElementById('articleModal').style.display = 'block';
+        
+    } catch (error) {
+        showStatus('allArticles', `Error loading article: ${error.message}`, 'error');
+    }
+}
+
+async function deleteArticle(slug, title) {
+    if (!confirm(`Are you sure you want to delete the article "${title}"?\n\nThis will permanently delete both the .md and .html files.`)) {
+        return;
+    }
+    
+    try {
+        const response = await fetch(`${base}/admin/articles/${slug}`, {
+            method: 'DELETE',
+            headers: getHeaders()
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        showStatus('allArticles', `✅ ${data.message}`, 'success');
+        
+        // Refresh the article lists
+        loadAllArticles();
+        loadRecentArticles();
+        
+        // Close modal if it's open for this article
+        if (currentArticleSlug === slug) {
+            closeArticleModal();
+        }
+        
+    } catch (error) {
+        showStatus('allArticles', `Error deleting article: ${error.message}`, 'error');
+    }
+}
+
+function deleteCurrentArticle() {
+    if (currentArticleSlug) {
+        deleteArticle(currentArticleSlug, currentArticleSlug);
+    }
+}
+
+function closeArticleModal() {
+    document.getElementById('articleModal').style.display = 'none';
+    currentArticleSlug = null;
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+

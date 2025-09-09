@@ -60,5 +60,5 @@ The Beco Pets Bamboo Dog Bowl is more than just a feeding dish; it's a statement
 
 ---
 
-**Try this:** [AmazonEcoFriendlyDogToys](https://www.amazon.com/dp/B004A7X27M?tag=YOUR-AMAZON-ASSOCIATES-TAG&utm_source=site&utm_campaign=content)
+**Try this:** [BecoPetsBambooDogBowl](https://www.amazon.com/dp/B08C342VQ6?tag=YOUR-AMAZON-ASSOCIATES-TAG&utm_source=site&utm_campaign=content
 *We might earn a commission at no cost to you.*

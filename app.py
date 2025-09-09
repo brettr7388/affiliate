@@ -8,6 +8,7 @@ import random
 import hashlib
 from urllib.parse import urlencode, urlparse, urlunparse, parse_qsl
 from typing import List, Optional
+from pathlib import Path
 
 from fastapi import FastAPI, Request, HTTPException, Query
 from fastapi.responses import RedirectResponse, JSONResponse, HTMLResponse, Response
@@ -1178,3 +1179,135 @@ def delete_library_generation(request: Request, generation_id: str):
             return {"ok": False, "detail": "Generation not found"}
     except Exception as e:
         return {"ok": False, "detail": str(e)}
+
+# Article Management Endpoints
+@app.get("/admin/articles")
+def get_all_articles_admin(request: Request, limit: int = 50, offset: int = 0, sort: str = "newest"):
+    """Get all articles for admin management"""
+    require_admin(request)
+    
+    try:
+        content_dir = "site/content"
+        articles = []
+        
+        if os.path.exists(content_dir):
+            # Get all markdown files
+            for md_file in glob.glob(os.path.join(content_dir, "*.md")):
+                article = parse_markdown_file(md_file)
+                if article:
+                    # Get file stats
+                    file_path = Path(md_file)
+                    stat = file_path.stat()
+                    
+                    # Check if HTML version exists
+                    html_file = md_file.replace('.md', '.html')
+                    has_html = os.path.exists(html_file)
+                    
+                    # Get file size
+                    file_size = stat.st_size
+                    
+                    articles.append({
+                        "slug": article.slug,
+                        "title": article.title,
+                        "excerpt": article.excerpt,
+                        "tags": article.tags,
+                        "publishedAt": article.publishedAt,
+                        "estimatedReadMin": article.estimatedReadMin,
+                        "file_size": file_size,
+                        "has_html": has_html,
+                        "created_at": dt.datetime.fromtimestamp(stat.st_ctime).isoformat(),
+                        "modified_at": dt.datetime.fromtimestamp(stat.st_mtime).isoformat()
+                    })
+        
+        # Sort articles
+        if sort == "newest":
+            articles.sort(key=lambda x: x["publishedAt"], reverse=True)
+        elif sort == "oldest":
+            articles.sort(key=lambda x: x["publishedAt"])
+        elif sort == "title":
+            articles.sort(key=lambda x: x["title"].lower())
+        elif sort == "size":
+            articles.sort(key=lambda x: x["file_size"], reverse=True)
+        
+        # Apply pagination
+        total = len(articles)
+        paginated_articles = articles[offset:offset + limit]
+        
+        return {
+            "articles": paginated_articles,
+            "total": total,
+            "offset": offset,
+            "limit": limit
+        }
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/admin/articles/{slug}")
+def get_article_content(request: Request, slug: str):
+    """Get full content of a specific article"""
+    require_admin(request)
+    
+    try:
+        md_file = f"site/content/{slug}.md"
+        html_file = f"site/content/{slug}.html"
+        
+        result = {"slug": slug}
+        
+        # Read markdown content
+        if os.path.exists(md_file):
+            with open(md_file, 'r', encoding='utf-8') as f:
+                result["markdown_content"] = f.read()
+        
+        # Read HTML content
+        if os.path.exists(html_file):
+            with open(html_file, 'r', encoding='utf-8') as f:
+                result["html_content"] = f.read()
+        
+        if not result.get("markdown_content") and not result.get("html_content"):
+            raise HTTPException(status_code=404, detail="Article not found")
+        
+        return result
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.delete("/admin/articles/{slug}")
+def delete_article(request: Request, slug: str):
+    """Delete an article (both .md and .html files)"""
+    require_admin(request)
+    
+    try:
+        deleted_files = []
+        
+        # Delete markdown file
+        md_file = f"site/content/{slug}.md"
+        if os.path.exists(md_file):
+            os.remove(md_file)
+            deleted_files.append(f"{slug}.md")
+        
+        # Delete HTML file
+        html_file = f"site/content/{slug}.html"
+        if os.path.exists(html_file):
+            os.remove(html_file)
+            deleted_files.append(f"{slug}.html")
+        
+        if not deleted_files:
+            raise HTTPException(status_code=404, detail="Article not found")
+        
+        # Update the website index after deletion
+        try:
+            import subprocess
+            subprocess.run(["python3", "update_index.py"], check=True, capture_output=True)
+        except Exception as e:
+            print(f"Warning: Could not update index.html after deletion: {e}")
+        
+        return {
+            "ok": True, 
+            "message": f"Article '{slug}' deleted successfully",
+            "deleted_files": deleted_files
+        }
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+

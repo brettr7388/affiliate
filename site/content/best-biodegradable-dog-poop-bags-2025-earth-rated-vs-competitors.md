@@ -36,7 +36,7 @@ Earth-Rated has become a leader in eco-friendly pet products, and their biodegra
 
 For eco-conscious pet parents, **Earth-Rated Biodegradable Poop Bags** are the clear winner. While they cost a bit more upfront, the environmental benefits far outweigh the small price difference. Plus, the lavender scent helps with odor control, making cleanup more pleasant.
 
-[Try Earth-Rated Biodegradable Poop Bags today!](http://127.0.0.1:8088/r/earth-rated-270-a?utm_source=site&utm_medium=cta&utm_campaign=content)
+[Try Earth-Rated Biodegradable Poop Bags today!](http://127.0.0.1:8088/r/earth-rated-270-a?utm_source=site&utm_medium=cta&utm_campaign=content
 
 ## Tips for Using Biodegradable Poop Bags
 
@@ -49,9 +49,9 @@ For eco-conscious pet parents, **Earth-Rated Biodegradable Poop Bags** are the c
 
 Switching to biodegradable poop bags is one of the easiest ways to reduce your pet's environmental impact. Earth-Rated makes this transition simple with their high-quality, affordable options.
 
-[Get started with Earth-Rated today and make a difference!](http://127.0.0.1:8088/r/earth-rated-270-a?utm_source=site&utm_medium=cta&utm_campaign=content)
+[Get started with Earth-Rated today and make a difference!](http://127.0.0.1:8088/r/earth-rated-270-a?utm_source=site&utm_medium=cta&utm_campaign=content
 
 ---
 
-**Try this:** [AmazonEcoFriendlyDogToys](https://amazon.com/dp/B07MYPFMZP?tag=test0b252-20)
+**Try this:** [AmazonEcoFriendlyDogToys](https://amazon.com/dp/B07MYPFMZP?tag=test0b252-20
 *We might earn a commission at no cost to you.*

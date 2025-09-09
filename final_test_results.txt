@@ -1,0 +1,240 @@
+test_affiliate_disclosure_compliance (__main__.FinalAffiliateTestSuite)
+Test that all articles have proper affiliate disclosure ... test_dropdown_javascript_functionality (__main__.FinalAffiliateTestSuite)
+Test that dropdown JavaScript functionality is properly implemented ... ok
+test_every_affiliate_tag_is_consistent_per_article (__main__.FinalAffiliateTestSuite)
+Test that each article uses consistent affiliate tags ... ok
+test_every_article_has_correct_product_match (__main__.FinalAffiliateTestSuite)
+Test that every article promotes the correct product for its content ... ok
+test_every_article_has_proper_meta_tags (__main__.FinalAffiliateTestSuite)
+Test that every article has proper SEO meta tags ... test_every_comparison_article_has_multiple_products (__main__.FinalAffiliateTestSuite)
+Test that comparison articles promote multiple products ... test_every_cta_button_matches_promoted_product (__main__.FinalAffiliateTestSuite)
+Test that CTA buttons match the products being promoted ... ok
+test_every_dropdown_category_has_articles (__main__.FinalAffiliateTestSuite)
+Test that every dropdown category has corresponding articles ... ok
+test_every_product_asin_has_valid_amazon_link (__main__.FinalAffiliateTestSuite)
+Test that every ASIN corresponds to a valid Amazon link structure ... ok
+test_no_duplicate_content_across_articles (__main__.FinalAffiliateTestSuite)
+Test that articles don't have duplicate content ... ok
+test_product_price_consistency (__main__.FinalAffiliateTestSuite)
+Test that product information is consistent where mentioned ... ok
+
+======================================================================
+FAIL: test_affiliate_disclosure_compliance (__main__.FinalAffiliateTestSuite) (article='west-paw-toppl-vs-kong-which-eco-friendly-dog-toy-is-better-in-2025')
+Test that all articles have proper affiliate disclosure
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 391, in test_affiliate_disclosure_compliance
+    self.assertTrue(
+AssertionError: False is not true : Article west-paw-toppl-vs-kong-which-eco-friendly-dog-toy-is-better-in-2025 missing required affiliate disclosure
+
+======================================================================
+FAIL: test_affiliate_disclosure_compliance (__main__.FinalAffiliateTestSuite) (article='eco-friendly-dog-toys-that-are-good-for-your-pet-and-the-planet')
+Test that all articles have proper affiliate disclosure
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 391, in test_affiliate_disclosure_compliance
+    self.assertTrue(
+AssertionError: False is not true : Article eco-friendly-dog-toys-that-are-good-for-your-pet-and-the-planet missing required affiliate disclosure
+
+======================================================================
+FAIL: test_affiliate_disclosure_compliance (__main__.FinalAffiliateTestSuite) (article='west-paw-toppl-vs-kong-which-is-greener-in-2025')
+Test that all articles have proper affiliate disclosure
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 391, in test_affiliate_disclosure_compliance
+    self.assertTrue(
+AssertionError: False is not true : Article west-paw-toppl-vs-kong-which-is-greener-in-2025 missing required affiliate disclosure
+
+======================================================================
+FAIL: test_affiliate_disclosure_compliance (__main__.FinalAffiliateTestSuite) (article='best-biodegradable-dog-poop-bags-2025')
+Test that all articles have proper affiliate disclosure
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 391, in test_affiliate_disclosure_compliance
+    self.assertTrue(
+AssertionError: False is not true : Article best-biodegradable-dog-poop-bags-2025 missing required affiliate disclosure
+
+======================================================================
+FAIL: test_affiliate_disclosure_compliance (__main__.FinalAffiliateTestSuite) (article='spoil-your-pup-save-the-planet-the-joy-of-eco-friendly-dog-toys')
+Test that all articles have proper affiliate disclosure
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 391, in test_affiliate_disclosure_compliance
+    self.assertTrue(
+AssertionError: False is not true : Article spoil-your-pup-save-the-planet-the-joy-of-eco-friendly-dog-toys missing required affiliate disclosure
+
+======================================================================
+FAIL: test_affiliate_disclosure_compliance (__main__.FinalAffiliateTestSuite) (article='best-biodegradable-dog-poop-bags-2025-earth-rated-vs-competitors')
+Test that all articles have proper affiliate disclosure
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 391, in test_affiliate_disclosure_compliance
+    self.assertTrue(
+AssertionError: False is not true : Article best-biodegradable-dog-poop-bags-2025-earth-rated-vs-competitors missing required affiliate disclosure
+
+======================================================================
+FAIL: test_every_article_has_proper_meta_tags (__main__.FinalAffiliateTestSuite) (article='paw-some-playtime-the-best-eco-friendly-dog-toys-of-2025-for-first-time-owners')
+Test that every article has proper SEO meta tags
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 341, in test_every_article_has_proper_meta_tags
+    self.assertLessEqual(len(title_text), 60, f"Title too long in {slug}: {len(title_text)} chars")
+AssertionError: 95 not less than or equal to 60 : Title too long in paw-some-playtime-the-best-eco-friendly-dog-toys-of-2025-for-first-time-owners: 95 chars
+
+======================================================================
+FAIL: test_every_article_has_proper_meta_tags (__main__.FinalAffiliateTestSuite) (article='pawsitive-poop-your-guide-to-eco-friendly-dog-waste-disposal-with-planet-poop-home-compostable-bags')
+Test that every article has proper SEO meta tags
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 341, in test_every_article_has_proper_meta_tags
+    self.assertLessEqual(len(title_text), 60, f"Title too long in {slug}: {len(title_text)} chars")
+AssertionError: 116 not less than or equal to 60 : Title too long in pawsitive-poop-your-guide-to-eco-friendly-dog-waste-disposal-with-planet-poop-home-compostable-bags: 116 chars
+
+======================================================================
+FAIL: test_every_article_has_proper_meta_tags (__main__.FinalAffiliateTestSuite) (article='west-paw-toppl-vs-kong-which-eco-friendly-dog-toy-is-better-in-2025')
+Test that every article has proper SEO meta tags
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 341, in test_every_article_has_proper_meta_tags
+    self.assertLessEqual(len(title_text), 60, f"Title too long in {slug}: {len(title_text)} chars")
+AssertionError: 85 not less than or equal to 60 : Title too long in west-paw-toppl-vs-kong-which-eco-friendly-dog-toy-is-better-in-2025: 85 chars
+
+======================================================================
+FAIL: test_every_article_has_proper_meta_tags (__main__.FinalAffiliateTestSuite) (article='eco-friendly-dog-toys-that-are-good-for-your-pet-and-the-planet')
+Test that every article has proper SEO meta tags
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 341, in test_every_article_has_proper_meta_tags
+    self.assertLessEqual(len(title_text), 60, f"Title too long in {slug}: {len(title_text)} chars")
+AssertionError: 79 not less than or equal to 60 : Title too long in eco-friendly-dog-toys-that-are-good-for-your-pet-and-the-planet: 79 chars
+
+======================================================================
+FAIL: test_every_article_has_proper_meta_tags (__main__.FinalAffiliateTestSuite) (article='west-paw-toppl-vs-kong-which-is-greener-in-2025')
+Test that every article has proper SEO meta tags
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 341, in test_every_article_has_proper_meta_tags
+    self.assertLessEqual(len(title_text), 60, f"Title too long in {slug}: {len(title_text)} chars")
+AssertionError: 66 not less than or equal to 60 : Title too long in west-paw-toppl-vs-kong-which-is-greener-in-2025: 66 chars
+
+======================================================================
+FAIL: test_every_article_has_proper_meta_tags (__main__.FinalAffiliateTestSuite) (article='snuggle-up-sustainably-introducing-the-petfusion-ultimate-dog-bed-lounge-a-first-timer-s-guide-to-eco-friendly-comfort')
+Test that every article has proper SEO meta tags
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 341, in test_every_article_has_proper_meta_tags
+    self.assertLessEqual(len(title_text), 60, f"Title too long in {slug}: {len(title_text)} chars")
+AssertionError: 139 not less than or equal to 60 : Title too long in snuggle-up-sustainably-introducing-the-petfusion-ultimate-dog-bed-lounge-a-first-timer-s-guide-to-eco-friendly-comfort: 139 chars
+
+======================================================================
+FAIL: test_every_article_has_proper_meta_tags (__main__.FinalAffiliateTestSuite) (article='pawsitive-playtime-the-best-eco-friendly-dog-toys-of-2025-for-your-furry-friend')
+Test that every article has proper SEO meta tags
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 341, in test_every_article_has_proper_meta_tags
+    self.assertLessEqual(len(title_text), 60, f"Title too long in {slug}: {len(title_text)} chars")
+AssertionError: 96 not less than or equal to 60 : Title too long in pawsitive-playtime-the-best-eco-friendly-dog-toys-of-2025-for-your-furry-friend: 96 chars
+
+======================================================================
+FAIL: test_every_article_has_proper_meta_tags (__main__.FinalAffiliateTestSuite) (article='pawsitive-impact-your-guide-to-planet-poop-home-compostable-dog-poop-bags')
+Test that every article has proper SEO meta tags
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 341, in test_every_article_has_proper_meta_tags
+    self.assertLessEqual(len(title_text), 60, f"Title too long in {slug}: {len(title_text)} chars")
+AssertionError: 91 not less than or equal to 60 : Title too long in pawsitive-impact-your-guide-to-planet-poop-home-compostable-dog-poop-bags: 91 chars
+
+======================================================================
+FAIL: test_every_article_has_proper_meta_tags (__main__.FinalAffiliateTestSuite) (article='nourish-your-pup-nurture-the-planet-a-guide-to-using-the-beco-pets-bamboo-dog-bowl')
+Test that every article has proper SEO meta tags
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 341, in test_every_article_has_proper_meta_tags
+    self.assertLessEqual(len(title_text), 60, f"Title too long in {slug}: {len(title_text)} chars")
+AssertionError: 100 not less than or equal to 60 : Title too long in nourish-your-pup-nurture-the-planet-a-guide-to-using-the-beco-pets-bamboo-dog-bowl: 100 chars
+
+======================================================================
+FAIL: test_every_article_has_proper_meta_tags (__main__.FinalAffiliateTestSuite) (article='the-sleepless-nights-are-over-finding-the-perfect-eco-friendly-bed-for-your-furry-friend')
+Test that every article has proper SEO meta tags
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 341, in test_every_article_has_proper_meta_tags
+    self.assertLessEqual(len(title_text), 60, f"Title too long in {slug}: {len(title_text)} chars")
+AssertionError: 105 not less than or equal to 60 : Title too long in the-sleepless-nights-are-over-finding-the-perfect-eco-friendly-bed-for-your-furry-friend: 105 chars
+
+======================================================================
+FAIL: test_every_article_has_proper_meta_tags (__main__.FinalAffiliateTestSuite) (article='ditch-the-plastic-why-the-good-dog-company-hemp-canvas-leash-is-your-new-best-friend-and-your-dog-s')
+Test that every article has proper SEO meta tags
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 341, in test_every_article_has_proper_meta_tags
+    self.assertLessEqual(len(title_text), 60, f"Title too long in {slug}: {len(title_text)} chars")
+AssertionError: 119 not less than or equal to 60 : Title too long in ditch-the-plastic-why-the-good-dog-company-hemp-canvas-leash-is-your-new-best-friend-and-your-dog-s: 119 chars
+
+======================================================================
+FAIL: test_every_article_has_proper_meta_tags (__main__.FinalAffiliateTestSuite) (article='spoil-your-pup-save-the-planet-the-joy-of-eco-friendly-dog-toys')
+Test that every article has proper SEO meta tags
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 341, in test_every_article_has_proper_meta_tags
+    self.assertLessEqual(len(title_text), 60, f"Title too long in {slug}: {len(title_text)} chars")
+AssertionError: 82 not less than or equal to 60 : Title too long in spoil-your-pup-save-the-planet-the-joy-of-eco-friendly-dog-toys: 82 chars
+
+======================================================================
+FAIL: test_every_article_has_proper_meta_tags (__main__.FinalAffiliateTestSuite) (article='spoil-your-furry-friend-sustainably-a-how-to-guide-to-wag-expedition-organic-banana-coconut-treats')
+Test that every article has proper SEO meta tags
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 341, in test_every_article_has_proper_meta_tags
+    self.assertLessEqual(len(title_text), 60, f"Title too long in {slug}: {len(title_text)} chars")
+AssertionError: 117 not less than or equal to 60 : Title too long in spoil-your-furry-friend-sustainably-a-how-to-guide-to-wag-expedition-organic-banana-coconut-treats: 117 chars
+
+======================================================================
+FAIL: test_every_article_has_proper_meta_tags (__main__.FinalAffiliateTestSuite) (article='low-waste-dog-starter-kit-9-sustainable-essentials')
+Test that every article has proper SEO meta tags
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 341, in test_every_article_has_proper_meta_tags
+    self.assertLessEqual(len(title_text), 60, f"Title too long in {slug}: {len(title_text)} chars")
+AssertionError: 67 not less than or equal to 60 : Title too long in low-waste-dog-starter-kit-9-sustainable-essentials: 67 chars
+
+======================================================================
+FAIL: test_every_article_has_proper_meta_tags (__main__.FinalAffiliateTestSuite) (article='pawsome-planet-the-best-eco-friendly-dog-toys-for-2025-and-beyond')
+Test that every article has proper SEO meta tags
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 341, in test_every_article_has_proper_meta_tags
+    self.assertLessEqual(len(title_text), 60, f"Title too long in {slug}: {len(title_text)} chars")
+AssertionError: 85 not less than or equal to 60 : Title too long in pawsome-planet-the-best-eco-friendly-dog-toys-for-2025-and-beyond: 85 chars
+
+======================================================================
+FAIL: test_every_article_has_proper_meta_tags (__main__.FinalAffiliateTestSuite) (article='best-biodegradable-dog-poop-bags-2025-earth-rated-vs-competitors')
+Test that every article has proper SEO meta tags
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 341, in test_every_article_has_proper_meta_tags
+    self.assertLessEqual(len(title_text), 60, f"Title too long in {slug}: {len(title_text)} chars")
+AssertionError: 81 not less than or equal to 60 : Title too long in best-biodegradable-dog-poop-bags-2025-earth-rated-vs-competitors: 81 chars
+
+======================================================================
+FAIL: test_every_comparison_article_has_multiple_products (__main__.FinalAffiliateTestSuite) (article='west-paw-toppl-vs-kong-which-is-greener-in-2025')
+Test that comparison articles promote multiple products
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 240, in test_every_comparison_article_has_multiple_products
+    self.assertGreaterEqual(
+AssertionError: 1 not greater than or equal to 2 : Comparison article west-paw-toppl-vs-kong-which-is-greener-in-2025 should have at least 2 products, found: 1
+
+======================================================================
+FAIL: test_every_comparison_article_has_multiple_products (__main__.FinalAffiliateTestSuite) (article='best-biodegradable-dog-poop-bags-2025-earth-rated-vs-competitors')
+Test that comparison articles promote multiple products
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/final_comprehensive_tests.py", line 240, in test_every_comparison_article_has_multiple_products
+    self.assertGreaterEqual(
+AssertionError: 1 not greater than or equal to 2 : Comparison article best-biodegradable-dog-poop-bags-2025-earth-rated-vs-competitors should have at least 2 products, found: 1
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.063s
+
+FAILED (failures=24)

@@ -53,5 +53,5 @@ As a first-time pet owner, navigating the world of pet supplies can be daunting.
 
 ---
 
-**Try this:** [AmazonEcoFriendlyDogToys](https://amazon.com/dp/B07MYPFMZP?tag=test0b252-20)
+**Try this:** [AmazonEcoFriendlyDogToys](https://amazon.com/dp/B07MYPFMZP?tag=test0b252-20
 *We might earn a commission at no cost to you.*

@@ -541,3 +541,68 @@
     <script src="/admin.js"></script>
 </body>
 </html> 
+        <!-- Article Management -->
+        <div class="section full-width">
+            <h2>📚 Article Management</h2>
+            <div class="grid">
+                <div>
+                    <h3>Recent Articles</h3>
+                    <div class="form-group">
+                        <label for="recentHours">Show articles from last:</label>
+                        <select id="recentHours">
+                            <option value="1">1 hour</option>
+                            <option value="6">6 hours</option>
+                            <option value="24" selected>24 hours</option>
+                            <option value="72">3 days</option>
+                            <option value="168">1 week</option>
+                        </select>
+                    </div>
+                    <button onclick="loadRecentArticles()">🕒 Load Recent Articles</button>
+                    <div id="recentArticles" style="margin-top: 1rem; max-height: 300px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; background: #f8f9fa;">
+                        Click "Load Recent Articles" to see new content...
+                    </div>
+                </div>
+                <div>
+                    <h3>All Articles</h3>
+                    <div class="form-group">
+                        <label for="articleSort">Sort by:</label>
+                        <select id="articleSort">
+                            <option value="newest" selected>Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="title">Title A-Z</option>
+                            <option value="size">File Size</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="articleLimit">Show:</label>
+                        <select id="articleLimit">
+                            <option value="10">10 articles</option>
+                            <option value="25" selected>25 articles</option>
+                            <option value="50">50 articles</option>
+                            <option value="100">100 articles</option>
+                        </select>
+                    </div>
+                    <button onclick="loadAllArticles()">�� Load All Articles</button>
+                    <div id="allArticles" style="margin-top: 1rem; max-height: 400px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; background: #f8f9fa;">
+                        Click "Load All Articles" to see all content...
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Article Details Modal -->
+            <div id="articleModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 2rem; border-radius: 8px; max-width: 90%; max-height: 90%; overflow-y: auto; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid #ddd; padding-bottom: 1rem;">
+                        <h3 id="modalTitle">Article Details</h3>
+                        <button onclick="closeArticleModal()" style="background: #dc3545; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;">✕ Close</button>
+                    </div>
+                    <div id="modalContent">
+                        <!-- Article content will be loaded here -->
+                    </div>
+                    <div style="margin-top: 1rem; text-align: right;">
+                        <button id="deleteArticleBtn" onclick="deleteCurrentArticle()" style="background: #dc3545; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; margin-right: 1rem;">🗑️ Delete Article</button>
+                        <button onclick="closeArticleModal()" style="background: #6c757d; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>

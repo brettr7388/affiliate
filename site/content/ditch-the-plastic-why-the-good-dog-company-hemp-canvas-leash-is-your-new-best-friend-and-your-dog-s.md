@@ -43,5 +43,5 @@ The Good Dog Company Hemp Canvas Basic Leash isn't just a leash; it's a statemen
 
 ---
 
-**Try this:** [AmazonHempDogLeash](https://www.amazon.com/dp/B00C9L67XW?tag=test0b252-20&utm_source=site&utm_campaign=content)
+**Try this:** [AmazonHempDogLeash](https://www.amazon.com/dp/B00C9L67XW?tag=test0b252-20&utm_source=site&utm_campaign=content
 *We might earn a commission at no cost to you.*

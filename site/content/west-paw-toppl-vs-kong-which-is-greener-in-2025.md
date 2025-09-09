@@ -6,5 +6,5 @@ Materials (Zogoflex vs natural rubber), enrichment value, cleaning/dishwasher, d
 
 ---
 
-**Try this:** [WestPawTopplToy](https://amazon.com/dp/B0DWBQXQ46?tag=test0b252-20)  
+**Try this:** [WestPawTopplToy](https://amazon.com/dp/B0DWBQXQ46?tag=test0b252-20  
 *We might earn a commission at no cost to you.*

@@ -6,5 +6,5 @@ How to spot real compostable/biodegradable bags, ASTM standards, thickness & lea
 
 ---
 
-**Try this:** [AmazonEcoFriendlyDogToys](https://amazon.com/dp/B07MYPFMZP?tag=test0b252-20)  
+**Try this:** [AmazonEcoFriendlyDogToys](https://amazon.com/dp/B07MYPFMZP?tag=test0b252-20  
 *We might earn a commission at no cost to you.*

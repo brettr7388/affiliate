@@ -6,5 +6,5 @@ Must-haves (brush, shampoo bar, stainless bowls, natural rubber toys, compostabl
 
 ---
 
-**Try this:** [AmazonBiodegradablePoopBags](https://www.amazon.com/dp/B07MYPFMZP?tag=YOUR-AMAZON-ASSOCIATES-TAG&utm_source=site&utm_campaign=content)
+**Try this:** [AmazonBiodegradablePoopBags](https://www.amazon.com/dp/B07MYPFMZP?tag=YOUR-AMAZON-ASSOCIATES-TAG&utm_source=site&utm_campaign=content
 *We might earn a commission at no cost to you.*

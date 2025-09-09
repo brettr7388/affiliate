@@ -292,13 +292,7 @@ def generate_post(
                 if 'leash' in offer.get('name', '').lower() or 'B00C9L67XW' in offer.get('base_url', ''):
                     return offer
         
-        elif any(keyword in title_lower for keyword in ['bowl', 'bamboo', 'feeding', 'beco']):
-            # Look for dog bowl offer
-            for offer in offers:
-                if 'bowl' in offer.get('name', '').lower() or 'B08C342VQ6' in offer.get('base_url', ''):
-                    return offer
-        
-        elif any(keyword in title_lower for keyword in ['toy', 'play', 'kong', 'west paw', 'kit', 'essential']):
+        elif any(keyword in title_lower for keyword in ['toy', 'play', 'kong', 'west paw', 'bowl', 'kit', 'essential']):
             # Look for dog toys offer (default for accessories)
             for offer in offers:
                 if 'toy' in offer.get('name', '').lower() or 'B004A7X27M' in offer.get('base_url', ''):
