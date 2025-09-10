@@ -122,6 +122,15 @@ def init_db() -> None:
 
 init_db()
 
+# Run startup fixes for production database
+try:
+    from startup_fixes import run_startup_fixes
+    run_startup_fixes()
+except ImportError:
+    print("Startup fixes module not found, skipping...")
+except Exception as e:
+    print(f"Startup fixes error: {e}")
+
 class Article(BaseModel):
     slug: str
     title: str
