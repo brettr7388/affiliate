@@ -523,24 +523,11 @@ function loadMoreArticles() {
 }
 
 /**
- * Load footer stats
+ * Load footer stats - REMOVED per user request
  */
 async function loadFooterStats() {
-    try {
-        const response = await fetch('/api/stats/summary');
-        const stats = await response.json();
-        
-        const container = document.getElementById('footer-stats');
-        if (container) {
-            container.innerHTML = `
-                <div>This week: <span class="text-eco-green-400 font-semibold">${stats.today_clicks || 0}</span></div>
-                <div>Total clicks: <span class="text-eco-green-400 font-semibold">${stats.total_clicks || 0}</span></div>
-                <div>Active reviews: <span class="text-eco-green-400 font-semibold">${stats.active_routes || 0}</span></div>
-            `;
-        }
-    } catch (error) {
-        console.error('Failed to load footer stats:', error);
-    }
+    // Stats removed from footer per user request
+    return;
 }
 
 /**

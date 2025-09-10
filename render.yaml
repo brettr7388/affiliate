@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: eco-pet-guide
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: ADMIN_TOKEN
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+    healthCheckPath: /
+    autoDeploy: true
+    
+  - type: pserv
+    name: eco-pet-guide-db
+    env: postgresql
+    plan: free
+    databaseName: affiliate
+    databaseUser: affiliate_user 

@@ -1,0 +1,286 @@
+test_affiliate_tag_consistency (__main__.AffiliateContentTestSuite)
+Test that affiliate tags are consistent within each article ... test_all_articles_have_affiliate_disclosure (__main__.AffiliateContentTestSuite)
+Test that all articles have proper affiliate disclosure ... ok
+test_all_articles_have_valid_structure (__main__.AffiliateContentTestSuite)
+Test that all articles have valid HTML/MD structure ... ok
+test_amazon_affiliate_links_structure (__main__.AffiliateContentTestSuite)
+Test that all Amazon affiliate links have correct structure ... test_article_category_consistency (__main__.AffiliateContentTestSuite)
+Test that articles are consistently categorized ... ok
+test_article_meta_tags (__main__.AffiliateContentTestSuite)
+Test that HTML articles have proper meta tags ... ok
+test_cta_button_text_matches_product (__main__.AffiliateContentTestSuite)
+Test that CTA button text matches the promoted product ... ok
+test_dropdown_functionality_in_homepage (__main__.AffiliateContentTestSuite)
+Test dropdown selections in homepage JavaScript ... ok
+test_inline_cta_links_match_product (__main__.AffiliateContentTestSuite)
+Test that inline CTA links match the product being promoted ... ok
+test_no_broken_internal_links (__main__.AffiliateContentTestSuite)
+Test that internal links are not broken ... ok
+test_product_comparison_structure (__main__.AffiliateContentTestSuite)
+Test product comparison tables and cards structure ... ok
+test_product_cta_title_matches_content (__main__.AffiliateContentTestSuite)
+Test that product CTA titles match the actual content ... ok
+test_product_title_matching (__main__.AffiliateContentTestSuite)
+Test that product links match article titles and content ... ok
+test_utm_parameters_consistency (__main__.AffiliateContentTestSuite)
+Test that UTM parameters are consistently applied ... 
+======================================================================
+FAIL: test_affiliate_tag_consistency (__main__.AffiliateContentTestSuite) (article='west-paw-toppl-vs-kong-which-eco-friendly-dog-toy-is-better-in-2025')
+Test that affiliate tags are consistent within each article
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 405, in test_affiliate_tag_consistency
+    self.assertIn(tag, self.valid_affiliate_tags,
+AssertionError: 'test0b252-20)' not found in ['test0b252-20', 'YOUR-AMAZON-ASSOCIATES-TAG'] : Invalid affiliate tag in west-paw-toppl-vs-kong-which-eco-friendly-dog-toy-is-better-in-2025: test0b252-20)
+
+======================================================================
+FAIL: test_affiliate_tag_consistency (__main__.AffiliateContentTestSuite) (article='eco-friendly-dog-toys-that-are-good-for-your-pet-and-the-planet')
+Test that affiliate tags are consistent within each article
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 405, in test_affiliate_tag_consistency
+    self.assertIn(tag, self.valid_affiliate_tags,
+AssertionError: 'test0b252-20)' not found in ['test0b252-20', 'YOUR-AMAZON-ASSOCIATES-TAG'] : Invalid affiliate tag in eco-friendly-dog-toys-that-are-good-for-your-pet-and-the-planet: test0b252-20)
+
+======================================================================
+FAIL: test_affiliate_tag_consistency (__main__.AffiliateContentTestSuite) (article='west-paw-toppl-vs-kong-which-is-greener-in-2025')
+Test that affiliate tags are consistent within each article
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 405, in test_affiliate_tag_consistency
+    self.assertIn(tag, self.valid_affiliate_tags,
+AssertionError: 'test0b252-20)' not found in ['test0b252-20', 'YOUR-AMAZON-ASSOCIATES-TAG'] : Invalid affiliate tag in west-paw-toppl-vs-kong-which-is-greener-in-2025: test0b252-20)
+
+======================================================================
+FAIL: test_affiliate_tag_consistency (__main__.AffiliateContentTestSuite) (article='pawsitive-impact-your-guide-to-planet-poop-home-compostable-dog-poop-bags')
+Test that affiliate tags are consistent within each article
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 405, in test_affiliate_tag_consistency
+    self.assertIn(tag, self.valid_affiliate_tags,
+AssertionError: 'test0b252-20)' not found in ['test0b252-20', 'YOUR-AMAZON-ASSOCIATES-TAG'] : Invalid affiliate tag in pawsitive-impact-your-guide-to-planet-poop-home-compostable-dog-poop-bags: test0b252-20)
+
+======================================================================
+FAIL: test_affiliate_tag_consistency (__main__.AffiliateContentTestSuite) (article='best-biodegradable-dog-poop-bags-2025')
+Test that affiliate tags are consistent within each article
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 405, in test_affiliate_tag_consistency
+    self.assertIn(tag, self.valid_affiliate_tags,
+AssertionError: 'test0b252-20)' not found in ['test0b252-20', 'YOUR-AMAZON-ASSOCIATES-TAG'] : Invalid affiliate tag in best-biodegradable-dog-poop-bags-2025: test0b252-20)
+
+======================================================================
+FAIL: test_affiliate_tag_consistency (__main__.AffiliateContentTestSuite) (article='spoil-your-pup-save-the-planet-the-joy-of-eco-friendly-dog-toys')
+Test that affiliate tags are consistent within each article
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 405, in test_affiliate_tag_consistency
+    self.assertIn(tag, self.valid_affiliate_tags,
+AssertionError: 'test0b252-20)' not found in ['test0b252-20', 'YOUR-AMAZON-ASSOCIATES-TAG'] : Invalid affiliate tag in spoil-your-pup-save-the-planet-the-joy-of-eco-friendly-dog-toys: test0b252-20)
+
+======================================================================
+FAIL: test_affiliate_tag_consistency (__main__.AffiliateContentTestSuite) (article='best-biodegradable-dog-poop-bags-2025-earth-rated-vs-competitors')
+Test that affiliate tags are consistent within each article
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 405, in test_affiliate_tag_consistency
+    self.assertIn(tag, self.valid_affiliate_tags,
+AssertionError: 'test0b252-20)' not found in ['test0b252-20', 'YOUR-AMAZON-ASSOCIATES-TAG'] : Invalid affiliate tag in best-biodegradable-dog-poop-bags-2025-earth-rated-vs-competitors: test0b252-20)
+
+======================================================================
+FAIL: test_amazon_affiliate_links_structure (__main__.AffiliateContentTestSuite) (article='west-paw-toppl-vs-kong-which-eco-friendly-dog-toy-is-better-in-2025')
+Test that all Amazon affiliate links have correct structure
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 174, in test_amazon_affiliate_links_structure
+    self.assertIn(tag, self.valid_affiliate_tags, f"Invalid affiliate tag in {slug}: {tag}")
+AssertionError: 'test0b252-20)' not found in ['test0b252-20', 'YOUR-AMAZON-ASSOCIATES-TAG'] : Invalid affiliate tag in west-paw-toppl-vs-kong-which-eco-friendly-dog-toy-is-better-in-2025: test0b252-20)
+
+======================================================================
+FAIL: test_amazon_affiliate_links_structure (__main__.AffiliateContentTestSuite) (article='eco-friendly-dog-toys-that-are-good-for-your-pet-and-the-planet')
+Test that all Amazon affiliate links have correct structure
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 174, in test_amazon_affiliate_links_structure
+    self.assertIn(tag, self.valid_affiliate_tags, f"Invalid affiliate tag in {slug}: {tag}")
+AssertionError: 'test0b252-20)' not found in ['test0b252-20', 'YOUR-AMAZON-ASSOCIATES-TAG'] : Invalid affiliate tag in eco-friendly-dog-toys-that-are-good-for-your-pet-and-the-planet: test0b252-20)
+
+======================================================================
+FAIL: test_amazon_affiliate_links_structure (__main__.AffiliateContentTestSuite) (article='west-paw-toppl-vs-kong-which-is-greener-in-2025')
+Test that all Amazon affiliate links have correct structure
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 174, in test_amazon_affiliate_links_structure
+    self.assertIn(tag, self.valid_affiliate_tags, f"Invalid affiliate tag in {slug}: {tag}")
+AssertionError: 'test0b252-20)' not found in ['test0b252-20', 'YOUR-AMAZON-ASSOCIATES-TAG'] : Invalid affiliate tag in west-paw-toppl-vs-kong-which-is-greener-in-2025: test0b252-20)
+
+======================================================================
+FAIL: test_amazon_affiliate_links_structure (__main__.AffiliateContentTestSuite) (article='pawsitive-impact-your-guide-to-planet-poop-home-compostable-dog-poop-bags')
+Test that all Amazon affiliate links have correct structure
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 174, in test_amazon_affiliate_links_structure
+    self.assertIn(tag, self.valid_affiliate_tags, f"Invalid affiliate tag in {slug}: {tag}")
+AssertionError: 'test0b252-20)' not found in ['test0b252-20', 'YOUR-AMAZON-ASSOCIATES-TAG'] : Invalid affiliate tag in pawsitive-impact-your-guide-to-planet-poop-home-compostable-dog-poop-bags: test0b252-20)
+
+======================================================================
+FAIL: test_amazon_affiliate_links_structure (__main__.AffiliateContentTestSuite) (article='best-biodegradable-dog-poop-bags-2025')
+Test that all Amazon affiliate links have correct structure
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 174, in test_amazon_affiliate_links_structure
+    self.assertIn(tag, self.valid_affiliate_tags, f"Invalid affiliate tag in {slug}: {tag}")
+AssertionError: 'test0b252-20)' not found in ['test0b252-20', 'YOUR-AMAZON-ASSOCIATES-TAG'] : Invalid affiliate tag in best-biodegradable-dog-poop-bags-2025: test0b252-20)
+
+======================================================================
+FAIL: test_amazon_affiliate_links_structure (__main__.AffiliateContentTestSuite) (article='spoil-your-pup-save-the-planet-the-joy-of-eco-friendly-dog-toys')
+Test that all Amazon affiliate links have correct structure
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 174, in test_amazon_affiliate_links_structure
+    self.assertIn(tag, self.valid_affiliate_tags, f"Invalid affiliate tag in {slug}: {tag}")
+AssertionError: 'test0b252-20)' not found in ['test0b252-20', 'YOUR-AMAZON-ASSOCIATES-TAG'] : Invalid affiliate tag in spoil-your-pup-save-the-planet-the-joy-of-eco-friendly-dog-toys: test0b252-20)
+
+======================================================================
+FAIL: test_amazon_affiliate_links_structure (__main__.AffiliateContentTestSuite) (article='best-biodegradable-dog-poop-bags-2025-earth-rated-vs-competitors')
+Test that all Amazon affiliate links have correct structure
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 174, in test_amazon_affiliate_links_structure
+    self.assertIn(tag, self.valid_affiliate_tags, f"Invalid affiliate tag in {slug}: {tag}")
+AssertionError: 'test0b252-20)' not found in ['test0b252-20', 'YOUR-AMAZON-ASSOCIATES-TAG'] : Invalid affiliate tag in best-biodegradable-dog-poop-bags-2025-earth-rated-vs-competitors: test0b252-20)
+
+======================================================================
+FAIL: test_utm_parameters_consistency (__main__.AffiliateContentTestSuite) (article='paw-some-playtime-the-best-eco-friendly-dog-toys-of-2025-for-first-time-owners')
+Test that UTM parameters are consistently applied
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 348, in test_utm_parameters_consistency
+    self.assertEqual(utm_campaign, 'content', f"Invalid utm_campaign in {slug}: {utm_campaign}")
+AssertionError: 'content)' != 'content'
+- content)
+?        -
++ content
+ : Invalid utm_campaign in paw-some-playtime-the-best-eco-friendly-dog-toys-of-2025-for-first-time-owners: content)
+
+======================================================================
+FAIL: test_utm_parameters_consistency (__main__.AffiliateContentTestSuite) (article='pawsitive-poop-your-guide-to-eco-friendly-dog-waste-disposal-with-planet-poop-home-compostable-bags')
+Test that UTM parameters are consistently applied
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 348, in test_utm_parameters_consistency
+    self.assertEqual(utm_campaign, 'content', f"Invalid utm_campaign in {slug}: {utm_campaign}")
+AssertionError: 'content)' != 'content'
+- content)
+?        -
++ content
+ : Invalid utm_campaign in pawsitive-poop-your-guide-to-eco-friendly-dog-waste-disposal-with-planet-poop-home-compostable-bags: content)
+
+======================================================================
+FAIL: test_utm_parameters_consistency (__main__.AffiliateContentTestSuite) (article='snuggle-up-sustainably-introducing-the-petfusion-ultimate-dog-bed-lounge-a-first-timer-s-guide-to-eco-friendly-comfort')
+Test that UTM parameters are consistently applied
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 348, in test_utm_parameters_consistency
+    self.assertEqual(utm_campaign, 'content', f"Invalid utm_campaign in {slug}: {utm_campaign}")
+AssertionError: 'content)' != 'content'
+- content)
+?        -
++ content
+ : Invalid utm_campaign in snuggle-up-sustainably-introducing-the-petfusion-ultimate-dog-bed-lounge-a-first-timer-s-guide-to-eco-friendly-comfort: content)
+
+======================================================================
+FAIL: test_utm_parameters_consistency (__main__.AffiliateContentTestSuite) (article='pawsitive-playtime-the-best-eco-friendly-dog-toys-of-2025-for-your-furry-friend')
+Test that UTM parameters are consistently applied
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 348, in test_utm_parameters_consistency
+    self.assertEqual(utm_campaign, 'content', f"Invalid utm_campaign in {slug}: {utm_campaign}")
+AssertionError: 'content)' != 'content'
+- content)
+?        -
++ content
+ : Invalid utm_campaign in pawsitive-playtime-the-best-eco-friendly-dog-toys-of-2025-for-your-furry-friend: content)
+
+======================================================================
+FAIL: test_utm_parameters_consistency (__main__.AffiliateContentTestSuite) (article='nourish-your-pup-nurture-the-planet-a-guide-to-using-the-beco-pets-bamboo-dog-bowl')
+Test that UTM parameters are consistently applied
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 348, in test_utm_parameters_consistency
+    self.assertEqual(utm_campaign, 'content', f"Invalid utm_campaign in {slug}: {utm_campaign}")
+AssertionError: 'content)' != 'content'
+- content)
+?        -
++ content
+ : Invalid utm_campaign in nourish-your-pup-nurture-the-planet-a-guide-to-using-the-beco-pets-bamboo-dog-bowl: content)
+
+======================================================================
+FAIL: test_utm_parameters_consistency (__main__.AffiliateContentTestSuite) (article='the-sleepless-nights-are-over-finding-the-perfect-eco-friendly-bed-for-your-furry-friend')
+Test that UTM parameters are consistently applied
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 348, in test_utm_parameters_consistency
+    self.assertEqual(utm_campaign, 'content', f"Invalid utm_campaign in {slug}: {utm_campaign}")
+AssertionError: 'content)' != 'content'
+- content)
+?        -
++ content
+ : Invalid utm_campaign in the-sleepless-nights-are-over-finding-the-perfect-eco-friendly-bed-for-your-furry-friend: content)
+
+======================================================================
+FAIL: test_utm_parameters_consistency (__main__.AffiliateContentTestSuite) (article='ditch-the-plastic-why-the-good-dog-company-hemp-canvas-leash-is-your-new-best-friend-and-your-dog-s')
+Test that UTM parameters are consistently applied
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 348, in test_utm_parameters_consistency
+    self.assertEqual(utm_campaign, 'content', f"Invalid utm_campaign in {slug}: {utm_campaign}")
+AssertionError: 'content)' != 'content'
+- content)
+?        -
++ content
+ : Invalid utm_campaign in ditch-the-plastic-why-the-good-dog-company-hemp-canvas-leash-is-your-new-best-friend-and-your-dog-s: content)
+
+======================================================================
+FAIL: test_utm_parameters_consistency (__main__.AffiliateContentTestSuite) (article='spoil-your-furry-friend-sustainably-a-how-to-guide-to-wag-expedition-organic-banana-coconut-treats')
+Test that UTM parameters are consistently applied
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 348, in test_utm_parameters_consistency
+    self.assertEqual(utm_campaign, 'content', f"Invalid utm_campaign in {slug}: {utm_campaign}")
+AssertionError: 'content)' != 'content'
+- content)
+?        -
++ content
+ : Invalid utm_campaign in spoil-your-furry-friend-sustainably-a-how-to-guide-to-wag-expedition-organic-banana-coconut-treats: content)
+
+======================================================================
+FAIL: test_utm_parameters_consistency (__main__.AffiliateContentTestSuite) (article='low-waste-dog-starter-kit-9-sustainable-essentials')
+Test that UTM parameters are consistently applied
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 348, in test_utm_parameters_consistency
+    self.assertEqual(utm_campaign, 'content', f"Invalid utm_campaign in {slug}: {utm_campaign}")
+AssertionError: 'content)' != 'content'
+- content)
+?        -
++ content
+ : Invalid utm_campaign in low-waste-dog-starter-kit-9-sustainable-essentials: content)
+
+======================================================================
+FAIL: test_utm_parameters_consistency (__main__.AffiliateContentTestSuite) (article='pawsome-planet-the-best-eco-friendly-dog-toys-for-2025-and-beyond')
+Test that UTM parameters are consistently applied
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/brett/Desktop/affiliate/test_affiliate_content.py", line 348, in test_utm_parameters_consistency
+    self.assertEqual(utm_campaign, 'content', f"Invalid utm_campaign in {slug}: {utm_campaign}")
+AssertionError: 'content)' != 'content'
+- content)
+?        -
++ content
+ : Invalid utm_campaign in pawsome-planet-the-best-eco-friendly-dog-toys-for-2025-and-beyond: content)
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.044s
+
+FAILED (failures=24)

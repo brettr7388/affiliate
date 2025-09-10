@@ -3,7 +3,7 @@
 .env.local
 .env.production
 
-# Database files
+# Database
 *.db
 *.sqlite
 *.sqlite3
@@ -26,47 +26,50 @@ parts/
 sdist/
 var/
 wheels/
-share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-MANIFEST
 
 # Virtual environments
-.venv/
 venv/
 env/
 ENV/
+env.bak/
+venv.bak/
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
 
 # OS
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
+
+# AI Generated Images (exclude from deployment)
+site/images/library/20250901_*
+site/images/slideshows/20250901_*
+site/images/library/*_ai_generated*
+netlify_deploy/images/library/20250901_*
+netlify_deploy/images/slideshows/20250901_*
 
 # Logs
 *.log
 logs/
 
-# Temporary files
-*.tmp
-*.temp
+# Backup files
+*.backup
+*.bak
 
-# Reports (may contain sensitive analytics)
+# Reports
 reports/
-*.report
+affiliate_validation_report.*
+complete_affiliate_validation_report.md
+*_SUMMARY.md
+*_STATUS.md
 
-# Local development
-local_*
-test_*
-debug_* 
+# Temporary files
+temp/
+tmp/
+*.tmp 
