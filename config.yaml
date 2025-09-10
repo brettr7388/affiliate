@@ -176,21 +176,21 @@ content:
       name: WAG Expedition Organic Treats
       price: $8-12
       rating: "\u2B50\u2B50\u2B50\u2B50\u2B50"
-      link: https://www.amazon.com/dp/B093CLBJDW?tag=test0b252-20&th=1
+      link: https://www.amazon.com/dp/B093CLBJDW?tag=test0b252-20
     - badge: Best Value
       badge_color: gray
       description: Natural ingredients, no artificial preservatives
       name: Organic Training Treats
       price: $6-10
       rating: "\u2B50\u2B50\u2B50\u2B50"
-      link: https://www.amazon.com/dp/B093CLBJDW?tag=test0b252-20&th=1
+      link: https://www.amazon.com/dp/B093CLBJDW?tag=test0b252-20
     - badge: Premium Choice
       badge_color: gray
       description: Single-ingredient, freeze-dried organic treats
       name: Pure Organic Snacks
       price: $10-15
       rating: "\u2B50\u2B50\u2B50\u2B50\u2B50"
-      link: https://www.amazon.com/dp/B093CLBJDW?tag=test0b252-20&th=1
+      link: https://www.amazon.com/dp/B093CLBJDW?tag=test0b252-20
     title: "\U0001F34C Best Organic Dog Treats"
   - category: dog-leashes
     description: Compare the best eco-friendly and durable dog leashes
