@@ -234,7 +234,7 @@ images:
 offers:
 - affiliate_id: test0b252-20
   affiliate_param: tag
-  base_url: https://www.amazon.com/dp/B093CLBJDW
+  base_url: https://www.amazon.com/dp/B004A7X27M
   name: AmazonEcoFriendlyDogToys
   utm_campaign: launch
   utm_source: site

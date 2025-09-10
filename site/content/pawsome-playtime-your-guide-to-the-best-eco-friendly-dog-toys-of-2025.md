@@ -61,5 +61,5 @@ Choosing eco-friendly dog toys is a win-win: it's better for your dog's health, 
 
 ---
 
-**Try this:** [AmazonEcoFriendlyDogToys](https://www.amazon.com/dp/B093CLBJDW?tag=test0b252-20&utm_source=site&utm_campaign=content)
+**Try this:** [AmazonEcoFriendlyDogToys](https://www.amazon.com/dp/B004A7X27M?tag=test0b252-20&utm_source=site&utm_campaign=content)
 *We might earn a commission at no cost to you.*
