@@ -55,5 +55,5 @@ If you're looking for a guilt-free way to keep your furry friend entertained, lo
 
 ---
 
-**Try this:** [AmazonEcoFriendlyDogToys](https://amazon.com/dp/B004A7X27M?tag=test0b252-20
+**Try this:** [AmazonEcoFriendlyDogToys](https://www.amazon.com/dp/B093CLBJDW?tag=test0b252-20
 *We might earn a commission at no cost to you.*
