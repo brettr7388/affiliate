@@ -262,6 +262,12 @@ offers:
   name: AmazonHempDogLeash
   utm_campaign: launch
   utm_source: site
+- affiliate_id: test0b252-20
+  affiliate_param: tag
+  base_url: https://www.amazon.com/dp/B08C342VQ6
+  name: AmazonEcoFriendlyDogBowls
+  utm_campaign: launch
+  utm_source: site
 seo:
   content_freshness_days: 30
   focus_keywords:
