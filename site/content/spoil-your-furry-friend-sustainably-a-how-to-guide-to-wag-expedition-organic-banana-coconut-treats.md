@@ -39,5 +39,5 @@ Choosing WAG Expedition Organic Banana & Coconut Treats isn’t just about provi
 
 ---
 
-**Try this:** [AmazonOrganicDogTreats](https://www.amazon.com/dp/B093CLBJDW?tag=test0b252-20&utm_source=site&utm_campaign=content
+**Try this:** [AmazonOrganicDogTreats](https://www.amazon.com/dp/B093CLBJDW?tag=test0b252-20&utm_source=site&utm_campaign=content)
 *We might earn a commission at no cost to you.*
