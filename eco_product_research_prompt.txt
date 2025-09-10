@@ -1,0 +1,164 @@
+
+# Eco-Friendly Pet Product Research Request
+## Date: 2025-09-09
+
+## Website Theme: Eco Pet Guide
+**Focus**: Sustainable, eco-friendly, natural, and organic pet products
+**Target Audience**: Environmentally conscious pet parents
+**Current Products**: Dog toys, poop bags, beds, treats, leashes, bowls
+
+## Research Instructions for ChatGPT Agent:
+
+Please search for Amazon products for each category below. For each product, provide:
+1. **Product Name** (exact Amazon title)
+2. **Amazon ASIN** (BXXXXXXXXXX format)
+3. **Price Range** (e.g., $15-25)
+4. **Key Eco Features** (materials, certifications, sustainability aspects)
+5. **Amazon URL** (with placeholder for affiliate tag)
+
+## Product Categories to Research:
+
+
+### Grooming & Hygiene
+**Description**: Sustainable grooming products for dogs
+**Keywords**: eco-friendly, natural, organic, biodegradable, sustainable
+
+**Products to find**:
+1. Natural Dog Shampoo Bars (plastic-free)
+2. Bamboo Dog Brush (sustainable materials)
+3. Organic Dog Toothpaste (natural ingredients)
+4. Hemp Dog Towels (sustainable fabric)
+5. Biodegradable Dog Wipes (compostable)
+6. Natural Flea & Tick Spray (chemical-free)
+7. Organic Paw Balm (natural healing)
+8. Sustainable Dog Nail Clippers (eco-friendly materials)
+
+---
+
+### Training & Behavior
+**Description**: Eco-friendly training tools and accessories
+**Keywords**: sustainable, natural, eco-friendly, biodegradable
+
+**Products to find**:
+1. Bamboo Training Clicker (sustainable materials)
+2. Organic Training Treats (natural ingredients)
+3. Hemp Training Pouch (sustainable fabric)
+4. Natural Calming Spray (organic ingredients)
+5. Eco-Friendly Puzzle Toys (sustainable materials)
+6. Bamboo Treat Dispenser (renewable materials)
+7. Organic Chew Toys (natural materials)
+8. Sustainable Training Mat (eco-friendly materials)
+
+---
+
+### Travel & Outdoor
+**Description**: Sustainable travel and outdoor gear for dogs
+**Keywords**: eco-friendly, sustainable, recycled, natural
+
+**Products to find**:
+1. Recycled Dog Travel Bag (sustainable materials)
+2. Bamboo Dog Water Bottle (eco-friendly)
+3. Hemp Dog Harness (sustainable fabric)
+4. Organic Dog Sunscreen (natural protection)
+5. Biodegradable Dog Booties (compostable)
+6. Eco-Friendly Dog Carrier (sustainable materials)
+7. Natural Dog Cooling Mat (non-toxic materials)
+8. Sustainable Dog Life Jacket (recycled materials)
+
+---
+
+### Health & Wellness
+**Description**: Natural health and wellness products for dogs
+**Keywords**: natural, organic, chemical-free, sustainable
+
+**Products to find**:
+1. Organic Dog Supplements (natural ingredients)
+2. Natural Dog Probiotics (organic)
+3. Eco-Friendly Dog Vitamins (sustainable packaging)
+4. Organic Dog CBD Oil (natural wellness)
+5. Natural Dog Pain Relief (herbal ingredients)
+6. Sustainable Dog Massage Tools (eco-friendly materials)
+7. Organic Dog Ear Cleaner (natural ingredients)
+8. Natural Dog Anxiety Relief (herbal supplements)
+
+---
+
+### Home & Living
+**Description**: Sustainable home products for dogs
+**Keywords**: eco-friendly, sustainable, natural, recycled
+
+**Products to find**:
+1. Bamboo Dog Gate (sustainable materials)
+2. Organic Dog Blanket (natural fibers)
+3. Recycled Dog Crate (sustainable materials)
+4. Natural Dog Air Freshener (organic ingredients)
+5. Eco-Friendly Dog Door (sustainable materials)
+6. Organic Dog Pillow (natural materials)
+7. Sustainable Dog Food Storage (eco-friendly containers)
+8. Natural Dog Repellent (organic ingredients)
+
+---
+
+### Cat Products
+**Description**: Eco-friendly products for cats
+**Keywords**: eco-friendly, natural, sustainable, organic
+
+**Products to find**:
+1. Bamboo Cat Litter Box (sustainable materials)
+2. Natural Cat Litter (biodegradable)
+3. Organic Cat Treats (natural ingredients)
+4. Hemp Cat Collar (sustainable fabric)
+5. Eco-Friendly Cat Toys (sustainable materials)
+6. Natural Cat Scratching Post (sustainable materials)
+7. Organic Cat Food Bowls (natural materials)
+8. Sustainable Cat Carrier (eco-friendly materials)
+
+---
+
+### Small Pet Products
+**Description**: Sustainable products for small pets (rabbits, guinea pigs, etc.)
+**Keywords**: eco-friendly, natural, sustainable, organic
+
+**Products to find**:
+1. Natural Small Pet Bedding (biodegradable)
+2. Organic Small Pet Food (natural ingredients)
+3. Bamboo Small Pet Cage (sustainable materials)
+4. Eco-Friendly Small Pet Toys (sustainable materials)
+5. Natural Small Pet Treats (organic ingredients)
+6. Sustainable Small Pet Water Bottle (eco-friendly materials)
+7. Organic Small Pet Hay (natural feeding)
+8. Eco-Friendly Small Pet Litter (biodegradable)
+
+---
+
+## Format for Each Product Found:
+
+```
+Product Name: [Exact Amazon Title]
+ASIN: BXXXXXXXXXX
+Price: $XX-XX
+Eco Features: [List key sustainable features]
+Amazon URL: https://www.amazon.com/dp/BXXXXXXXXXX?tag=YOUR-AFFILIATE-TAG
+Category: [Category from above]
+Keywords: [Relevant eco keywords]
+```
+
+## Search Guidelines:
+- Focus on products with clear eco-friendly, sustainable, natural, or organic claims
+- Look for certifications like USDA Organic, FSC Certified, ASTM D6400, etc.
+- Prioritize products made from bamboo, hemp, recycled materials, natural fibers
+- Avoid products with excessive plastic packaging
+- Target products with 4+ star ratings
+- Include both budget-friendly and premium options
+- Ensure products are currently available on Amazon US
+
+## Priority Categories:
+1. Grooming & Hygiene (high demand)
+2. Training & Behavior (growing market)
+3. Travel & Outdoor (seasonal relevance)
+4. Health & Wellness (premium market)
+5. Home & Living (practical needs)
+6. Cat Products (expanding audience)
+7. Small Pet Products (niche but loyal)
+
+Please research 3-5 products per category, focusing on the most popular and well-reviewed eco-friendly options.

@@ -1,0 +1,41 @@
+# Example ChatGPT Results (Save your actual results to chatgpt_results.txt)
+
+Product Name: Natural Bamboo Dog Brush with Soft Bristles
+ASIN: B08XYZ1234
+Price: $12-18
+Eco Features: Made from sustainable bamboo, biodegradable bristles, plastic-free packaging
+Amazon URL: https://www.amazon.com/dp/B08XYZ1234?tag=YOUR-AFFILIATE-TAG
+Category: Grooming & Hygiene
+Keywords: bamboo, sustainable, natural, eco-friendly, biodegradable
+
+Product Name: Organic Hemp Dog Training Treats
+ASIN: B09ABC5678
+Price: $8-12
+Eco Features: USDA Organic certified, hemp-based, natural ingredients, compostable packaging
+Amazon URL: https://www.amazon.com/dp/B09ABC5678?tag=YOUR-AFFILIATE-TAG
+Category: Training & Behavior
+Keywords: organic, hemp, natural, sustainable, training treats
+
+Product Name: Recycled Plastic Dog Travel Bag
+ASIN: B10DEF9012
+Price: $25-35
+Eco Features: Made from 100% recycled plastic bottles, sustainable materials, eco-friendly
+Amazon URL: https://www.amazon.com/dp/B10DEF9012?tag=YOUR-AFFILIATE-TAG
+Category: Travel & Outdoor
+Keywords: recycled, sustainable, eco-friendly, travel, outdoor
+
+Product Name: Natural Dog Shampoo Bar - Plastic Free
+ASIN: B11GHI3456
+Price: $15-20
+Eco Features: Plastic-free packaging, natural ingredients, biodegradable, cruelty-free
+Amazon URL: https://www.amazon.com/dp/B11GHI3456?tag=YOUR-AFFILIATE-TAG
+Category: Grooming & Hygiene
+Keywords: natural, plastic-free, biodegradable, cruelty-free, shampoo bar
+
+Product Name: Bamboo Cat Litter Box with Natural Bamboo Scoop
+ASIN: B12JKL7890
+Price: $30-40
+Eco Features: Sustainable bamboo construction, natural materials, biodegradable
+Amazon URL: https://www.amazon.com/dp/B12JKL7890?tag=YOUR-AFFILIATE-TAG
+Category: Cat Products
+Keywords: bamboo, sustainable, natural, biodegradable, cat litter
