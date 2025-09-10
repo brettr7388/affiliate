@@ -643,37 +643,10 @@ def get_product_comparisons():
                 *category.split('-')  # Split on dashes to get individual words
             ]
             
-            # Find matching routes - prioritize specific category mappings
             category_routes = []
-            
-            # Specific category to route mappings
-            category_mapping = {
-                'dog-treats': 'organic-dog-treats',
-                'dog-toys': 'eco-dog-toys-2025',
-                'dog-beds': 'recycled-dog-bed',
-                'dog-bowls': 'sustainable-dog-bowls',
-                'dog-leashes': 'hemp-dog-leash',
-                'poop-bags': 'biodegradable-poop-bags'
-            }
-            
-            # Check for specific mapping first
-            if category in category_mapping and category_mapping[category] in routes:
-                category_routes.append(category_mapping[category])
-            else:
-                # Fallback to keyword matching
-                exact_matches = []
-                partial_matches = []
-                
-                for slug in routes.keys():
-                    # Check for exact category match first
-                    if slug == category:
-                        exact_matches.append(slug)
-                    # Then check for keywords in the slug
-                    elif any(keyword in slug for keyword in category_keywords):
-                        partial_matches.append(slug)
-                
-                # Prioritize exact matches, then partial matches
-                category_routes = exact_matches + partial_matches
+            for slug in routes.keys():
+                if any(keyword in slug for keyword in category_keywords):
+                    category_routes.append(slug)
             
             # Also check if any product has a specific route_slug that exists
             product_routes = []
