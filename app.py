@@ -485,6 +485,16 @@ def get_top_articles(window: str = "7d", limit: int = 6):
 @app.get("/api/routes/featured")
 def get_featured_routes(limit: int = 6):
     """Get featured affiliate routes"""
+    # Map of route slugs to new image names
+    image_mapping = {
+        "biodegradable-poop-bags": "bag.jpg",
+        "hemp-dog-leash": "leash.jpg", 
+        "organic-dog-treats": "treats.jpg",
+        "recycled-dog-bed": "bed.jpg",
+        "sustainable-dog-bowls": "bowl.jpg",
+        "eco-dog-toys-2025": "toy.jpg"
+    }
+    
     with engine.begin() as conn:
         rows = conn.execute(text("""
             SELECT slug, offer, dest_url 
@@ -498,7 +508,7 @@ def get_featured_routes(limit: int = 6):
             slug=slug,
             label=offer,
             dest_url=f"/r/{slug}",
-            image=f"/images/library/card-{slug}.jpg"
+            image=f"/images/library/{image_mapping.get(slug, f'card-{slug}.jpg')}"
         )
         for slug, offer, dest_url in rows
     ]
