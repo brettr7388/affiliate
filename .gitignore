@@ -73,3 +73,10 @@ complete_affiliate_validation_report.md
 temp/
 tmp/
 *.tmp 
+# Background sources (exclude from git - these are large video/image files)
+background_sources/
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm

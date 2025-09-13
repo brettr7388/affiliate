@@ -1156,6 +1156,20 @@ def serve_library_image(filename: str):
     except Exception as e:
         raise HTTPException(status_code=404, detail="Library image not found")
 
+
+@app.get("/backgrounds/{filename}")
+@app.head("/backgrounds/{filename}")
+def serve_background(filename: str):
+    """Serve background files for social media videos (hidden from website)"""
+    try:
+        from fastapi.responses import FileResponse
+        filepath = f"site/backgrounds/{filename}"
+        if os.path.exists(filepath):
+            return FileResponse(filepath)
+        else:
+            raise HTTPException(status_code=404, detail="Background not found")
+    except Exception as e:
+        raise HTTPException(status_code=404, detail="Background not found")
 @app.get("/admin/library")
 def get_image_library(request: Request, query: str = "", product: str = "", style: str = "", limit: int = 50):
     """Get images from the library with optional filtering"""
