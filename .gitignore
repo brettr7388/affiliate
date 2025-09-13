@@ -75,8 +75,8 @@ tmp/
 *.tmp 
 # Background sources (exclude from git - these are large video/image files)
 background_sources/
-*.mp4
-*.mov
-*.avi
-*.mkv
-*.webm
+background_sources/*.mp4
+background_sources/*.mov
+background_sources/*.avi
+background_sources/*.mkv
+background_sources/*.webm
