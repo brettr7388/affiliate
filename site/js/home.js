@@ -246,7 +246,7 @@ function renderFeaturedRoutes(routes) {
     container.innerHTML = routes.map(route => `
         <div class="card-animate bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
             <div class="relative">
-                <img src="${route.image}?v=${Date.now()}" alt="${route.label}" class="w-full h-48 object-cover" loading="lazy" decoding="async" onerror="this.src='/images/library/placeholder-product.jpg?v=${Date.now()}'">
+                <img src="${route.image}?v=${Date.now()}" alt="${route.label}" class="w-full h-56 object-contain bg-gray-50 p-2" loading="lazy" decoding="async" onerror="this.src='/images/library/placeholder-product.jpg?v=${Date.now()}'">
                 <div class="absolute top-4 left-4 bg-eco-green-600 text-white px-2 py-1 rounded-full text-xs font-medium">
                     Featured
                 </div>
@@ -459,7 +459,7 @@ function renderArticles(articles, replace = true) {
                  data-slug="${article.slug}"
                  onclick="handleArticleClick(event, '${article.slug}')">
             <div class="relative">
-                <img src="${article.heroImage}" alt="${article.title}" class="w-full h-48 object-cover" loading="lazy" decoding="async" onerror="this.src='/images/library/placeholder-article.jpg'">
+                <img src="${article.heroImage}" alt="${article.title}" class="w-full h-56 object-contain bg-gray-50 p-2" loading="lazy" decoding="async" onerror="this.src='/images/library/placeholder-article.jpg'">
                 ${article.tags.length > 0 ? `
                     <div class="absolute top-4 left-4">
                         <span class="bg-eco-green-600 text-white px-2 py-1 rounded-full text-xs font-medium">
