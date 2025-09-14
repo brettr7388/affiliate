@@ -171,6 +171,28 @@ class ProductComparison(BaseModel):
     products: List[dict]
     display_type: str = "table"  # "table" or "cards"
 
+
+def detect_article_category(title, slug):
+    """Detect the main product category from article title and slug"""
+    title_lower = title.lower()
+    slug_lower = slug.lower()
+    
+    # Check for specific product categories
+    if any(keyword in title_lower for keyword in ['toy', 'play', 'kong', 'west paw']) or 'toy' in slug_lower:
+        return 'toy'
+    elif any(keyword in title_lower for keyword in ['poop bag', 'biodegradable', 'waste', 'bag']) or 'bag' in slug_lower:
+        return 'bag'
+    elif any(keyword in title_lower for keyword in ['bowl', 'feeding', 'dish']) or 'bowl' in slug_lower:
+        return 'bowl'
+    elif any(keyword in title_lower for keyword in ['leash', 'walking', 'lead']) or 'leash' in slug_lower:
+        return 'leash'
+    elif any(keyword in title_lower for keyword in ['bed', 'sleep', 'comfort', 'orthopedic']) or 'bed' in slug_lower:
+        return 'bed'
+    elif any(keyword in title_lower for keyword in ['treat', 'snack', 'food']) or 'treat' in slug_lower:
+        return 'treat'
+    else:
+        return 'all'  # Default for general articles
+
 def parse_markdown_file(filepath: str) -> Optional[Article]:
     """Parse a markdown file and extract article metadata"""
     try:
@@ -212,11 +234,14 @@ def parse_markdown_file(filepath: str) -> Optional[Article]:
         word_count = len(content.split())
         read_min = max(1, word_count // 200)  # Assume 200 words per minute
         
+        # Determine article category for rotating images
+        article_category = detect_article_category(title, slug)
+        
         return Article(
             slug=slug,
             title=title,
             excerpt=excerpt,
-            heroImage=f"/images/library/hero-{slug}.jpg",  # Default hero image path
+            heroImage=f"/images/rotating/{article_category}/{article_category}1.png",  # Rotating image system
             tags=tags,
             publishedAt=published_at,
             estimatedReadMin=read_min
