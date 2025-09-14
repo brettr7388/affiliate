@@ -13,6 +13,7 @@ from pathlib import Path
 from fastapi import FastAPI, Request, HTTPException, Query
 from fastapi.responses import RedirectResponse, JSONResponse, HTMLResponse, Response
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from sqlalchemy import create_engine, text
 from dotenv import load_dotenv
@@ -46,6 +47,11 @@ app.add_middleware(
     allow_methods=["*"], 
     allow_headers=["*"],
 )
+
+# Mount static files
+app.mount("/images", StaticFiles(directory="site/images"), name="images")
+app.mount("/css", StaticFiles(directory="site/css"), name="css")
+app.mount("/js", StaticFiles(directory="site/js"), name="js")
 
 def require_admin(request: Request):
     """Check if request has valid admin token"""
