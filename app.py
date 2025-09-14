@@ -157,6 +157,8 @@ class FeaturedRoute(BaseModel):
     image: Optional[str] = None
 
 class ClickData(BaseModel):
+    class Config:
+        extra = "allow"  # Allow additional fields
     slug: str
     href: str
     utm: Optional[dict] = None
@@ -462,6 +464,7 @@ class Route(BaseModel):
 
 # Public API endpoints for homepage
 @app.get("/api/articles", response_model=ArticleResponse)
+@app.get("/api/articles/", response_model=ArticleResponse)
 def get_articles(
     limit: int = Query(24, ge=1, le=100),
     offset: int = Query(0, ge=0),
@@ -538,7 +541,7 @@ def get_featured_routes(limit: int = 6):
     category_mapping = {
         "biodegradable-poop-bags": "bag",
         "hemp-dog-leash": "leash", 
-        "organic-dog-treats": "treat",
+        "organic-dog-treats": "treats",
         "recycled-dog-bed": "bed",
         "sustainable-dog-bowls": "bowl",
         "eco-dog-toys-2025": "toy"
@@ -557,7 +560,7 @@ def get_featured_routes(limit: int = 6):
             slug=slug,
             label=offer,
             dest_url=f"/r/{slug}",
-            image=f"/images/rotating/{category_mapping.get(slug, 'all')}/{get_random_image_for_category(category_mapping.get(slug, 'all'))}"
+            image=f"/images/library/{category_mapping.get(slug, 'all')}.jpg"
         )
         for slug, offer, dest_url in rows
     ]
@@ -673,6 +676,7 @@ def get_newsletter_subscribers(request: Request):
     return {"subscribers": subscribers, "total": len(subscribers)}
 
 @app.get("/api/product-comparisons")
+@app.get("/api/product-comparisons/")
 def get_product_comparisons():
     """Get dynamic product comparisons from config.yaml"""
     try:

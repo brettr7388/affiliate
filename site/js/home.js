@@ -121,11 +121,7 @@ function setupEventListeners() {
         newsletterForm.addEventListener('submit', handleNewsletterSubmit);
     }
     
-    // Refresh articles button
-    const refreshBtn = document.getElementById('refresh-articles');
-    if (refreshBtn) {
-        refreshBtn.addEventListener('click', handleRefreshClick);
-    }
+
 }
 
 /**
@@ -186,34 +182,7 @@ function handleCategoryClick(e) {
     trackEvent('tab_change', { tab: 'categories', category });
 }
 
-/**
- * Handle refresh button click
- */
-function handleRefreshClick(event) {
-    event.preventDefault();
-    
-    // Add visual feedback
-    const btn = event.target;
-    const originalText = btn.innerHTML;
-    btn.innerHTML = '🔄 Refreshing...';
-    btn.disabled = true;
-    
-    // Force refresh with new shuffle
-    lastShuffleTime = 0; // Reset timer to force refresh
-    refreshCurrentView();
-    
-    // Reset button after a delay
-    setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.disabled = false;
-    }, 1500);
-    
-    // Track refresh action
-    trackEvent('refresh_click', { tab: currentTab, category: currentCategory });
-    
-    // Show notification
-    showRefreshNotification();
-}
+
 
 /**
  * Load featured routes
@@ -262,7 +231,7 @@ function renderFeaturedRoutes(routes) {
                 </a>
             </div>
         </div>
-    `;    }).join('');
+    `).join('');
     
     // Observe the new cards for scroll animations
     observeCards(container);
@@ -498,7 +467,8 @@ function renderArticles(articles, replace = true) {
                 </div>
             </div>
         </article>
-    `;    }).join('');
+        `;
+    }).join('');
     
     if (replace) {
         container.innerHTML = articlesHTML;
@@ -761,15 +731,11 @@ function trackABTest(area, variant, action) {
     
     const endpoint = action === 'convert' ? '/api/ab/convert' : '/api/ab/impression';
     
-    if (navigator.sendBeacon) {
-        navigator.sendBeacon(endpoint, JSON.stringify(data));
-    } else {
-        fetch(endpoint, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        }).catch(console.error);
-    }
+    fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    }).catch(console.error);
 }
 
 /**

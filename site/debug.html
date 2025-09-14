@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Test</title>
+</head>
+<body>
+    <h1>Debug Test</h1>
+    <div id="test-results"></div>
+    
+    <script>
+        async function testAPI() {
+            const results = document.getElementById('test-results');
+            
+            try {
+                // Test featured routes API
+                const response = await fetch('/api/routes/featured');
+                const data = await response.json();
+                
+                results.innerHTML = `
+                    <h2>Featured Routes API Test:</h2>
+                    <p>Status: ${response.status}</p>
+                    <p>Data: ${JSON.stringify(data, null, 2)}</p>
+                `;
+            } catch (error) {
+                results.innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        }
+        
+        testAPI();
+    </script>
+</body>
+</html>
