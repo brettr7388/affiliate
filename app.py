@@ -178,6 +178,24 @@ class ProductComparison(BaseModel):
     display_type: str = "table"  # "table" or "cards"
 
 
+
+def get_random_image_for_category(category):
+    """Get a random image for the given category"""
+    import random
+    
+    category_images = {
+        'toy': ['toy1.png', 'toy2.png', 'toy3.png', 'toy4.png'],
+        'bag': ['bag1.png', 'bag2.png', 'bag3.png'],
+        'bowl': ['bowl1.png', 'bowl2.png', 'bowl3.png'],
+        'leash': ['leash1.png', 'leash2.png', 'leash3.png'],
+        'bed': ['bed1.png', 'bed2.png', 'bed3.png'],
+        'treat': ['treat1.png', 'treat2.png', 'treat3.png'],
+        'all': ['all1.png', 'all2.png', 'all3.png']
+    }
+    
+    images = category_images.get(category, ['all1.png'])
+    return random.choice(images)
+
 def detect_article_category(title, slug):
     """Detect the main product category from article title and slug"""
     title_lower = title.lower()
@@ -247,7 +265,7 @@ def parse_markdown_file(filepath: str) -> Optional[Article]:
             slug=slug,
             title=title,
             excerpt=excerpt,
-            heroImage=f"/images/rotating/{article_category}/{article_category}1.png",  # Rotating image system
+            heroImage=f"/images/rotating/{article_category}/{get_random_image_for_category(article_category)}",  # Random image system
             tags=tags,
             publishedAt=published_at,
             estimatedReadMin=read_min
