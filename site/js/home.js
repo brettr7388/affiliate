@@ -262,7 +262,7 @@ function renderFeaturedRoutes(routes) {
                 </a>
             </div>
         </div>
-    `).join('');
+    `;    }).join('');
     
     // Observe the new cards for scroll animations
     observeCards(container);
@@ -453,13 +453,34 @@ function renderArticles(articles, replace = true) {
         return;
     }
     
-    const articlesHTML = articles.map(article => `
+    // Add category detection for each article
+    const articlesHTML = articles.map(article => {
+        // Detect category from title and slug
+        const title_lower = article.title.toLowerCase();
+        const slug_lower = article.slug.toLowerCase();
+        let category = 'all';
+        
+        if (title_lower.includes('toy') || title_lower.includes('play') || title_lower.includes('kong') || title_lower.includes('west paw') || slug_lower.includes('toy')) {
+            category = 'toy';
+        } else if (title_lower.includes('poop bag') || title_lower.includes('biodegradable') || title_lower.includes('waste') || title_lower.includes('bag') || slug_lower.includes('bag')) {
+            category = 'bag';
+        } else if (title_lower.includes('bowl') || title_lower.includes('feeding') || title_lower.includes('dish') || slug_lower.includes('bowl')) {
+            category = 'bowl';
+        } else if (title_lower.includes('leash') || title_lower.includes('walking') || title_lower.includes('lead') || slug_lower.includes('leash')) {
+            category = 'leash';
+        } else if (title_lower.includes('bed') || title_lower.includes('sleep') || title_lower.includes('comfort') || title_lower.includes('orthopedic') || slug_lower.includes('bed')) {
+            category = 'bed';
+        } else if (title_lower.includes('treat') || title_lower.includes('snack') || title_lower.includes('food') || slug_lower.includes('treat')) {
+            category = 'treat';
+        }
+        
+        return `
         <article class="card-animate bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden cursor-pointer"
                  data-track="article"
                  data-slug="${article.slug}"
                  onclick="handleArticleClick(event, '${article.slug}')">
             <div class="relative">
-                <img src="${article.heroImage}" alt="${article.title}" class="w-full h-56 object-contain bg-gray-50 p-2" loading="lazy" decoding="async" onerror="this.src='/images/library/placeholder-article.jpg'">
+                <div data-product-category="${article.category || 'all'}"><img src="${article.heroImage}" alt="${article.title}" class="w-full h-56 object-contain bg-gray-50 p-2" loading="lazy" decoding="async" onerror="this.src='/images/library/placeholder-article.jpg'"></div>
                 ${article.tags.length > 0 ? `
                     <div class="absolute top-4 left-4">
                         <span class="bg-eco-green-600 text-white px-2 py-1 rounded-full text-xs font-medium">
@@ -477,7 +498,7 @@ function renderArticles(articles, replace = true) {
                 </div>
             </div>
         </article>
-    `).join('');
+    `;    }).join('');
     
     if (replace) {
         container.innerHTML = articlesHTML;

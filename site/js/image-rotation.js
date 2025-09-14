@@ -59,7 +59,7 @@ class ImageRotator {
             if (imagePath) {
                 const img = element.querySelector('img');
                 if (img) {
-                    img.src = `../images/rotating/${category}/${imagePath}`;
+                    img.src = `/images/rotating/${category}/${imagePath}`;
                     img.alt = `Eco-friendly ${category} product image`;
                 }
             }
@@ -74,7 +74,7 @@ class ImageRotator {
             if (imagePath) {
                 const img = element.querySelector('img');
                 if (img) {
-                    img.src = `../images/rotating/${category}/${imagePath}`;
+                    img.src = `/images/rotating/${category}/${imagePath}`;
                     img.alt = `Eco-friendly ${category} hero image`;
                 }
             }
