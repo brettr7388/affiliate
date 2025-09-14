@@ -534,14 +534,14 @@ def get_top_articles(window: str = "7d", limit: int = 6):
 @app.get("/api/routes/featured")
 def get_featured_routes(limit: int = 6):
     """Get featured affiliate routes"""
-    # Map of route slugs to new image names
-    image_mapping = {
-        "biodegradable-poop-bags": "bag.jpg",
-        "hemp-dog-leash": "leash.jpg", 
-        "organic-dog-treats": "treats.jpg",
-        "recycled-dog-bed": "bed.jpg",
-        "sustainable-dog-bowls": "bowl.jpg",
-        "eco-dog-toys-2025": "toy.jpg"
+    # Map of route slugs to categories for rotating images
+    category_mapping = {
+        "biodegradable-poop-bags": "bag",
+        "hemp-dog-leash": "leash", 
+        "organic-dog-treats": "treat",
+        "recycled-dog-bed": "bed",
+        "sustainable-dog-bowls": "bowl",
+        "eco-dog-toys-2025": "toy"
     }
     
     with engine.begin() as conn:
@@ -557,7 +557,7 @@ def get_featured_routes(limit: int = 6):
             slug=slug,
             label=offer,
             dest_url=f"/r/{slug}",
-            image=f"/images/library/{image_mapping.get(slug, f'card-{slug}.jpg')}"
+            image=f"/images/rotating/{category_mapping.get(slug, 'all')}/{get_random_image_for_category(category_mapping.get(slug, 'all'))}"
         )
         for slug, offer, dest_url in rows
     ]
