@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Rotation Test - Eco Pet Guide</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background: #f8f9fa;
+        }
+        .test-section {
+            background: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .category-demo {
+            text-align: center;
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+        }
+        .category-demo h3 {
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+        .category-demo img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .instructions {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔄 Image Rotation System Test</h1>
+    
+    <div class="instructions">
+        <h2>How to Test:</h2>
+        <ol>
+            <li><strong>Refresh the page</strong> - Images should change to different ones in each category</li>
+            <li><strong>Click the "🔄 Refresh Images" button</strong> - Manually rotate images</li>
+            <li><strong>Check each category</strong> - Each should show the correct product type</li>
+        </ol>
+        <p><strong>Note:</strong> Currently showing placeholder images. Replace with your actual generated images!</p>
+    </div>
+
+    <div class="test-section">
+        <h2>🎯 Product Category Demos</h2>
+        <div class="image-grid">
+            <div class="category-demo">
+                <h3>🧸 Dog Toys (4 images)</h3>
+                <div data-product-category="toy">
+                    <img src="images/rotating/toy/toy1.png" alt="Eco-friendly toy product">
+                </div>
+            </div>
+            
+            <div class="category-demo">
+                <h3>🛍️ Poop Bags (3 images)</h3>
+                <div data-product-category="bag">
+                    <img src="images/rotating/bag/bag1.png" alt="Eco-friendly bag product">
+                </div>
+            </div>
+            
+            <div class="category-demo">
+                <h3>🥣 Dog Bowls (3 images)</h3>
+                <div data-product-category="bowl">
+                    <img src="images/rotating/bowl/bowl1.png" alt="Eco-friendly bowl product">
+                </div>
+            </div>
+            
+            <div class="category-demo">
+                <h3>🦮 Dog Leashes (3 images)</h3>
+                <div data-product-category="leash">
+                    <img src="images/rotating/leash/leash1.png" alt="Eco-friendly leash product">
+                </div>
+            </div>
+            
+            <div class="category-demo">
+                <h3>🛏️ Dog Beds (3 images)</h3>
+                <div data-product-category="bed">
+                    <img src="images/rotating/bed/bed1.png" alt="Eco-friendly bed product">
+                </div>
+            </div>
+            
+            <div class="category-demo">
+                <h3>🍖 Dog Treats (3 images)</h3>
+                <div data-product-category="treat">
+                    <img src="images/rotating/treat/treat1.png" alt="Eco-friendly treat product">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🌟 Hero Image Demo</h2>
+        <div data-hero-category="all">
+            <img src="images/rotating/all/all1.png" alt="Eco-friendly hero image" style="max-width: 100%; height: auto; border-radius: 12px;">
+        </div>
+    </div>
+
+    <div class="instructions">
+        <h2>📁 Next Steps:</h2>
+        <ol>
+            <li>Copy your generated images to the appropriate folders in <code>site/images/rotating/</code></li>
+            <li>Name them exactly: <code>toy1.png</code>, <code>bag2.png</code>, etc.</li>
+            <li>All articles will automatically use the rotating images!</li>
+        </ol>
+    </div>
+
+    <script src="js/image-rotation.js"></script>
+</body>
+</html>
