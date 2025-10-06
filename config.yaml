@@ -176,21 +176,21 @@ content:
       name: WAG Expedition Organic Treats
       price: $8-12
       rating: "\u2B50\u2B50\u2B50\u2B50\u2B50"
-      link: https://www.amazon.com/dp/B093CLBJDW?tag=test0b252-20
+      route_slug: organic-dog-treats
     - badge: Best Value
       badge_color: gray
       description: Natural ingredients, no artificial preservatives
       name: Organic Training Treats
       price: $6-10
       rating: "\u2B50\u2B50\u2B50\u2B50"
-      link: https://www.amazon.com/dp/B093CLBJDW?tag=test0b252-20
+      route_slug: organic-dog-treats
     - badge: Premium Choice
       badge_color: gray
       description: Single-ingredient, freeze-dried organic treats
       name: Pure Organic Snacks
       price: $10-15
       rating: "\u2B50\u2B50\u2B50\u2B50\u2B50"
-      link: https://www.amazon.com/dp/B093CLBJDW?tag=test0b252-20
+      route_slug: organic-dog-treats
     title: "\U0001F34C Best Organic Dog Treats"
   - category: dog-leashes
     description: Compare the best eco-friendly and durable dog leashes
@@ -202,7 +202,7 @@ content:
       name: Good Dog Company Hemp Canvas Leash
       price: $27.99
       rating: "\u2B50\u2B50\u2B50\u2B50\u2B50"
-      route_slug: ditch-the-plastic-why-the-good-dog-company-hemp-canvas-leash-is-your-new-best-friend-and-your-dog-s
+      route_slug: hemp-dog-leash
     - badge: Best Durability
       badge_color: gray
       description: Reinforced stitching, nickel-plated swivel snap
@@ -234,7 +234,7 @@ images:
 offers:
 - affiliate_id: test0b252-20
   affiliate_param: tag
-  base_url: https://www.amazon.com/dp/B004A7X27M
+  base_url: https://www.amazon.com/dp/B08N5WRWNW
   name: AmazonEcoFriendlyDogToys
   utm_campaign: launch
   utm_source: site
@@ -252,19 +252,19 @@ offers:
   utm_source: site
 - affiliate_id: test0b252-20
   affiliate_param: tag
-  base_url: https://www.amazon.com/dp/B093CLBJDW
+  base_url: https://www.amazon.com/dp/B09DEF456
   name: AmazonOrganicDogTreats
   utm_campaign: launch
   utm_source: site
 - affiliate_id: test0b252-20
   affiliate_param: tag
-  base_url: https://www.amazon.com/dp/B00C9L67XW
+  base_url: https://www.amazon.com/dp/B06ABC789
   name: AmazonHempDogLeash
   utm_campaign: launch
   utm_source: site
 - affiliate_id: test0b252-20
   affiliate_param: tag
-  base_url: https://www.amazon.com/dp/B08C342VQ6
+  base_url: https://www.amazon.com/dp/B15JKL012
   name: AmazonEcoFriendlyDogBowls
   utm_campaign: launch
   utm_source: site
