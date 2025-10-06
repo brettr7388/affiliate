@@ -542,10 +542,10 @@ def get_featured_routes(limit: int = 6):
         "biodegradable-poop-bags": "bag",
         "hemp-dog-leash": "leash", 
         "organic-dog-treats": "treats",
-        "natural-dog-treats": "treats",
         "recycled-dog-bed": "bed",
         "eco-dog-beds": "bed",
         "sustainable-dog-bowls": "bowl",
+        "eco-dog-bowls": "bowl",
         "eco-dog-toys-2025": "toy"
     }
     
