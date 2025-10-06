@@ -457,11 +457,11 @@ async function generateAIArticle() {
     }
 }
 
-async function testGeminiConnection() {
-    showStatus('aiArticleStatus', '🔗 Testing Gemini API connection...', 'info');
+async function testOpenAIConnection() {
+    showStatus('aiArticleStatus', '🔗 Testing OpenAI API connection...', 'info');
     
     try {
-        const r = await fetch(base + "/admin/test-gemini", {
+        const r = await fetch(base + "/admin/test-openai", {
             method: "POST",
             headers: getHeaders()
         });
@@ -473,9 +473,9 @@ async function testGeminiConnection() {
         
         const result = await r.json();
         if (result.ok) {
-            showStatus('aiArticleStatus', `✅ Gemini API connection successful! ${result.message}`, 'success');
+            showStatus('aiArticleStatus', `✅ OpenAI API connection successful! ${result.message}`, 'success');
         } else {
-            showStatus('aiArticleStatus', `❌ Gemini API connection failed: ${result.detail}`, 'error');
+            showStatus('aiArticleStatus', `❌ OpenAI API connection failed: ${result.detail}`, 'error');
         }
     } catch (error) {
         showStatus('aiArticleStatus', `❌ Error: ${error.message}`, 'error');
