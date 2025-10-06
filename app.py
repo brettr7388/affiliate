@@ -962,7 +962,7 @@ def admin_update_index(request: Request):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-# AI Article Generation with Google Gemini
+# AI Article Generation with OpenAI
 @app.post("/admin/generate-ai-article")
 async def admin_generate_ai_article(request: Request):
     require_admin(request)
@@ -992,7 +992,7 @@ async def admin_generate_ai_article(request: Request):
         
         offer, dest_url = route
         
-        # Prepare product info for Gemini
+        # Prepare product info for OpenAI
         product_info = {
             "offer": offer,
             "dest_url": dest_url,
@@ -1000,15 +1000,15 @@ async def admin_generate_ai_article(request: Request):
         }
         
         try:
-            # Import and use Gemini generator
-            from gemini_integration import GeminiArticleGenerator
+            # Import and use OpenAI generator
+            from openai_integration import OpenAIArticleGenerator
             
-            # Test Gemini connection first
-            generator = GeminiArticleGenerator()
+            # Test OpenAI connection first
+            generator = OpenAIArticleGenerator()
             if not generator.test_connection():
-                raise Exception("Gemini API is not accessible. Please check your API key.")
+                raise Exception("OpenAI API is not accessible. Please check your API key.")
             
-            # Generate article using Gemini
+            # Generate article using OpenAI
             article_content = generator.generate_article(
                 product_info=product_info,
                 article_type=article_type,
@@ -1028,9 +1028,9 @@ async def admin_generate_ai_article(request: Request):
                 title = f"{offer} - {article_type.title()}"
             
         except ImportError:
-            raise Exception("Gemini integration module not found")
+            raise Exception("OpenAI integration module not found")
         except Exception as e:
-            raise Exception(f"Gemini API error: {str(e)}")
+            raise Exception(f"OpenAI API error: {str(e)}")
         
         # Generate the article using the existing pipeline
         from content_pipeline import generate_post
@@ -1043,28 +1043,28 @@ async def admin_generate_ai_article(request: Request):
         except Exception as e:
             print(f"Warning: Could not update index.html: {e}")
         
-        return {"ok": True, "slug": slug, "message": "AI article generated successfully using Google Gemini!"}
+        return {"ok": True, "slug": slug, "message": "AI article generated successfully using OpenAI!"}
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-# Test Gemini API connection
-@app.post("/admin/test-gemini")
-async def admin_test_gemini(request: Request):
+# Test OpenAI API connection
+@app.post("/admin/test-openai")
+async def admin_test_openai(request: Request):
     require_admin(request)
     try:
-        from gemini_integration import GeminiArticleGenerator
+        from openai_integration import OpenAIArticleGenerator
         
-        generator = GeminiArticleGenerator()
+        generator = OpenAIArticleGenerator()
         if generator.test_connection():
-            return {"ok": True, "message": "Gemini API is working and accessible"}
+            return {"ok": True, "message": "OpenAI API is working and accessible"}
         else:
-            raise Exception("Gemini API is not responding")
+            raise Exception("OpenAI API is not responding")
             
     except ImportError:
-        raise HTTPException(status_code=500, detail="Gemini integration module not found")
+        raise HTTPException(status_code=500, detail="OpenAI integration module not found")
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Gemini API connection failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"OpenAI API connection failed: {str(e)}")
 
 # Test Image Generator connection
 @app.post("/admin/test-image-generator")
