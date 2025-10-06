@@ -6,7 +6,7 @@ OpenAI API integration for AI article generation
 import os
 import re
 from typing import Dict, Any
-import openai
+from openai import OpenAI
 
 class OpenAIArticleGenerator:
     def __init__(self, api_key: str = None):
@@ -15,8 +15,8 @@ class OpenAIArticleGenerator:
         if not self.api_key:
             raise ValueError("OPENAI_API_KEY environment variable is required")
         
-        # Configure the API
-        openai.api_key = self.api_key
+        # Initialize the OpenAI client
+        self.client = OpenAI(api_key=self.api_key)
         
         # Use GPT-4 for high-quality content generation
         self.model = "gpt-4o-mini"  # Cost-effective and fast
@@ -24,7 +24,7 @@ class OpenAIArticleGenerator:
     def test_connection(self) -> bool:
         """Test if OpenAI API is accessible"""
         try:
-            response = openai.chat.completions.create(
+            response = self.client.chat.completions.create(
                 model=self.model,
                 messages=[
                     {"role": "user", "content": "Hello, please respond with 'API connection successful'"}
@@ -57,7 +57,7 @@ class OpenAIArticleGenerator:
         )
         
         try:
-            response = openai.chat.completions.create(
+            response = self.client.chat.completions.create(
                 model=self.model,
                 messages=[
                     {
